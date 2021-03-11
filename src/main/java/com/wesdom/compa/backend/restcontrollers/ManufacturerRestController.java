@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.wesdom.compa.backend.database.model.Manufacturer;
 import com.wesdom.compa.backend.database.model.Manufacturer;
+import com.wesdom.compa.backend.database.model.ManufacturerType;
 import com.wesdom.compa.backend.database.repositories.IManufacturerRepository;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @CrossOrigin(origins = {"*"})
@@ -39,6 +41,11 @@ public class ManufacturerRestController {
     @GetMapping("/{id}")
     public Manufacturer get(@PathVariable Long id){
         return manufacturerRepository.get(id);
+    }
+
+    @GetMapping("/types")
+    public List<ManufacturerType> getTypes(){
+        return manufacturerRepository.getManufacturerTypeList();
     }
 
     @JsonView(SystemViews.ManufacturerBasicView.class)

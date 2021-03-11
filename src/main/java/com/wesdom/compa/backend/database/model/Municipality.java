@@ -20,13 +20,16 @@ import javax.persistence.ManyToOne;
 public class Municipality {
 
     @Id
-    @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class})
+    @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
+            SystemViews.EstateBasicView.class})
     private Long id;
 
-    @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class})
+    @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
+            SystemViews.EstateBasicView.class})
     private String code;
 
-    @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class})
+    @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
+            SystemViews.EstateBasicView.class})
     private String name;
 
     @ManyToOne(targetEntity = Department.class, fetch = FetchType.LAZY)

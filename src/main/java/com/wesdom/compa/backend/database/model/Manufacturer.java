@@ -20,13 +20,13 @@ import java.util.List;
 @Accessors(chain = true)
 public class Manufacturer extends BaseUser {
 
-    @JsonView({SystemViews.ManufacturerBasicView.class})
+    @JsonView({SystemViews.ManufacturerBasicView.class,SystemViews.GroupDetailedView.class})
     private String plantation;
 
-    @JsonView({SystemViews.ManufacturerBasicView.class})
+    @JsonView({SystemViews.ManufacturerBasicView.class,SystemViews.GroupDetailedView.class})
     private BigDecimal latitude;
 
-    @JsonView({SystemViews.ManufacturerBasicView.class})
+    @JsonView({SystemViews.ManufacturerBasicView.class,SystemViews.GroupDetailedView.class})
     private BigDecimal longitude;
 
     @JsonView({SystemViews.ManufacturerBasicView.class})
