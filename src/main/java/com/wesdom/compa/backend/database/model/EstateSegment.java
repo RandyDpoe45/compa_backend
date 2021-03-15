@@ -23,6 +23,9 @@ public class EstateSegment {
     private Long id;
 
     @JsonView({SystemViews.EstateSegmentBasicView.class})
+    private String code;
+
+    @JsonView({SystemViews.EstateSegmentBasicView.class})
     @ManyToOne(targetEntity = Estate.class,fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     private Estate estate;
