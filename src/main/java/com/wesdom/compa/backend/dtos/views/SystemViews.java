@@ -9,4 +9,5 @@ public class SystemViews {
     public static class GroupDetailedView{};
     public static class EstateBasicView {};
     public static class EstateSegmentBasicView{};
+    public static class ProductInStateBasicView{};
 }

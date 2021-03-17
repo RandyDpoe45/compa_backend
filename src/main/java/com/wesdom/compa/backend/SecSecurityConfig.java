@@ -63,6 +63,8 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers(HttpMethod.POST,"/v1/authUser/**").and()
                 .ignoring().antMatchers("/v1/manufacturer/**", "/v1/promoter/**" , "/v1/commercialPartner/**",
-                "/v1/group/**","/v1/estate/**","/v1/estateSegment/**");
+                "/v1/group/**","/v1/estate/**","/v1/estateSegment/**", "/v1/product/**",
+                "/v1/activity/activityOption/optionAnswer/**", "/v1/activity/activityOption/**","/v1/activity/**",
+                "/v1/productInStateSegment/**");
     }
 }

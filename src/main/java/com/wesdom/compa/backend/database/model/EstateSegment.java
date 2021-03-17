@@ -19,10 +19,10 @@ public class EstateSegment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonView({SystemViews.EstateSegmentBasicView.class})
+    @JsonView({SystemViews.EstateSegmentBasicView.class,SystemViews.ProductInStateBasicView.class})
     private Long id;
 
-    @JsonView({SystemViews.EstateSegmentBasicView.class})
+    @JsonView({SystemViews.EstateSegmentBasicView.class,SystemViews.ProductInStateBasicView.class})
     private String code;
 
     @JsonView({SystemViews.EstateSegmentBasicView.class})
@@ -34,7 +34,7 @@ public class EstateSegment {
     @JsonView({SystemViews.EstateSegmentBasicView.class})
     private EstateSegmentType estateSegmentType;
 
-    @JsonView({SystemViews.EstateSegmentBasicView.class})
+    @JsonView({SystemViews.EstateSegmentBasicView.class,SystemViews.ProductInStateBasicView.class})
     private BigDecimal area;
 
 }
