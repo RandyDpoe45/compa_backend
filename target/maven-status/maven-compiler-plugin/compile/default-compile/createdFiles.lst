@@ -5,6 +5,7 @@ com/wesdom/compa/backend/database/repositoriesimpl/OptionAnswerRepositoryImpl.cl
 com/wesdom/compa/backend/database/repositories/IManufacturerRepository.class
 com/wesdom/compa/backend/database/repositoriesimpl/EstateRepositoryImpl.class
 com/wesdom/compa/backend/database/repositories/IActivityOptionRepository.class
+com/wesdom/compa/backend/database/model/ProductionActivityAnswer.class
 com/wesdom/compa/backend/database/repositories/IPromoterRepository.class
 com/wesdom/compa/backend/database/repositoriesimpl/ActivityRepositoryImpl.class
 com/wesdom/compa/backend/database/jparepositories/ManufacturerGroupJpaRepository.class
@@ -41,6 +42,7 @@ com/wesdom/compa/backend/database/repositories/ICommercialPartnerRepository.clas
 com/wesdom/compa/backend/restcontrollers/ProductRestController.class
 com/wesdom/compa/backend/database/enums/ActivityOptionTypeEnum.class
 com/wesdom/compa/backend/database/model/Product.class
+com/wesdom/compa/backend/database/repositories/IProductionActivityAnswerRepository.class
 com/wesdom/compa/backend/database/enums/ManufacturerTypeEnum.class
 com/wesdom/compa/backend/database/repositoriesimpl/ProductInStateSegmentRepositoryImpl.class
 com/wesdom/compa/backend/database/jparepositories/MunicipalityJpaRepository.class
@@ -49,6 +51,7 @@ com/wesdom/compa/backend/database/jparepositories/AuthUserJpaRepository.class
 com/wesdom/compa/backend/restcontrollers/AuthUserRestController.class
 com/wesdom/compa/backend/restcontrollers/PromoterRestController.class
 com/wesdom/compa/backend/database/repositories/IProductInStateSegmentRepository.class
+com/wesdom/compa/backend/database/model/ProductionActivity.class
 com/wesdom/compa/backend/database/repositoriesimpl/GroupRepositoryImpl.class
 com/wesdom/compa/backend/database/jparepositories/ProductInStateSegmentJpaRepository.class
 com/wesdom/compa/backend/service/implementation/PaginationBuilderImpl.class
@@ -67,11 +70,14 @@ com/wesdom/compa/backend/service/implementation/AuthUserServiceImpl.class
 com/wesdom/compa/backend/restcontrollers/GroupRestController.class
 com/wesdom/compa/backend/database/repositoriesimpl/CommercialPartnerRepositoryImpl.class
 com/wesdom/compa/backend/database/jparepositories/EstateSegmentJpaRepository.class
+com/wesdom/compa/backend/dtos/views/SystemViews$ProductionActivityAnswerBasicView.class
 com/wesdom/compa/backend/database/repositoriesimpl/PromoterRepositoryImpl.class
 com/wesdom/compa/backend/database/enums/GenderEmun.class
 com/wesdom/compa/backend/JWTConstants.class
+com/wesdom/compa/backend/database/jparepositories/ProductionActivityAnswerJpaRepository.class
 com/wesdom/compa/backend/database/model/ManufacturerType.class
 com/wesdom/compa/backend/database/jparepositories/ActivityJpaRepository.class
+com/wesdom/compa/backend/database/repositoriesimpl/ProductionActivityAnswerRepositoryImpl.class
 com/wesdom/compa/backend/database/repositories/IOptionAnswerRepository.class
 com/wesdom/compa/backend/service/interfaces/IAuthUserService.class
 com/wesdom/compa/backend/BackendApplication.class
@@ -79,16 +85,20 @@ com/wesdom/compa/backend/database/jparepositories/ActivityOptionJpaRepository.cl
 com/wesdom/compa/backend/JWTAuthorizationFilter.class
 com/wesdom/compa/backend/database/model/BaseUser.class
 com/wesdom/compa/backend/service/interfaces/IPredicateBuilder.class
+com/wesdom/compa/backend/dtos/views/SystemViews$ProductionActivityBasicView.class
 com/wesdom/compa/backend/database/jparepositories/OptionAnswerJpaRepository.class
 com/wesdom/compa/backend/database/enums/UserTypeEnum.class
 com/wesdom/compa/backend/database/model/CommercialPartner.class
 com/wesdom/compa/backend/database/repositoriesimpl/ActivityOptionRepositoryImpl.class
 com/wesdom/compa/backend/database/repositoriesimpl/EstateSegmentRepositoryImpl.class
+com/wesdom/compa/backend/restcontrollers/ProductionActivityRestController.class
 com/wesdom/compa/backend/dtos/views/SystemViews$CommercialPartnerBasicView.class
 com/wesdom/compa/backend/database/enums/GroupTypeEnum.class
 com/wesdom/compa/backend/database/model/Activity.class
 com/wesdom/compa/backend/database/model/ManufacturerGroup.class
 com/wesdom/compa/backend/database/jparepositories/EstateJpaRepository.class
+com/wesdom/compa/backend/database/repositories/IProductionActivityRepository.class
+com/wesdom/compa/backend/database/repositoriesimpl/ProductionActivityRepositoryImpl.class
 com/wesdom/compa/backend/database/model/Municipality.class
 com/wesdom/compa/backend/restcontrollers/ProductInStateSegmentRestController.class
 com/wesdom/compa/backend/exceptionhandling/exceptions/ExceptionCodesEnum.class
@@ -101,3 +111,4 @@ com/wesdom/compa/backend/database/repositoriesimpl/ProductRepositoryImpl.class
 com/wesdom/compa/backend/dtos/views/SystemViews$GroupDetailedView.class
 com/wesdom/compa/backend/database/jparepositories/EstateSegmentTypeJpaRepository.class
 com/wesdom/compa/backend/database/enums/EstateSegmentTypeEnum.class
+com/wesdom/compa/backend/database/jparepositories/ProductionActivityJpaRepository.class

@@ -15,19 +15,23 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Accessors(chain = true)
-public class Activity {
+public class ProductionActivity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonView({SystemViews.ProductionActivityBasicView.class})
     private Long id;
 
+    @ManyToOne(targetEntity = ProductInStateSegment.class, fetch = FetchType.LAZY)
     @JsonView({SystemViews.ProductionActivityBasicView.class})
-    private String name;
+    private ProductInStateSegment productInStateSegment;
 
+    @ManyToOne(targetEntity = Activity.class,fetch = FetchType.LAZY)
     @JsonView({SystemViews.ProductionActivityBasicView.class})
-    private String stage;
+    private Activity activity;
 
-    @ManyToMany(targetEntity = ActivityOption.class, fetch = FetchType.LAZY)
-    private List<ActivityOption> activityOptionList;
+    @OneToMany(targetEntity = ProductionActivityAnswer.class,fetch = FetchType.LAZY,mappedBy = "productionActivity")
+//    @JsonView({SystemViews.ProductionActivityBasicView.class})
+    private List<ProductionActivityAnswer> activityAnswers;
+
 }

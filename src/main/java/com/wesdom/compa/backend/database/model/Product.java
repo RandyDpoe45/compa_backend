@@ -21,19 +21,19 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonView({SystemViews.ProductInStateBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
     private Long id;
 
-    @JsonView({SystemViews.ProductInStateBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
     private String code;
 
-    @JsonView({SystemViews.ProductInStateBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
     private String name;
 
-    @JsonView({SystemViews.ProductInStateBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
     private BigDecimal avProductivity;
 
-    @JsonView({SystemViews.ProductInStateBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
     private String metricUnit;
 }
 

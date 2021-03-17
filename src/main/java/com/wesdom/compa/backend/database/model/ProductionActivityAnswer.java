@@ -8,31 +8,26 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @Accessors(chain = true)
-public class ActivityOption {
+public class ProductionActivityAnswer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonView({SystemViews.ProductionActivityAnswerBasicView.class})
     private Long id;
 
-    @JsonView({SystemViews.ProductionActivityAnswerBasicView.class})
-    private String name;
+    @ManyToOne(targetEntity = ProductionActivity.class,fetch = FetchType.LAZY)
+    private ProductionActivity productionActivity;
 
-    //daily or regular
     @JsonView({SystemViews.ProductionActivityAnswerBasicView.class})
-    private String optionType;
+    @ManyToOne(targetEntity = ActivityOption.class, fetch = FetchType.LAZY)
+    private ActivityOption activityOption;
 
-    //either Open or closed answer
     @JsonView({SystemViews.ProductionActivityAnswerBasicView.class})
-    private String answerType;
-
-    @ManyToMany(targetEntity = OptionAnswer.class,fetch = FetchType.LAZY)
-    private List<OptionAnswer> optionAnswersList;
+    private String answer;
 }

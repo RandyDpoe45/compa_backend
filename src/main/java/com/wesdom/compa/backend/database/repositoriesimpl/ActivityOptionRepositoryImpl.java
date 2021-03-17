@@ -50,7 +50,7 @@ public class ActivityOptionRepositoryImpl implements IActivityOptionRepository {
     public ActivityOption update(Long activityOptionId, ActivityOption activityOption) {
         ActivityOption a = activityOptionJpaRepository.getOne(activityOptionId);
         a.setName(activityOption.getName()).setOptionType(activityOption.getOptionType())
-                .setOptionAnswersList(activityOption.getOptionAnswersList());
+                .setOptionAnswersList(activityOption.getOptionAnswersList()).setAnswerType(activityOption.getAnswerType());
         a = activityOptionJpaRepository.save(a);
         em.refresh(a);
         return  a;

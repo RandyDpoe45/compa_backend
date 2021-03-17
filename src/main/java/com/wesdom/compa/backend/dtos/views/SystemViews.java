@@ -10,4 +10,7 @@ public class SystemViews {
     public static class EstateBasicView {};
     public static class EstateSegmentBasicView{};
     public static class ProductInStateBasicView{};
+    public static class ProductionActivityBasicView{};
+    public static class ProductionActivityAnswerBasicView{};
+
 }

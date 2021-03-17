@@ -21,11 +21,11 @@ public class ProductInStateSegment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonView({SystemViews.ProductInStateBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
     private Long id;
 
     @ManyToOne(targetEntity = Product.class,fetch = FetchType.LAZY)
-    @JsonView({SystemViews.ProductInStateBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
     private Product product;
 
     @ManyToOne(targetEntity = EstateSegment.class, fetch = FetchType.LAZY)
@@ -33,17 +33,17 @@ public class ProductInStateSegment {
     private EstateSegment estateSegment;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    @JsonView({SystemViews.ProductInStateBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
     private LocalDate beginning;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    @JsonView({SystemViews.ProductInStateBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
     private LocalDate end;
 
-    @JsonView({SystemViews.ProductInStateBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
     private String currentStage;
 
-    @JsonView({SystemViews.ProductInStateBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
     private BigDecimal area;
 
 }
