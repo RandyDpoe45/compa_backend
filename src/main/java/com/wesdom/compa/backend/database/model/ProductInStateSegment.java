@@ -21,29 +21,39 @@ public class ProductInStateSegment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
+            SystemViews.ExpertVisitBasicView.class})
     private Long id;
 
     @ManyToOne(targetEntity = Product.class,fetch = FetchType.LAZY)
-    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
+            SystemViews.ExpertVisitBasicView.class})
     private Product product;
 
     @ManyToOne(targetEntity = EstateSegment.class, fetch = FetchType.LAZY)
-    @JsonView({SystemViews.ProductInStateBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class, SystemViews.ExpertVisitBasicView.class,})
     private EstateSegment estateSegment;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
+            SystemViews.ExpertVisitBasicView.class})
     private LocalDate beginning;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
+            SystemViews.ExpertVisitBasicView.class})
     private LocalDate end;
 
-    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
+            SystemViews.ExpertVisitBasicView.class})
     private String currentStage;
 
-    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
+            SystemViews.ExpertVisitBasicView.class})
     private BigDecimal area;
+
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
+            SystemViews.ExpertVisitBasicView.class})
+    private BigDecimal totalHarvest;
 
 }

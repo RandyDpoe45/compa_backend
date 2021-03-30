@@ -18,12 +18,15 @@ import javax.persistence.Id;
 public class EstateSegmentType {
 
     @Id
-    @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,SystemViews.EstateSegmentBasicView.class})
+    @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,SystemViews.EstateSegmentBasicView.class
+            ,SystemViews.EstateSegmentDetailView.class})
     private Long id;
 
-    @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,SystemViews.EstateSegmentBasicView.class})
+    @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,SystemViews.EstateSegmentBasicView.class
+            ,SystemViews.EstateSegmentDetailView.class})
     private String code;
 
-    @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,SystemViews.EstateSegmentBasicView.class})
+    @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,SystemViews.EstateSegmentBasicView.class
+            ,SystemViews.EstateSegmentDetailView.class})
     private String name;
 }

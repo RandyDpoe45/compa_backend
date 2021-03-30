@@ -9,6 +9,7 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import java.math.BigDecimal;
 import java.util.List;
@@ -20,7 +21,8 @@ import java.util.List;
 @Accessors(chain = true)
 public class Manufacturer extends BaseUser {
 
-    @JsonView({SystemViews.ManufacturerBasicView.class,SystemViews.GroupDetailedView.class})
+    @JsonView({SystemViews.ManufacturerBasicView.class,SystemViews.GroupDetailedView.class
+        ,SystemViews.EstateSegmentDetailView.class})
     private String plantation;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,SystemViews.GroupDetailedView.class})
@@ -30,7 +32,7 @@ public class Manufacturer extends BaseUser {
     private BigDecimal longitude;
 
     @JsonView({SystemViews.ManufacturerBasicView.class})
-    @OneToMany(targetEntity = ManufacturerType.class, fetch = FetchType.LAZY)
+    @ManyToMany(targetEntity = ManufacturerType.class, fetch = FetchType.LAZY)
     private List<ManufacturerType> type;
 
 }

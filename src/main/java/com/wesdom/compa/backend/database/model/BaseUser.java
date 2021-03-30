@@ -22,7 +22,7 @@ public abstract class BaseUser {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.GroupDetailedView.class})
+            SystemViews.GroupDetailedView.class,SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class})
     private Long id;
 
     @OneToOne(targetEntity = AuthUser.class, fetch = FetchType.EAGER)
@@ -31,23 +31,23 @@ public abstract class BaseUser {
     private AuthUser authUser;
 
     @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.GroupDetailedView.class})
+            SystemViews.GroupDetailedView.class,SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class})
     private String firstName;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.GroupDetailedView.class})
+            SystemViews.GroupDetailedView.class,SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class})
     private String secondName;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.GroupDetailedView.class})
+            SystemViews.GroupDetailedView.class,SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class})
     private String firstLastname;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.GroupDetailedView.class})
+            SystemViews.GroupDetailedView.class,SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class})
     private String secondLastName;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.GroupDetailedView.class})
+            SystemViews.GroupDetailedView.class,SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class})
     private String phone;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
@@ -55,7 +55,7 @@ public abstract class BaseUser {
     private String gender;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.GroupDetailedView.class})
+            SystemViews.GroupDetailedView.class,SystemViews.EstateSegmentDetailView.class})
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate birthday;
 

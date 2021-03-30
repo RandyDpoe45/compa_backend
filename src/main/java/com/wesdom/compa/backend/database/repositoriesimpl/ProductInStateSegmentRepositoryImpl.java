@@ -45,10 +45,10 @@ public class ProductInStateSegmentRepositoryImpl implements IProductInStateSegme
 
     @Override
     public ProductInStateSegment update(Long productInStateSegmentId, ProductInStateSegment productInStateSegment) {
-        ProductInStateSegment p = productInStateSegmentJpaRepository.getOne(productInStateSegmentId);
-        p.setProduct(productInStateSegment.getProduct()).setEstateSegment(productInStateSegment.getEstateSegment())
-                .setArea(productInStateSegment.getArea()).setBeginning(productInStateSegment.getBeginning())
-                .setEnd(productInStateSegment.getEnd());
+        ProductInStateSegment p ;//= productInStateSegmentJpaRepository.getOne(productInStateSegmentId);
+//        p.setProduct(productInStateSegment.getProduct()).setEstateSegment(productInStateSegment.getEstateSegment())
+//                .setArea(productInStateSegment.getArea()).setBeginning(productInStateSegment.getBeginning())
+//                .setEnd(productInStateSegment.getEnd());
         p = productInStateSegmentJpaRepository.saveAndFlush(productInStateSegment);
         em.refresh(p);
         return  p;

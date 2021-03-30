@@ -11,7 +11,11 @@ import com.wesdom.compa.backend.service.interfaces.IPredicateBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.Map;
 
 @Service
@@ -22,6 +26,9 @@ public class ProductionActivityRepositoryImpl implements IProductionActivityRepo
 
     @Autowired
     private GroupTypeJpaRepository productionActivityTypeJpaRepository;
+
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
     public ProductionActivity get(Long id) {
@@ -36,16 +43,21 @@ public class ProductionActivityRepositoryImpl implements IProductionActivityRepo
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ProductionActivity create(ProductionActivity productionActivity) {
-        return productionActivityJpaRepository.save(productionActivity);
+        productionActivity = productionActivityJpaRepository.saveAndFlush(productionActivity);
+        em.refresh(productionActivity);
+        return productionActivity;
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ProductionActivity update(Long productionActivityId, ProductionActivity productionActivity) {
         ProductionActivity e = productionActivityJpaRepository.getOne(productionActivityId);
         e.setActivity(productionActivity.getActivity()).setActivityAnswers(productionActivity.getActivityAnswers())
                 .setProductInStateSegment(productionActivity.getProductInStateSegment());
-        productionActivityJpaRepository.save(e);
+        e = productionActivityJpaRepository.saveAndFlush(e);
+        em.refresh(e);
         return e;
     }
 

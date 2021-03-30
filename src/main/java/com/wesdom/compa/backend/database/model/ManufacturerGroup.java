@@ -21,10 +21,12 @@ public class ManufacturerGroup {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.SEQUENCE)
-    @JsonView({SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class, SystemViews.EstateBasicView.class})
+    @JsonView({SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class, SystemViews.EstateBasicView.class
+            ,SystemViews.EstateSegmentDetailView.class})
     private Long id;
 
-    @JsonView({SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class, SystemViews.EstateBasicView.class})
+    @JsonView({SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class, SystemViews.EstateBasicView.class
+            ,SystemViews.EstateSegmentDetailView.class})
     private String name;
 
     @JsonView({SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class})

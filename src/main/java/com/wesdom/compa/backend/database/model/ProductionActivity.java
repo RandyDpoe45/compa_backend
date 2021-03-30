@@ -19,15 +19,18 @@ public class ProductionActivity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonView({SystemViews.ProductionActivityBasicView.class})
+    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
     private Long id;
+
+    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    private Boolean approved = false;
 
     @ManyToOne(targetEntity = ProductInStateSegment.class, fetch = FetchType.LAZY)
     @JsonView({SystemViews.ProductionActivityBasicView.class})
     private ProductInStateSegment productInStateSegment;
 
     @ManyToOne(targetEntity = Activity.class,fetch = FetchType.LAZY)
-    @JsonView({SystemViews.ProductionActivityBasicView.class})
+    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
     private Activity activity;
 
     @OneToMany(targetEntity = ProductionActivityAnswer.class,fetch = FetchType.LAZY,mappedBy = "productionActivity")

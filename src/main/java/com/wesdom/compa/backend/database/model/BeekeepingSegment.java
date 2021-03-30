@@ -1,0 +1,60 @@
+package com.wesdom.compa.backend.database.model;
+
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.wesdom.compa.backend.dtos.views.SystemViews;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.util.List;
+
+@Entity
+@Getter
+@Setter
+@DiscriminatorValue("B")
+@NoArgsConstructor
+@Accessors(chain = true)
+@JsonTypeName("BeekeepingSegment")
+public class BeekeepingSegment extends EstateSegment{
+
+    @JsonView({SystemViews.EstateSegmentDetailView.class})
+    private String name;
+
+    @JsonView({SystemViews.EstateSegmentDetailView.class})
+    private Long numberOfChambers;
+
+    @JsonView({SystemViews.EstateSegmentDetailView.class})
+    private Long nSingleHiveChamber;
+
+    @JsonView({SystemViews.EstateSegmentDetailView.class})
+    private Long nDoubleHiveChamber;
+
+    @JsonView({SystemViews.EstateSegmentDetailView.class})
+    private Long nTripleHiveChamber;
+
+    @JsonView({SystemViews.EstateSegmentDetailView.class})
+    private LocalDate creationDate;
+
+    @JsonView({SystemViews.EstateSegmentDetailView.class})
+    private LocalDate lastDivision;
+
+    @JsonView({SystemViews.EstateSegmentDetailView.class})
+    private String boxOrigin;
+
+    @JsonView({SystemViews.EstateSegmentDetailView.class})
+    private String troughType;
+
+    @JsonView({SystemViews.EstateSegmentDetailView.class})
+    @ManyToMany(targetEntity = ApiaryWoodType.class, fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private List<ApiaryWoodType> woodTypeList;
+
+}

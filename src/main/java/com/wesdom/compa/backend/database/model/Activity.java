@@ -19,13 +19,13 @@ public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonView({SystemViews.ProductionActivityBasicView.class})
+    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
     private Long id;
 
-    @JsonView({SystemViews.ProductionActivityBasicView.class})
+    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
     private String name;
 
-    @JsonView({SystemViews.ProductionActivityBasicView.class})
+    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
     private String stage;
 
     @ManyToMany(targetEntity = ActivityOption.class, fetch = FetchType.LAZY)
