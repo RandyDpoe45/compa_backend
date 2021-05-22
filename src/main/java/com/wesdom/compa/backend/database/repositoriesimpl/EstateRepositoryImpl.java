@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.Map;
 
 @Service
@@ -22,6 +24,9 @@ public class EstateRepositoryImpl  implements IEstateRepository {
 
     @Autowired
     private GroupTypeJpaRepository estateTypeJpaRepository;
+
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
     public Estate get(Long id) {
@@ -37,7 +42,9 @@ public class EstateRepositoryImpl  implements IEstateRepository {
 
     @Override
     public Estate create(Estate estate) {
-        return estateJpaRepository.save(estate);
+        Estate e = estateJpaRepository.saveAndFlush(estate);
+        em.refresh(e);
+        return e;
     }
 
     @Override
@@ -45,8 +52,9 @@ public class EstateRepositoryImpl  implements IEstateRepository {
         Estate e = estateJpaRepository.getOne(estateId);
         e.setDepartment(estate.getDepartment()).setMunicipality(estate.getMunicipality()).setLatitude(estate.getLatitude())
                 .setLongitude(estate.getLongitude()).setTotalArea(estate.getTotalArea()).setPlantation(estate.getPlantation())
-                .setManufacturerGroup(estate.getManufacturerGroup());
-        estateJpaRepository.save(e);
+                .setManufacturerGroup(estate.getManufacturerGroup()).setName(estate.getName());
+        e = estateJpaRepository.saveAndFlush(e);
+        em.refresh(e);
         return e;
     }
 

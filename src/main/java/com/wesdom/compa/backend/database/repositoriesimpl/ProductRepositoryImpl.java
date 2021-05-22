@@ -40,7 +40,7 @@ public class ProductRepositoryImpl implements IProductRepository {
     public Product update(Long productId, Product product) {
         Product p = productJpaRepository.getOne(productId);
         p.setCode(product.getCode()).setAvProductivity(product.getAvProductivity())
-                .setName(product.getName()).setMetricUnit(product.getMetricUnit());
+                .setName(product.getName()).setMetricUnit(product.getMetricUnit()).setSpecies(product.getSpecies());
         return  productJpaRepository.save(p);
     }
 

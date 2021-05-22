@@ -44,7 +44,8 @@ public class PromoterRepositoryImpl implements IPromoterRepository {
                 .setFirstName(promoter.getFirstName()).setFirstLastname(promoter.getFirstLastname())
                 .setSecondName(promoter.getSecondName()).setSecondLastName(promoter.getSecondLastName())
                 .setBirthday(promoter.getBirthday()).setPhone(promoter.getPhone()).setDepartment(promoter.getDepartment())
-                .setMunicipality(promoter.getMunicipality()).setGender(promoter.getGender());
+                .setMunicipality(promoter.getMunicipality()).setGender(promoter.getGender())
+                .setIdentificationType(promoter.getIdentificationType()).setIdentificationNumber(promoter.getIdentificationNumber());
         promoterJpaRepository.save(m);
         return m;
     }

@@ -55,6 +55,14 @@ public abstract class BaseUser {
     private String gender;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
+            SystemViews.GroupDetailedView.class})
+    private String identificationType;
+
+    @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
+            SystemViews.GroupDetailedView.class})
+    private String identificationNumber;
+
+    @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
             SystemViews.GroupDetailedView.class,SystemViews.EstateSegmentDetailView.class})
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate birthday;

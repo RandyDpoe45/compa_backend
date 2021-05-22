@@ -35,4 +35,6 @@ public class Manufacturer extends BaseUser {
     @ManyToMany(targetEntity = ManufacturerType.class, fetch = FetchType.LAZY)
     private List<ManufacturerType> type;
 
+    //agregar tipo de id y id para todos los usuarios
+
 }

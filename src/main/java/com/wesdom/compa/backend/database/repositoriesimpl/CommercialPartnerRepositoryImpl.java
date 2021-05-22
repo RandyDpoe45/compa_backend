@@ -43,7 +43,8 @@ public class CommercialPartnerRepositoryImpl implements ICommercialPartnerReposi
                 .setFirstName(commercialPartner.getFirstName()).setFirstLastname(commercialPartner.getFirstLastname())
                 .setSecondName(commercialPartner.getSecondName()).setSecondLastName(commercialPartner.getSecondLastName())
                 .setBirthday(commercialPartner.getBirthday()).setPhone(commercialPartner.getPhone()).setDepartment(commercialPartner.getDepartment())
-                .setMunicipality(commercialPartner.getMunicipality()).setGender(commercialPartner.getGender());
+                .setMunicipality(commercialPartner.getMunicipality()).setGender(commercialPartner.getGender())
+                .setIdentificationType(commercialPartner.getIdentificationType()).setIdentificationNumber(commercialPartner.getIdentificationNumber());
         commercialPartnerJpaRepository.save(m);
         return m;
     }

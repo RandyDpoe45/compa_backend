@@ -10,6 +10,7 @@ com/wesdom/compa/backend/restcontrollers/EstateSegmentRestController$3.class
 com/wesdom/compa/backend/database/model/ExpertVisit.class
 com/wesdom/compa/backend/database/model/ProductionActivityAnswer.class
 com/wesdom/compa/backend/database/repositories/IExpertVisitNoteRepository.class
+com/wesdom/compa/backend/database/repositoriesimpl/LocationRepositoryImpl.class
 com/wesdom/compa/backend/database/repositories/IPromoterRepository.class
 com/wesdom/compa/backend/database/repositoriesimpl/ActivityRepositoryImpl.class
 com/wesdom/compa/backend/database/model/ExpertAlert.class
@@ -26,6 +27,7 @@ com/wesdom/compa/backend/dtos/views/SystemViews$EstateBasicView.class
 com/wesdom/compa/backend/restcontrollers/ActivityRestController.class
 com/wesdom/compa/backend/database/repositories/IFloraRepository.class
 com/wesdom/compa/backend/database/repositoriesimpl/ExpertVisitRepositoryImpl.class
+com/wesdom/compa/backend/database/repositories/ILocationRepository.class
 com/wesdom/compa/backend/database/jparepositories/ApiaryWoodTypeJpaRepository.class
 com/wesdom/compa/backend/restcontrollers/WoodTypeRestController.class
 com/wesdom/compa/backend/database/model/ExpertVisitNote.class
@@ -62,6 +64,7 @@ com/wesdom/compa/backend/restcontrollers/EstateRestController.class
 com/wesdom/compa/backend/database/repositories/ICommercialPartnerRepository.class
 com/wesdom/compa/backend/database/jparepositories/NearbyFloraJpaRepository.class
 com/wesdom/compa/backend/restcontrollers/ProductRestController.class
+com/wesdom/compa/backend/database/jparepositories/DepartmentJpaRepository.class
 com/wesdom/compa/backend/database/enums/ActivityOptionTypeEnum.class
 com/wesdom/compa/backend/database/model/Product.class
 com/wesdom/compa/backend/database/repositories/IProductionActivityAnswerRepository.class
@@ -95,6 +98,7 @@ com/wesdom/compa/backend/database/repositories/IProductRepository.class
 com/wesdom/compa/backend/database/jparepositories/PromoterJpaRepository.class
 com/wesdom/compa/backend/restcontrollers/EstateSegmentRestController$4.class
 com/wesdom/compa/backend/database/jparepositories/ExpertVisitJpaRepository.class
+com/wesdom/compa/backend/dtos/views/SystemViews$LocationBasicView.class
 com/wesdom/compa/backend/service/implementation/AuthUserServiceImpl.class
 com/wesdom/compa/backend/restcontrollers/GroupRestController.class
 com/wesdom/compa/backend/database/repositoriesimpl/CommercialPartnerRepositoryImpl.class
@@ -144,6 +148,7 @@ com/wesdom/compa/backend/exceptionhandling/exceptions/ExceptionCodesEnum.class
 com/wesdom/compa/backend/service/implementation/PredicateBuilderServiceImpl.class
 com/wesdom/compa/backend/database/repositories/IEstateSegmentRepository.class
 com/wesdom/compa/backend/database/jparepositories/BeekeepingJpaRepository.class
+com/wesdom/compa/backend/restcontrollers/LocationRestController.class
 com/wesdom/compa/backend/dtos/views/SystemViews$ExpertVisitNoteBasicView.class
 com/wesdom/compa/backend/database/repositoriesimpl/NearbyFloraRepositoryImpl.class
 com/wesdom/compa/backend/dtos/views/SystemViews$EstateSegmentBasicView.class

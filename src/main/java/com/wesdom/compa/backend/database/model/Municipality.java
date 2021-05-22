@@ -21,15 +21,15 @@ public class Municipality {
 
     @Id
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class})
+            SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class})
     private Long id;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class})
+            SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class})
     private String code;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class})
+            SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class})
     private String name;
 
     @ManyToOne(targetEntity = Department.class, fetch = FetchType.LAZY)

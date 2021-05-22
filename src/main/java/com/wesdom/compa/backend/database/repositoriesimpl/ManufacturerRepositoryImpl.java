@@ -50,7 +50,8 @@ public class ManufacturerRepositoryImpl implements IManufacturerRepository {
                 .setFirstName(manufacturer.getFirstName()).setFirstLastname(manufacturer.getFirstLastname())
                 .setSecondName(manufacturer.getSecondName()).setSecondLastName(manufacturer.getSecondLastName())
                 .setBirthday(manufacturer.getBirthday()).setPhone(manufacturer.getPhone()).setDepartment(manufacturer.getDepartment())
-                .setMunicipality(manufacturer.getMunicipality()).setGender(manufacturer.getGender());
+                .setMunicipality(manufacturer.getMunicipality()).setGender(manufacturer.getGender())
+                .setIdentificationType(manufacturer.getIdentificationType()).setIdentificationNumber(manufacturer.getIdentificationNumber());
         manufacturerJpaRepository.save(m);
         return m;
     }

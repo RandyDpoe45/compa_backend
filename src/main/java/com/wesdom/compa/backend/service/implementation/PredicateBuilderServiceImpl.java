@@ -55,11 +55,13 @@ public class PredicateBuilderServiceImpl<T> implements IPredicateBuilder<T> {
     /**
      * Specification builder.
      */
-    private Specification<T> createSpecification(String property, String stringValue) {
+    private Specification<T> createSpecification(String prop, String stringValue) {
         Pattern p = Pattern.compile("\\(([^\\)]+),([^\\)]+)\\)");
         Matcher m = p.matcher(stringValue);
         boolean isRange = m.find();
         String value = isRange ? m.group().substring( 1 , stringValue.length() -1 ) : stringValue;
+        boolean isNot = prop.charAt(prop.length() - 1) == '!';
+        String property = isNot ? prop.substring(0,prop.length() - 1) : prop;
 
         if(isRange){
             return (root, query, builder) -> {
@@ -96,9 +98,15 @@ public class PredicateBuilderServiceImpl<T> implements IPredicateBuilder<T> {
                 return builder.equal(path.as((String.class)), processValue(path,value));
             }
             if(value.contains(",")){
+                if(isNot){
+                    return builder.not(path.as(String.class).in(processValue(path,value)));
+                }
                 return path.as(String.class).in(processValue(path,value));
             }
             String val = "%"+processValue(path,value).toString()+"%";
+            if(isNot){
+                return builder.not(builder.like(path.as((String.class)), val));
+            }
             return builder.like(path.as((String.class)), val);
         };
     }

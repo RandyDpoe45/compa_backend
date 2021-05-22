@@ -17,5 +17,6 @@ public class SystemViews {
     public static class ExpertVisitBasicView {};
     public static class ExpertAlertBasicView {};
     public static class ExpertVisitNoteBasicView {};
+    public static class LocationBasicView {};
 
 }

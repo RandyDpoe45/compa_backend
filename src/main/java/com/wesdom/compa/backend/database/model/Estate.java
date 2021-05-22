@@ -23,6 +23,10 @@ public class Estate {
             ,SystemViews.EstateSegmentDetailView.class})
     private Long id;
 
+    @JsonView({SystemViews.EstateBasicView.class, SystemViews.EstateSegmentBasicView.class
+            ,SystemViews.EstateSegmentDetailView.class})
+    private String name;
+
     @ManyToOne(targetEntity = Department.class, fetch = FetchType.LAZY)
     @JsonView({SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class})
     private Department department;
