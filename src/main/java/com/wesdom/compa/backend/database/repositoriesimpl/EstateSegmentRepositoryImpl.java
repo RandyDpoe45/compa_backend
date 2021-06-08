@@ -1,9 +1,6 @@
 package com.wesdom.compa.backend.database.repositoriesimpl;
 
-import com.wesdom.compa.backend.database.jparepositories.AgriculturalJpaRepository;
-import com.wesdom.compa.backend.database.jparepositories.BeekeepingJpaRepository;
-import com.wesdom.compa.backend.database.jparepositories.EstateSegmentTypeJpaRepository;
-import com.wesdom.compa.backend.database.jparepositories.EstateSegmentJpaRepository;
+import com.wesdom.compa.backend.database.jparepositories.*;
 import com.wesdom.compa.backend.database.model.*;
 import com.wesdom.compa.backend.database.model.EstateSegmentType;
 import com.wesdom.compa.backend.database.model.EstateSegment;
@@ -38,6 +35,9 @@ public class EstateSegmentRepositoryImpl implements IEstateSegmentRepository {
     @Autowired
     private AgriculturalJpaRepository agriculturalJpaRepository;
 
+    @Autowired
+    private ConservationJpaRepository conservationJpaRepository;
+
     @PersistenceContext
     private EntityManager em;
 
@@ -65,6 +65,13 @@ public class EstateSegmentRepositoryImpl implements IEstateSegmentRepository {
         IPredicateBuilder<AgriculturalSegment> predicate = new PredicateBuilderServiceImpl<>();
         IPaginationBuilder paginaton = new PaginationBuilderImpl();
         return agriculturalJpaRepository.findAll(predicate.createPredicate(params),paginaton.createPagination(params));
+    }
+
+    @Override
+    public Page<ConservationSegment> getAllCo(Map<String, String> params) {
+        IPredicateBuilder<ConservationSegment> predicate = new PredicateBuilderServiceImpl<>();
+        IPaginationBuilder paginaton = new PaginationBuilderImpl();
+        return conservationJpaRepository.findAll(predicate.createPredicate(params),paginaton.createPagination(params));
     }
 
     @Override

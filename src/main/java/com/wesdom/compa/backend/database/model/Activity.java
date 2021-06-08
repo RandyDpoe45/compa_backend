@@ -26,6 +26,13 @@ public class Activity {
     private String name;
 
     @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    private String description;
+
+    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @ManyToOne(targetEntity = EstateSegmentType.class, fetch = FetchType.LAZY)
+    private EstateSegmentType estateSegmentType;
+
+    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
     private String stage;
 
     @ManyToMany(targetEntity = ActivityOption.class, fetch = FetchType.LAZY)

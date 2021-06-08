@@ -32,10 +32,11 @@ public class NearbyFlora {
 
     @ManyToOne(targetEntity = EstateSegment.class, fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonView({SystemViews.NearbyFloraBasicView.class})
     private EstateSegment estateSegment;
 
     @JsonView({SystemViews.NearbyFloraBasicView.class})
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 
     @JsonView({SystemViews.NearbyFloraBasicView.class})

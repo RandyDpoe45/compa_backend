@@ -67,6 +67,6 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/v1/activity/activityOption/optionAnswer/**", "/v1/activity/activityOption/**","/v1/activity/**",
                 "/v1/productInStateSegment/**","/v1/productionActivity/productionActivityAnswer/**",
                 "/v1/productionActivity/**","/v1/flora/**","/v1/woodType/**","/v1/woodType/**","/v1/expertVisit/**",
-                "/v1/location/**");
+                "/v1/location/**","/v1/nearbyFlora/**","/v1/measureUnit/**");
     }
 }

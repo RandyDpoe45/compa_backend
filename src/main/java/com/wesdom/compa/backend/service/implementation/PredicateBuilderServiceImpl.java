@@ -93,7 +93,13 @@ public class PredicateBuilderServiceImpl<T> implements IPredicateBuilder<T> {
                 return builder.equal(path.as((Boolean.class)), processValue(path,value));
             }else if(!path.getJavaType().equals(String.class)){
                 if(value.contains(",")){
+                    if(isNot){
+                        return builder.not(path.as(String.class).in(processValue(path,value)));
+                    }
                     return path.as(String.class).in(processValue(path,value));
+                }
+                if(isNot){
+                    return builder.not(builder.equal(path.as((String.class)), processValue(path,value)));
                 }
                 return builder.equal(path.as((String.class)), processValue(path,value));
             }

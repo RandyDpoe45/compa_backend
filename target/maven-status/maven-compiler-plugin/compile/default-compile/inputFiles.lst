@@ -6,13 +6,16 @@
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/service/implementation/PaginationBuilderImpl.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositoriesimpl/GroupRepositoryImpl.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/CommercialPartnerJpaRepository.java
+/home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/Solicitude.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/NearbyEstateSegment.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/dtos/views/SystemViews.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositories/INearbyEstateSegmentRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/NearbyEstateSegmentJpaRepository.java
+/home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/restcontrollers/MeasureUnitRestController.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositories/IOptionAnswerRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositoriesimpl/AuthUserRepositoryImpl.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/Product.java
+/home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositories/IMeasureUnitRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositoriesimpl/ProductionActivityAnswerRepositoryImpl.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/ExpertVisit.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/ManufacturerType.java
@@ -20,6 +23,8 @@
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/enums/UserTypeEnum.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/ActivityOptionJpaRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/ManufacturerJpaRepository.java
+/home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/restcontrollers/NearbyFloraRestController.java
+/home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositoriesimpl/MeasureUnitRepositoryImpl.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/ExpertVisitNote.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositoriesimpl/OptionAnswerRepositoryImpl.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/ManufacturerGroup.java
@@ -70,6 +75,7 @@
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/ProductJpaRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/JWTAuthorizationFilter.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositoriesimpl/ManufacturerRepositoryImpl.java
+/home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/service/interfaces/IProductInSegmentService.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/EstateSegment.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/enums/GenderEmun.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/ProductInStateSegment.java
@@ -88,6 +94,7 @@
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/ExpertVisitNoteJpaRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/restcontrollers/CommercialPartnerRestController.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/enums/FloraType.java
+/home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/MeasureUnitJpaRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositories/IEstateRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositories/IAuthUserRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/AgriculturalSegment.java
@@ -109,6 +116,7 @@
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/BackendApplication.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositoriesimpl/ExpertVisitNoteRepositoryImpl.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositoriesimpl/LocationRepositoryImpl.java
+/home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/service/implementation/ProductInSegmentServiceImpl.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositoriesimpl/ProductInStateSegmentRepositoryImpl.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/ProductionActivity.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/PromoterJpaRepository.java
@@ -118,12 +126,14 @@
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/restcontrollers/ExpertVisitRestController.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositoriesimpl/EstateRepositoryImpl.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositories/IProductInStateSegmentRepository.java
+/home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/ProductType.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/CommercialPartner.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositories/ICommercialPartnerRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/enums/ActivityOptionTypeEnum.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/exceptionhandling/exceptions/GeneralException.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/restcontrollers/ActivityRestController.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/Promoter.java
+/home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/MeasureUnit.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/ProductionActivityAnswerJpaRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/MunicipalityJpaRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/restcontrollers/ProductRestController.java

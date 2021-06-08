@@ -22,24 +22,30 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
-            SystemViews.ExpertVisitBasicView.class})
+            SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class})
     private Long id;
 
     @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
-            SystemViews.ExpertVisitBasicView.class})
+            SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class})
     private String code;
 
     @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
-            SystemViews.ExpertVisitBasicView.class})
+            SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class})
+    @ManyToOne(targetEntity = ProductType.class, fetch = FetchType.LAZY)
+    private ProductType productType;
+
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
+            SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class})
     private String name;
 
-    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class, SystemViews.ProductBasicView.class})
     private BigDecimal avProductivity;
 
-    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
-    private String metricUnit;
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class, SystemViews.ProductBasicView.class})
+    @ManyToOne(targetEntity = MeasureUnit.class, fetch = FetchType.LAZY)
+    private MeasureUnit measureUnit;
 
-    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class, SystemViews.ProductBasicView.class})
     private String species;
 
 }

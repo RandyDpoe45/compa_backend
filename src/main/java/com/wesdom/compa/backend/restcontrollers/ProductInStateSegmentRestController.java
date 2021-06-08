@@ -6,6 +6,7 @@ import com.wesdom.compa.backend.database.model.ProductInStateSegment;
 import com.wesdom.compa.backend.database.repositories.IProductInStateSegmentRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
+import com.wesdom.compa.backend.service.interfaces.IProductInSegmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Propagation;
@@ -22,11 +23,14 @@ public class ProductInStateSegmentRestController {
     @Autowired
     private IProductInStateSegmentRepository productInStateSegmentRepository;
 
+    @Autowired
+    private IProductInSegmentService productInSegmentService;
+
     @PostMapping
     @JsonView(SystemViews.ProductInStateBasicView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ProductInStateSegment create(@RequestBody ProductInStateSegment productInStateSegment){
-        return productInStateSegmentRepository.create(productInStateSegment);
+        return productInSegmentService.createProductInSegment(productInStateSegment);
     }
 
     @GetMapping

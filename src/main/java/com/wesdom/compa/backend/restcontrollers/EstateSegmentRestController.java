@@ -8,6 +8,7 @@ import com.wesdom.compa.backend.database.repositories.INearbyEstateSegmentReposi
 import com.wesdom.compa.backend.database.repositories.INearbyFloraRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
+import com.wesdom.compa.backend.service.interfaces.IEstateSegmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -25,6 +26,9 @@ public class EstateSegmentRestController {
 
     @Autowired
     private IEstateSegmentRepository estateSegmentRepository;
+
+    @Autowired
+    private IEstateSegmentService estateSegmentService;
 
     @Autowired
     private INearbyEstateSegmentRepository nearbyEstateSegmentRepository;
@@ -60,6 +64,13 @@ public class EstateSegmentRestController {
         return new PageImpl<>(page.getContent(),page.getPageable(), page.getTotalPages()) {};
     }
 
+    @JsonView(SystemViews.EstateSegmentBasicView.class)
+    @GetMapping("/co")
+    public @ResponseBody  Page<ConservationSegment> getAllCo(@RequestParam Map<String,String> allParams){
+        Page<ConservationSegment> page = estateSegmentRepository.getAllCo(allParams);
+        return new PageImpl<>(page.getContent(),page.getPageable(), page.getTotalPages()) {};
+    }
+
     @JsonView(SystemViews.EstateSegmentDetailView.class)
     @GetMapping("/{id}")
     public @ResponseBody EstateSegment get(@PathVariable Long id){
@@ -81,7 +92,7 @@ public class EstateSegmentRestController {
     @DeleteMapping(value = "/{id}")
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
-        estateSegmentRepository.delete(id);
+        estateSegmentService.deleteEstateSegment(id);
         return new GeneralResponse("Segmento eliminado con exito","000");
     }
 

@@ -19,14 +19,14 @@ public class EstateSegmentType {
 
     @Id
     @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,SystemViews.EstateSegmentBasicView.class
-            ,SystemViews.EstateSegmentDetailView.class})
+            ,SystemViews.EstateSegmentDetailView.class, SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
     private Long id;
 
     @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,SystemViews.EstateSegmentBasicView.class
-            ,SystemViews.EstateSegmentDetailView.class})
+            ,SystemViews.EstateSegmentDetailView.class, SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
     private String code;
 
     @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,SystemViews.EstateSegmentBasicView.class
-            ,SystemViews.EstateSegmentDetailView.class})
+            ,SystemViews.EstateSegmentDetailView.class, SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
     private String name;
 }

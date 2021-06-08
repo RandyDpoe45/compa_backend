@@ -22,4 +22,17 @@ public class CommercialPartner extends BaseUser{
     @JsonView({SystemViews.CommercialPartnerBasicView.class})
     private String companyName;
 
+    @JsonView({SystemViews.CommercialPartnerBasicView.class})
+    private String camaraYComercio;
+
+    @JsonView({SystemViews.CommercialPartnerBasicView.class})
+    private String bank;
+
+    @JsonView({SystemViews.CommercialPartnerBasicView.class})
+    private String accountType;
+
+    @JsonView({SystemViews.CommercialPartnerBasicView.class})
+    private String accountNumber;
+
+
 }

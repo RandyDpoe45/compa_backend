@@ -23,18 +23,20 @@ import java.util.List;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "SegmentType", visible = true)
 @JsonSubTypes({
         @JsonSubTypes.Type(value = AgriculturalSegment.class, name = "AgriculturalSegment"),
-        @JsonSubTypes.Type(value = BeekeepingSegment.class, name = "BeekeepingSegment")
+        @JsonSubTypes.Type(value = BeekeepingSegment.class, name = "BeekeepingSegment"),
+        @JsonSubTypes.Type(value = BeekeepingSegment.class, name = "ConservationSegment")
 })
 public class EstateSegment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonView({SystemViews.EstateSegmentBasicView.class,SystemViews.ProductInStateBasicView.class
-            ,SystemViews.EstateSegmentDetailView.class})
+            ,SystemViews.EstateSegmentDetailView.class, SystemViews.NearbyFloraBasicView.class})
+
     private Long id;
 
     @JsonView({SystemViews.EstateSegmentBasicView.class,SystemViews.ProductInStateBasicView.class
-            ,SystemViews.EstateSegmentDetailView.class})
+            ,SystemViews.EstateSegmentDetailView.class, SystemViews.NearbyFloraBasicView.class})
     private String code;
 
     @JsonView({SystemViews.EstateSegmentBasicView.class,SystemViews.EstateSegmentDetailView.class})

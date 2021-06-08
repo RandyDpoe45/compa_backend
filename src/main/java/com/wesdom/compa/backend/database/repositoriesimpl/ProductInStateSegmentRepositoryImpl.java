@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -57,5 +58,11 @@ public class ProductInStateSegmentRepositoryImpl implements IProductInStateSegme
     @Override
     public void delete(Long productInStateSegmentId) {
         productInStateSegmentJpaRepository.deleteById(productInStateSegmentId);
+    }
+
+    @Override
+    public List<ProductInStateSegment> getProductsByEstateSegmentId(Long estateSegmentId) {
+        List<ProductInStateSegment> products = productInStateSegmentJpaRepository.getByEstateSegmentId(estateSegmentId);
+        return products;
     }
 }

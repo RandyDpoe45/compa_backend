@@ -59,7 +59,7 @@ public abstract class BaseUser {
     private String identificationType;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.GroupDetailedView.class})
+            SystemViews.GroupDetailedView.class, SystemViews.EstateSegmentDetailView.class})
     private String identificationNumber;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
