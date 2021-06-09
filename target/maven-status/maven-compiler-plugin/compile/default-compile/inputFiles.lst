@@ -28,6 +28,7 @@
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/ExpertVisitNote.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositoriesimpl/OptionAnswerRepositoryImpl.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/ManufacturerGroup.java
+/home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/ConservationJpaRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/ProductionActivityAnswer.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositoriesimpl/ActivityOptionRepositoryImpl.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositories/IPromoterRepository.java
@@ -41,10 +42,12 @@
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/ManufacturerGroupJpaRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/GroupType.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/restcontrollers/AuthUserRestController.java
+/home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/ProductTypeJpaRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositoriesimpl/ProductRepositoryImpl.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/dtos/UserLoginDto.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/restcontrollers/ProductInStateSegmentRestController.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/Activity.java
+/home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/service/interfaces/IEstateSegmentService.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositories/IProductionActivityRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/Estate.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/enums/PaginationParamsEnum.java
@@ -53,12 +56,14 @@
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositoriesimpl/ApiaryWoodTypeRepositoryImpl.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/GroupTypeJpaRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/FloraJpaRepository.java
+/home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/ConservationSegment.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/ProductInStateSegmentJpaRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositories/ILocationRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositoriesimpl/CommercialPartnerRepositoryImpl.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/ProductionActivityJpaRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/Municipality.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/jparepositories/NearbyFloraJpaRepository.java
+/home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/service/implementation/EstateSegementServiceImpl.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/service/interfaces/IPaginationBuilder.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/repositories/IProductionActivityAnswerRepository.java
 /home/randy/Documents/wesdom/compa_backend/src/main/java/com/wesdom/compa/backend/database/model/OptionAnswer.java
