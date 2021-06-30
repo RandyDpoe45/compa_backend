@@ -38,9 +38,7 @@ public class OptionAnswerRepositoryImpl implements IOptionAnswerRepository {
 
     @Override
     public OptionAnswer update(Long optionAnswerId, OptionAnswer optionAnswer) {
-        OptionAnswer p = optionAnswerJpaRepository.getOne(optionAnswerId);
-        p.setName(optionAnswer.getName());
-        return  optionAnswerJpaRepository.save(p);
+        return  optionAnswerJpaRepository.saveAndFlush(optionAnswer);
     }
 
     @Override

@@ -48,9 +48,9 @@ public class ActivityRepositoryImpl implements IActivityRepository {
     @Override
     @Transactional
     public Activity update(Long activityId, Activity activity) {
-        Activity a = activityJpaRepository.getOne(activityId);
-        a.setActivityOptionList(activity.getActivityOptionList()).setName(activity.getName())
-                .setStage(activity.getStage());
+        Activity a = null;//activityJpaRepository.getOne(activityId);
+//        a.setActivityOptionList(activity.getActivityOptionList()).setName(activity.getName())
+//                .setStage(activity.getStage());
         a = activityJpaRepository.saveAndFlush(activity);
         em.refresh(a);
         return  a;

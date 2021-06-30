@@ -22,12 +22,15 @@ public class MeasureUnit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class, SystemViews.ProductBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
+            SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class})
     private Long id;
 
-    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class, SystemViews.ProductBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
+            SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class})
     private String name;
 
-    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class, SystemViews.ProductBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
+            SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class})
     private String unit;
 }

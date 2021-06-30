@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -16,18 +14,18 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Accessors(chain = true)
-public class OptionAnswer {
+public class AssociationMember {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonView({SystemViews.OptionAnswerBasicView.class})
+    @JsonView({SystemViews.AssociationMemberBasicView.class})
     private Long id;
 
-    @ManyToOne(targetEntity = ActivityOption.class, fetch = FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private ActivityOption activityOption;
+    @ManyToOne(targetEntity = Association.class,fetch = FetchType.LAZY)
+    private Association association;
 
-    @JsonView({SystemViews.OptionAnswerBasicView.class})
-    private String value;
+    @ManyToOne(targetEntity = Manufacturer.class, fetch = FetchType.LAZY)
+    @JsonView({SystemViews.AssociationMemberBasicView.class})
+    private Manufacturer manufacturer;
 
 }

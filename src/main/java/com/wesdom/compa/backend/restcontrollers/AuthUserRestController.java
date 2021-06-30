@@ -60,7 +60,7 @@ public class AuthUserRestController {
     @PutMapping(value = "/{idAutolineaUser}")
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public AuthUser update(@PathVariable Long idAutolineaUser, @RequestBody AuthUser authUser) throws JsonProcessingException{
-        return userRepository.update(idAutolineaUser,authUser);
+        return userService.update(idAutolineaUser,authUser);
     }
 
     @PutMapping(value = "/password/{idAutolineaUser}")

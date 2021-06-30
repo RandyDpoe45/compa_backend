@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.wesdom.compa.backend.service.interfaces.IMultimediaDataService;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -12,12 +14,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 
 @EnableDiscoveryClient
 @SpringBootApplication
 @EnableTransactionManagement
-public class BackendApplication {
+public class BackendApplication implements CommandLineRunner {
 
 	@Bean
 	public Module springDataPageModule() {
@@ -38,8 +41,16 @@ public class BackendApplication {
 		});
 	}
 
+	@Resource
+	public IMultimediaDataService multimediaDataService;
+
+
 	public static void main(String[] args) {
 		SpringApplication.run(BackendApplication.class, args);
 	}
 
+	@Override
+	public void run(String... arg) throws Exception {
+		multimediaDataService.init();
+	}
 }

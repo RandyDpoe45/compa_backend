@@ -22,11 +22,13 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
-            SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class})
+            SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
+            SystemViews.RequestBasicView.class})
     private Long id;
 
     @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
-            SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class})
+            SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
+            SystemViews.RequestBasicView.class})
     private String code;
 
     @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
@@ -35,7 +37,8 @@ public class Product {
     private ProductType productType;
 
     @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
-            SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class})
+            SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
+            SystemViews.RequestBasicView.class})
     private String name;
 
     @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class, SystemViews.ProductBasicView.class})
@@ -45,7 +48,8 @@ public class Product {
     @ManyToOne(targetEntity = MeasureUnit.class, fetch = FetchType.LAZY)
     private MeasureUnit measureUnit;
 
-    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class, SystemViews.ProductBasicView.class})
+    @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
+            SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class})
     private String species;
 
 }

@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,20 +21,24 @@ public class ActivityOption {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonView({SystemViews.ProductionActivityAnswerBasicView.class})
+    @JsonView({SystemViews.ProductionActivityAnswerBasicView.class, SystemViews.ActivityOptionBasicView.class})
     private Long id;
 
-    @JsonView({SystemViews.ProductionActivityAnswerBasicView.class})
+    @JsonView({SystemViews.ProductionActivityAnswerBasicView.class, SystemViews.ActivityOptionBasicView.class})
     private String name;
 
     //daily or regular
-    @JsonView({SystemViews.ProductionActivityAnswerBasicView.class})
+    @JsonView({SystemViews.ProductionActivityAnswerBasicView.class, SystemViews.ActivityOptionBasicView.class})
     private String optionType;
 
     //either Open or closed answer
-    @JsonView({SystemViews.ProductionActivityAnswerBasicView.class})
+    @JsonView({SystemViews.ProductionActivityAnswerBasicView.class, SystemViews.ActivityOptionBasicView.class})
     private String answerType;
 
-    @ManyToMany(targetEntity = OptionAnswer.class,fetch = FetchType.LAZY)
-    private List<OptionAnswer> optionAnswersList;
+    @ManyToOne(targetEntity = Activity.class, fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Activity activity;
+
+//    @ManyToMany(targetEntity = OptionAnswer.class,fetch = FetchType.LAZY)
+//    private List<OptionAnswer> optionAnswersList;
 }

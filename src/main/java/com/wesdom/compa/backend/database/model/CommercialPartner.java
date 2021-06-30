@@ -16,10 +16,10 @@ import javax.persistence.Entity;
 @Accessors(chain = true)
 public class CommercialPartner extends BaseUser{
 
-    @JsonView({SystemViews.CommercialPartnerBasicView.class})
+    @JsonView({SystemViews.CommercialPartnerBasicView.class, SystemViews.RequestBasicView.class})
     private String rut;
 
-    @JsonView({SystemViews.CommercialPartnerBasicView.class})
+    @JsonView({SystemViews.CommercialPartnerBasicView.class, SystemViews.RequestBasicView.class})
     private String companyName;
 
     @JsonView({SystemViews.CommercialPartnerBasicView.class})

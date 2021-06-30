@@ -1,5 +1,6 @@
 package com.wesdom.compa.backend.restcontrollers;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.wesdom.compa.backend.database.model.Activity;
 import com.wesdom.compa.backend.database.model.ActivityOption;
@@ -8,6 +9,7 @@ import com.wesdom.compa.backend.database.repositories.IActivityRepository;
 import com.wesdom.compa.backend.database.repositories.IActivityOptionRepository;
 import com.wesdom.compa.backend.database.repositories.IOptionAnswerRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
+import com.wesdom.compa.backend.dtos.views.SystemViews;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Propagation;
@@ -31,6 +33,7 @@ public class ActivityRestController {
     private IOptionAnswerRepository optionAnswerRepository;
 
     @GetMapping
+    @JsonView(SystemViews.ActivityBasicView.class)
     public Page<Activity> getAll(@RequestParam Map<String,String> params){
         return activityRepository.getAll(params);
     }
@@ -41,11 +44,13 @@ public class ActivityRestController {
     }
 
     @PostMapping
+    @JsonView(SystemViews.ActivityBasicView.class)
     public Activity create(@RequestBody Activity activity){
         return activityRepository.create(activity);
     }
 
     @PutMapping(value = "/{id}")
+    @JsonView(SystemViews.ActivityBasicView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Activity update(@PathVariable Long id, @RequestBody Activity activity) throws JsonProcessingException {
         return activityRepository.update(id,activity);
@@ -58,21 +63,25 @@ public class ActivityRestController {
     }
 
     @GetMapping("/activityOption")
+    @JsonView(SystemViews.ActivityOptionBasicView.class)
     public Page<ActivityOption> getAllActivityOption(@RequestParam Map<String,String> params){
         return activityOptionRepository.getAll(params);
     }
 
     @GetMapping("/activityOption/{id}")
+    @JsonView(SystemViews.ActivityOptionBasicView.class)
     public ActivityOption getActivityOption(@PathVariable Long id){
         return activityOptionRepository.get(id);
     }
 
     @PostMapping("/activityOption")
+    @JsonView(SystemViews.ActivityOptionBasicView.class)
     public ActivityOption createActivityOption(@RequestBody ActivityOption activityOption){
         return activityOptionRepository.create(activityOption);
     }
 
     @PutMapping(value = "/activityOption/{id}")
+    @JsonView(SystemViews.ActivityOptionBasicView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ActivityOption updateActivityOption(@PathVariable Long id, @RequestBody ActivityOption activityOption) throws JsonProcessingException {
         return activityOptionRepository.update(id,activityOption);
@@ -85,21 +94,25 @@ public class ActivityRestController {
     }
 
     @GetMapping("/activityOption/optionAnswer")
+    @JsonView(SystemViews.OptionAnswerBasicView.class)
     public Page<OptionAnswer> getAllOptionAnswer(@RequestParam Map<String,String> params){
         return optionAnswerRepository.getAll(params);
     }
 
     @GetMapping("/activityOption/optionAnswer/{id}")
+    @JsonView(SystemViews.OptionAnswerBasicView.class)
     public OptionAnswer getOptionAnswer(@PathVariable Long id){
         return optionAnswerRepository.get(id);
     }
 
     @PostMapping("/activityOption/optionAnswer")
+    @JsonView(SystemViews.OptionAnswerBasicView.class)
     public OptionAnswer createOptionAnswer(@RequestBody OptionAnswer optionAnswer){
         return optionAnswerRepository.create(optionAnswer);
     }
 
     @PutMapping(value = "/activityOption/optionAnswer/{id}")
+    @JsonView(SystemViews.OptionAnswerBasicView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public OptionAnswer updateOptionAnswer(@PathVariable Long id, @RequestBody OptionAnswer optionAnswer) throws JsonProcessingException {
         return optionAnswerRepository.update(id,optionAnswer);

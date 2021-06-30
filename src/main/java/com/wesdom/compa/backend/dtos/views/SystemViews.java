@@ -1,6 +1,7 @@
 package com.wesdom.compa.backend.dtos.views;
 
 public class SystemViews {
+    public static class GeneralView{};
     public static class AuthUserBasicView {};
     public static class ManufacturerBasicView{};
     public static class CommercialPartnerBasicView{};
@@ -19,5 +20,14 @@ public class SystemViews {
     public static class ExpertAlertBasicView {};
     public static class ExpertVisitNoteBasicView {};
     public static class LocationBasicView {};
+    public static class ActivityBasicView {};
+    public static class ActivityOptionBasicView {};
+    public static class OptionAnswerBasicView {};
+    public static class ProductionStageBasicView {};
+    public static class AssociationBasicView {};
+    public static class AssociationDetailedView {};
+    public static class AssociationMemberBasicView {};
+    public static class RequestBasicView {};
+
 
 }

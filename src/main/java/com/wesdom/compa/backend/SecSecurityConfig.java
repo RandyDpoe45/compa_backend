@@ -61,12 +61,13 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(HttpMethod.POST,"/v1/authUser/**").and()
-                .ignoring().antMatchers("/v1/manufacturer/**", "/v1/promoter/**" , "/v1/commercialPartner/**",
+        //.ignoring().antMatchers(HttpMethod.POST,"/v1/authUser/**").and()
+        web.ignoring().antMatchers("/v1/authUser/**","/v1/manufacturer/**", "/v1/promoter/**" , "/v1/commercialPartner/**",
                 "/v1/group/**","/v1/estate/**","/v1/estateSegment/**", "/v1/product/**",
                 "/v1/activity/activityOption/optionAnswer/**", "/v1/activity/activityOption/**","/v1/activity/**",
                 "/v1/productInStateSegment/**","/v1/productionActivity/productionActivityAnswer/**",
                 "/v1/productionActivity/**","/v1/flora/**","/v1/woodType/**","/v1/woodType/**","/v1/expertVisit/**",
-                "/v1/location/**","/v1/nearbyFlora/**","/v1/measureUnit/**");
+                "/v1/location/**","/v1/nearbyFlora/**","/v1/measureUnit/**", "/v1/productionStage/**",
+                "/v1/association/**", "/v1/request/**", "/v1/multimediaData/**");
     }
 }

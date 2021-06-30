@@ -31,6 +31,10 @@ public class AuthUserServiceImpl implements IAuthUserService, UserDetailsService
         if(authUser == null){
             throw new UsernameNotFoundException("No existe usuario");
         }
+        if(!authUser.getIsActive()){
+            throw new GeneralException(ExceptionCodesEnum.USER_DEACTIVATED,
+                    "El usuario esta desactivado, por favor pongase en con el administrador");
+        }
         List grantList = new ArrayList();
         return (UserDetails) new User(s,authUser.getPassword(),grantList);
     }

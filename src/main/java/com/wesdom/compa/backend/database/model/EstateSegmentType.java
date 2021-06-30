@@ -19,14 +19,17 @@ public class EstateSegmentType {
 
     @Id
     @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,SystemViews.EstateSegmentBasicView.class
-            ,SystemViews.EstateSegmentDetailView.class, SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+            ,SystemViews.EstateSegmentDetailView.class, SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
+            SystemViews.ActivityBasicView.class, SystemViews.ProductionStageBasicView.class})
     private Long id;
 
     @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,SystemViews.EstateSegmentBasicView.class
-            ,SystemViews.EstateSegmentDetailView.class, SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+            ,SystemViews.EstateSegmentDetailView.class, SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
+            SystemViews.ActivityBasicView.class, SystemViews.ProductionStageBasicView.class})
     private String code;
 
     @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,SystemViews.EstateSegmentBasicView.class
-            ,SystemViews.EstateSegmentDetailView.class, SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+            ,SystemViews.EstateSegmentDetailView.class, SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
+            SystemViews.ActivityBasicView.class, SystemViews.ProductionStageBasicView.class})
     private String name;
 }

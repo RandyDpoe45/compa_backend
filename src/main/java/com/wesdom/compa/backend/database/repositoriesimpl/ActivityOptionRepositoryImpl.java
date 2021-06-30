@@ -48,10 +48,10 @@ public class ActivityOptionRepositoryImpl implements IActivityOptionRepository {
     @Override
     @Transactional
     public ActivityOption update(Long activityOptionId, ActivityOption activityOption) {
-        ActivityOption a = activityOptionJpaRepository.getOne(activityOptionId);
-        a.setName(activityOption.getName()).setOptionType(activityOption.getOptionType())
-                .setOptionAnswersList(activityOption.getOptionAnswersList()).setAnswerType(activityOption.getAnswerType());
-        a = activityOptionJpaRepository.save(a);
+        ActivityOption a = null;//activityOptionJpaRepository.getOne(activityOptionId);
+//        a.setName(activityOption.getName()).setOptionType(activityOption.getOptionType())
+//                .setOptionAnswersList(activityOption.getOptionAnswersList()).setAnswerType(activityOption.getAnswerType());
+        a = activityOptionJpaRepository.saveAndFlush(activityOption);
         em.refresh(a);
         return  a;
     }
