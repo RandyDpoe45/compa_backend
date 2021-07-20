@@ -23,37 +23,38 @@ public abstract class BaseUser {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
             SystemViews.GroupDetailedView.class,SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
-            SystemViews.AssociationMemberBasicView.class})
+            SystemViews.RequestBasicView.class,SystemViews.AssociationMemberBasicView.class})
     private Long id;
 
     @OneToOne(targetEntity = AuthUser.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false)
-    @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class})
+    @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,
+            SystemViews.CommercialPartnerBasicView.class})
     private AuthUser authUser;
 
     @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
             SystemViews.GroupDetailedView.class,SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
-            SystemViews.AssociationMemberBasicView.class, SystemViews.RequestBasicView.class})
+            SystemViews.RequestBasicView.class, SystemViews.AssociationMemberBasicView.class})
     private String firstName;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
             SystemViews.GroupDetailedView.class,SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
-            SystemViews.AssociationMemberBasicView.class,SystemViews.RequestBasicView.class})
+            SystemViews.RequestBasicView.class, SystemViews.AssociationMemberBasicView.class})
     private String secondName;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
             SystemViews.GroupDetailedView.class,SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
-            SystemViews.AssociationMemberBasicView.class, SystemViews.RequestBasicView.class})
+            SystemViews.RequestBasicView.class,SystemViews.AssociationMemberBasicView.class})
     private String firstLastname;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
             SystemViews.GroupDetailedView.class,SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
-            SystemViews.AssociationMemberBasicView.class, SystemViews.RequestBasicView.class})
+            SystemViews.RequestBasicView.class,SystemViews.AssociationMemberBasicView.class})
     private String secondLastName;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
             SystemViews.GroupDetailedView.class,SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
-            SystemViews.AssociationMemberBasicView.class, SystemViews.RequestBasicView.class})
+            SystemViews.RequestBasicView.class,SystemViews.AssociationMemberBasicView.class})
     private String phone;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
@@ -65,12 +66,13 @@ public abstract class BaseUser {
     private String identificationType;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.GroupDetailedView.class, SystemViews.EstateSegmentDetailView.class, SystemViews.AssociationMemberBasicView.class})
+            SystemViews.GroupDetailedView.class, SystemViews.EstateSegmentDetailView.class,
+            SystemViews.AssociationMemberBasicView.class})
     private String identificationNumber;
 
     @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
             SystemViews.GroupDetailedView.class,SystemViews.EstateSegmentDetailView.class})
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
 
     @ManyToOne(targetEntity = Municipality.class,fetch = FetchType.EAGER)

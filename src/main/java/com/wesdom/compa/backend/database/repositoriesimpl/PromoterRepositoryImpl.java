@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.Map;
 
 @Service
@@ -18,6 +20,9 @@ public class PromoterRepositoryImpl implements IPromoterRepository {
 
     @Autowired
     private PromoterJpaRepository promoterJpaRepository;
+
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
     public Promoter get(Long id) {
@@ -33,7 +38,9 @@ public class PromoterRepositoryImpl implements IPromoterRepository {
 
     @Override
     public Promoter create(Promoter promoter) {
-        return promoterJpaRepository.save(promoter);
+        promoter = promoterJpaRepository.saveAndFlush(promoter);
+        em.refresh(promoter);
+        return promoter;
     }
 
     @Override
@@ -46,7 +53,10 @@ public class PromoterRepositoryImpl implements IPromoterRepository {
                 .setBirthday(promoter.getBirthday()).setPhone(promoter.getPhone()).setDepartment(promoter.getDepartment())
                 .setMunicipality(promoter.getMunicipality()).setGender(promoter.getGender())
                 .setIdentificationType(promoter.getIdentificationType()).setIdentificationNumber(promoter.getIdentificationNumber());
-        promoterJpaRepository.save(m);
+        m.setMorning(promoter.getMorning()).setAfternoon(promoter.getAfternoon()).setAvailableDays(promoter.getAvailableDays())
+                .setMotorcycle(promoter.getMotorcycle()).setIntroduction(promoter.getIntroduction());
+        m = promoterJpaRepository.saveAndFlush(m);
+        em.refresh(m);
         return m;
     }
 

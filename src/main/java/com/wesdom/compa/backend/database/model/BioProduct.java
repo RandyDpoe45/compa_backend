@@ -14,18 +14,19 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Accessors(chain = true)
-public class AssociationMember {
+public class BioProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonView({SystemViews.AssociationMemberBasicView.class})
+    @JsonView({SystemViews.BioProductBasicView.class})
     private Long id;
 
-    @ManyToOne(targetEntity = Association.class,fetch = FetchType.LAZY)
-    private Association association;
+    @JsonView({SystemViews.BioProductBasicView.class})
+    private String name;
 
-    @ManyToOne(targetEntity = ManufacturerGroup.class, fetch = FetchType.LAZY)
-    @JsonView({SystemViews.AssociationMemberBasicView.class})
-    private ManufacturerGroup manufacturerGroup;
+    @JsonView({SystemViews.BioProductBasicView.class})
+    private String description;
 
+    @ManyToOne(targetEntity = Promoter.class, fetch = FetchType.LAZY)
+    private Promoter promoter;
 }

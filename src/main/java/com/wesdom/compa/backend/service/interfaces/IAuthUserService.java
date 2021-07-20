@@ -8,4 +8,6 @@ public interface IAuthUserService {
     public void updateUserPassword(Long authUserId, String newPassword);
     public AuthUser create(AuthUser authUser);
     public AuthUser update(Long authUserId, AuthUser authUser);
+    public AuthUser activateUser(Long authUserId);
+    public AuthUser deactivateUser(Long authUserId);
 }

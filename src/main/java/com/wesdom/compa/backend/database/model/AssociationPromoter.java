@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Accessors(chain = true)
-public class AssociationMember {
+public class AssociationPromoter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -24,8 +24,8 @@ public class AssociationMember {
     @ManyToOne(targetEntity = Association.class,fetch = FetchType.LAZY)
     private Association association;
 
-    @ManyToOne(targetEntity = ManufacturerGroup.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Promoter.class, fetch = FetchType.LAZY)
     @JsonView({SystemViews.AssociationMemberBasicView.class})
-    private ManufacturerGroup manufacturerGroup;
+    private Promoter promoter;
 
 }

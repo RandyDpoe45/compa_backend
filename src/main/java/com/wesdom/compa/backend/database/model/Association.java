@@ -23,7 +23,7 @@ public class Association{
 
     @OneToOne(targetEntity = AuthUser.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false)
-    @JsonView({SystemViews.AssociationDetailedView.class})
+    @JsonView({SystemViews.AssociationBasicView.class, SystemViews.AssociationDetailedView.class})
     private AuthUser authUser;
 
     @JsonView({SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class})

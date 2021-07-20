@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AssociationMemberJpaRepository extends JpaRepository<AssociationMember,Long>, JpaSpecificationExecutor<AssociationMember> {
 
-    @Query("SELECT am FROM AssociationMember am WHERE am.association.id = ?1 AND manufacturer.id = ?2")
+    @Query("SELECT am FROM AssociationMember am WHERE am.association.id = ?1 AND manufacturerGroup.id = ?2")
     AssociationMember getByAssociationIdAndManufacturerId(Long assId, Long manId);
 }

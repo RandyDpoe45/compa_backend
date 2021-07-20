@@ -28,6 +28,8 @@ public class SystemViews {
     public static class AssociationDetailedView {};
     public static class AssociationMemberBasicView {};
     public static class RequestBasicView {};
+    public static class RequestOfferBasicView {};
+    public static class BioProductBasicView {};
 
 
 }

@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -20,7 +18,7 @@ import java.util.List;
 @Accessors(chain = true)
 public class Promoter extends BaseUser{
 
-    @JsonView({SystemViews.PromoterBasicView.class})
+    @JsonView({SystemViews.PromoterBasicView.class,SystemViews.AssociationMemberBasicView.class})
     private String plantation;
 
     @JsonView({SystemViews.PromoterBasicView.class})
@@ -30,6 +28,22 @@ public class Promoter extends BaseUser{
     private BigDecimal longitude;
 
     @JsonView({SystemViews.PromoterBasicView.class})
-    @OneToMany(targetEntity = ManufacturerType.class, fetch = FetchType.LAZY)
+    @Column(length = 1000)
+    private String introduction;
+
+    @JsonView({SystemViews.PromoterBasicView.class})
+    @ManyToMany(targetEntity = ManufacturerType.class, fetch = FetchType.LAZY)
     private List<ManufacturerType> type;
+
+    @JsonView({SystemViews.PromoterBasicView.class,SystemViews.AssociationMemberBasicView.class})
+    private String motorcycle;
+
+    @JsonView({SystemViews.PromoterBasicView.class})
+    private String availableDays;
+
+    @JsonView({SystemViews.PromoterBasicView.class})
+    private Boolean morning;
+
+    @JsonView({SystemViews.PromoterBasicView.class})
+    private Boolean afternoon;
 }

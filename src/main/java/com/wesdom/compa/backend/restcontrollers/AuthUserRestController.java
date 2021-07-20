@@ -8,6 +8,8 @@ import com.wesdom.compa.backend.database.repositories.IAuthUserRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
 import com.wesdom.compa.backend.dtos.UserLoginDto;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
+import com.wesdom.compa.backend.exceptionhandling.exceptions.ExceptionCodesEnum;
+import com.wesdom.compa.backend.exceptionhandling.exceptions.GeneralException;
 import com.wesdom.compa.backend.service.interfaces.IAuthUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,7 +23,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-import static com.wesdom.compa.backend.JWTConstants.*;
+import static com.wesdom.compa.backend.JWTConstants.HEADER_AUTHORIZACION_KEY;
+import static com.wesdom.compa.backend.JWTConstants.TOKEN_BEARER_PREFIX;
 
 @CrossOrigin(origins = {"*"})
 @RestController
@@ -73,12 +76,29 @@ public class AuthUserRestController {
     @JsonView(SystemViews.AuthUserBasicView.class)
     @PostMapping(value = "/login")
     public AuthUser authenticate(@RequestBody UserLoginDto userLoginDto, HttpServletResponse response) throws IOException, ServletException {
+        AuthUser au = userRepository.getUserByUserNameOrEmail(userLoginDto.getUsername());
+        if(!au.getIsActive()){
+            throw new GeneralException(ExceptionCodesEnum.USER_DEACTIVATED,
+                    "El usuario esta desactivado, por favor pongase en con el administrador");
+        }
         Authentication c = jWTAuthenticationUtils.attemptAuthentication(userLoginDto);
         String token = jWTAuthenticationUtils.createToken(c);
-        AuthUser au = userRepository.getUserByUserNameOrEmail(userLoginDto.getUsername());
         response.addHeader(HEADER_AUTHORIZACION_KEY,TOKEN_BEARER_PREFIX + " " + token);
         response.addHeader("Access-Control-Expose-Headers", "Authorization");
         return au;
+    }
+
+
+    @PutMapping(value = "/{idUser}/activate")
+    public GeneralResponse activateUser(@PathVariable Long idUser){
+        userService.activateUser(idUser);
+        return new GeneralResponse("Usuario activado con exito", "000");
+    }
+
+    @PutMapping(value = "/{idUser}/deactivate")
+    public GeneralResponse deactivateUser(@PathVariable Long idUser){
+        userService.deactivateUser(idUser);
+        return new GeneralResponse("Usuario desactivado con exito", "000");
     }
 
 }

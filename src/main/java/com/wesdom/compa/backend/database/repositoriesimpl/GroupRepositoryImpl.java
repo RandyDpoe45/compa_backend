@@ -52,7 +52,9 @@ public class GroupRepositoryImpl implements IGroupRepository {
     @Override
     public ManufacturerGroup update(Long groupId, ManufacturerGroup group) {
         ManufacturerGroup g = groupJpaRepository.getOne(groupId);
-        g.setGroupType(group.getGroupType()).setName(group.getName()).setManufacturerList(group.getManufacturerList());
+        g.setGroupType(group.getGroupType()).setName(group.getName())
+                .setManufacturerList(group.getManufacturerList())
+                .setHistory(group.getHistory());
         g = groupJpaRepository.saveAndFlush(g);
         em.refresh(g);
         return g;

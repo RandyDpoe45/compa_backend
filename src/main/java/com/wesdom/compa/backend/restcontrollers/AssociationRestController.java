@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.wesdom.compa.backend.database.model.Association;
 import com.wesdom.compa.backend.database.model.AssociationMember;
+import com.wesdom.compa.backend.database.model.AssociationPromoter;
 import com.wesdom.compa.backend.database.repositories.IAssociationMemberRepository;
+import com.wesdom.compa.backend.database.repositories.IAssociationPromoterRepository;
 import com.wesdom.compa.backend.database.repositories.IAssociationRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
@@ -30,6 +32,9 @@ public class AssociationRestController {
 
     @Autowired
     private IAssociationMemberRepository associationMemberRepository;
+
+    @Autowired
+    private IAssociationPromoterRepository associationPromoterRepository;
 
     @PostMapping
     @JsonView(SystemViews.AssociationDetailedView.class)
@@ -87,5 +92,37 @@ public class AssociationRestController {
     public GeneralResponse deleteMemeber(@PathVariable Long id){
         associationMemberRepository.delete(id);
         return new GeneralResponse("Miembro eliminado con exito","000");
+    }
+
+    @PostMapping("/promoter")
+    @JsonView(SystemViews.AssociationMemberBasicView.class)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public AssociationPromoter createPromoter(@RequestBody AssociationPromoter associationPromoter){
+        return associationService.addPromoter(associationPromoter);
+    }
+
+    @JsonView(SystemViews.AssociationMemberBasicView.class)
+    @GetMapping("/promoter")
+    public Page<AssociationPromoter> getAllPromoter(@RequestParam Map<String,String> allParams){
+        return associationPromoterRepository.getAll(allParams);
+    }
+
+    @JsonView(SystemViews.AssociationMemberBasicView.class)
+    @GetMapping("/promoter/{id}")
+    public AssociationPromoter getPromoter(@PathVariable Long id){
+        return associationPromoterRepository.get(id);
+    }
+
+    @JsonView(SystemViews.AssociationMemberBasicView.class)
+    @PutMapping(value = "/promoter/{id}")
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public AssociationPromoter updatePromoter(@PathVariable Long id, @RequestBody AssociationPromoter associationPromoter) throws JsonProcessingException {
+        return associationPromoterRepository.update(id,associationPromoter);
+    }
+
+    @DeleteMapping(value = "/promoter/{id}")
+    public GeneralResponse deletePromoter(@PathVariable Long id){
+        associationPromoterRepository.delete(id);
+        return new GeneralResponse("Promotor eliminado con exito","000");
     }
 }

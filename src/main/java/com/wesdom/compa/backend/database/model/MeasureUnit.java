@@ -23,14 +23,14 @@ public class MeasureUnit {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
-            SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class})
+            SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class,SystemViews.RequestOfferBasicView.class})
     private Long id;
 
     @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
-            SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class})
+            SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class,SystemViews.RequestOfferBasicView.class})
     private String name;
 
     @JsonView({SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
-            SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class})
+            SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class,SystemViews.RequestOfferBasicView.class})
     private String unit;
 }

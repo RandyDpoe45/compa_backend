@@ -22,14 +22,23 @@ public class ManufacturerGroup {
     @Id
     @GeneratedValue(strategy =  GenerationType.SEQUENCE)
     @JsonView({SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class, SystemViews.EstateBasicView.class
-            ,SystemViews.EstateSegmentDetailView.class})
+            ,SystemViews.EstateSegmentDetailView.class,SystemViews.RequestOfferBasicView.class,
+            SystemViews.AssociationMemberBasicView.class})
     private Long id;
 
     @JsonView({SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class, SystemViews.EstateBasicView.class
-            ,SystemViews.EstateSegmentDetailView.class})
+            ,SystemViews.EstateSegmentDetailView.class,SystemViews.RequestOfferBasicView.class,
+            SystemViews.AssociationMemberBasicView.class})
     private String name;
 
-    @JsonView({SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class})
+    @JsonView({SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class, SystemViews.EstateBasicView.class
+            ,SystemViews.EstateSegmentDetailView.class,SystemViews.RequestOfferBasicView.class,
+            SystemViews.AssociationMemberBasicView.class})
+    @Column(length = 1000)
+    private String history;
+
+    @JsonView({SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class,SystemViews.RequestOfferBasicView.class,
+            SystemViews.AssociationMemberBasicView.class})
     @ManyToOne(targetEntity = GroupType.class, fetch = FetchType.LAZY)
     private GroupType groupType;
 

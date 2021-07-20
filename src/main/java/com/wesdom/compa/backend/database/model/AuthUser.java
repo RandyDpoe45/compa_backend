@@ -38,6 +38,9 @@ public class AuthUser {
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class})
     private String type;
 
+    @JsonView({SystemViews.AuthUserBasicView.class,SystemViews.ManufacturerBasicView.class,
+            SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
+            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class})
     private Boolean isActive = true;
 
     @Column(length = 600)

@@ -18,12 +18,15 @@ import javax.persistence.Id;
 public class GroupType {
 
     @Id
-    @JsonView({SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class})
+    @JsonView({SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class,
+            SystemViews.RequestOfferBasicView.class,SystemViews.AssociationMemberBasicView.class})
     private Long id;
 
-    @JsonView({SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class})
+    @JsonView({SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class,
+            SystemViews.RequestOfferBasicView.class,SystemViews.AssociationMemberBasicView.class})
     private String code;
 
-    @JsonView({SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class})
+    @JsonView({SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class,
+            SystemViews.RequestOfferBasicView.class,SystemViews.AssociationMemberBasicView.class})
     private String name;
 }

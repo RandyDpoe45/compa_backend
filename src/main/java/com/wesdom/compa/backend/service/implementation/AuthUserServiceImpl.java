@@ -31,10 +31,6 @@ public class AuthUserServiceImpl implements IAuthUserService, UserDetailsService
         if(authUser == null){
             throw new UsernameNotFoundException("No existe usuario");
         }
-        if(!authUser.getIsActive()){
-            throw new GeneralException(ExceptionCodesEnum.USER_DEACTIVATED,
-                    "El usuario esta desactivado, por favor pongase en con el administrador");
-        }
         List grantList = new ArrayList();
         return (UserDetails) new User(s,authUser.getPassword(),grantList);
     }
@@ -49,6 +45,7 @@ public class AuthUserServiceImpl implements IAuthUserService, UserDetailsService
         if(auxUser != null){
             throw new GeneralException(ExceptionCodesEnum.USERNAME_IN_USE,"El nombe de usuario ya se encuentra en uso");
         }
+        authUser.setIsActive(true);
         String encodedPassword = authUser.getPassword();
         encodedPassword = passwordEncoder.encode(encodedPassword);
         authUser.setPassword(encodedPassword);
@@ -66,6 +63,20 @@ public class AuthUserServiceImpl implements IAuthUserService, UserDetailsService
             throw new GeneralException(ExceptionCodesEnum.USERNAME_IN_USE,"El nombe de usuario ya se encuentra en uso");
         }
         return authUserRepository.update(authUserId,authUser);
+    }
+
+    @Override
+    public AuthUser activateUser(Long authUserId) {
+        AuthUser authUser = authUserRepository.get(authUserId);
+        authUser.setIsActive(true);
+        return authUserRepository.create(authUser);
+    }
+
+    @Override
+    public AuthUser deactivateUser(Long authUserId) {
+        AuthUser authUser = authUserRepository.get(authUserId);
+        authUser.setIsActive(false);
+        return authUserRepository.create(authUser);
     }
 
     @Override
