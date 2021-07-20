@@ -24,7 +24,7 @@ import java.util.List;
 @JsonSubTypes({
         @JsonSubTypes.Type(value = AgriculturalSegment.class, name = "AgriculturalSegment"),
         @JsonSubTypes.Type(value = BeekeepingSegment.class, name = "BeekeepingSegment"),
-        @JsonSubTypes.Type(value = BeekeepingSegment.class, name = "ConservationSegment")
+        @JsonSubTypes.Type(value = ConservationSegment.class, name = "ConservationSegment")
 })
 public class EstateSegment {
 

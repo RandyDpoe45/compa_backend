@@ -25,6 +25,10 @@ public class BioProduct {
     private String name;
 
     @JsonView({SystemViews.BioProductBasicView.class})
+    private String type;
+
+    @JsonView({SystemViews.BioProductBasicView.class})
+    @Column(length = 1000)
     private String description;
 
     @ManyToOne(targetEntity = Promoter.class, fetch = FetchType.LAZY)
