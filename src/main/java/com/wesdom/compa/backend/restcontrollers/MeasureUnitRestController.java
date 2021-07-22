@@ -5,6 +5,7 @@ import com.wesdom.compa.backend.database.model.MeasureUnit;
 import com.wesdom.compa.backend.database.repositories.IFloraRepository;
 import com.wesdom.compa.backend.database.repositories.IMeasureUnitRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
+import com.wesdom.compa.backend.service.interfaces.IMeasureUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Propagation;
@@ -20,6 +21,9 @@ public class MeasureUnitRestController {
     
     @Autowired
     private IMeasureUnitRepository measureUnitRepository;
+
+    @Autowired
+    private IMeasureUnitService measureUnitService;
 
 
     @PostMapping
@@ -47,7 +51,7 @@ public class MeasureUnitRestController {
     @DeleteMapping(value = "/{id}")
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
-        measureUnitRepository.delete(id);
+        measureUnitService.deleteMeasureUnit(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Unidad de medida eliminada con exito");
     }
 }

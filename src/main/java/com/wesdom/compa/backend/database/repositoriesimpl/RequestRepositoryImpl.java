@@ -54,4 +54,9 @@ public class RequestRepositoryImpl implements IRequestRepository {
     public void delete(Long requestId) {
         requestJpaRepository.deleteById(requestId);
     }
+
+    @Override
+    public Request findTop1ByProductId(Long id) {
+        return requestJpaRepository.findTop1ByProductId(id);
+    }
 }

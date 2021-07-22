@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProductJpaRepository extends JpaRepository<Product,Long> , JpaSpecificationExecutor<Product> {
+
+    Product findTop1ByMeasureUnitId(Long id);
 }

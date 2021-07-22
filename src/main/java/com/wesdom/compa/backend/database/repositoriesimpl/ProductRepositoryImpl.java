@@ -59,4 +59,9 @@ public class ProductRepositoryImpl implements IProductRepository {
     public void delete(Long productId) {
         productJpaRepository.deleteById(productId);
     }
+
+    @Override
+    public Product findTop1ByMeasureUnitId(Long id) {
+        return productJpaRepository.findTop1ByMeasureUnitId(id);
+    }
 }

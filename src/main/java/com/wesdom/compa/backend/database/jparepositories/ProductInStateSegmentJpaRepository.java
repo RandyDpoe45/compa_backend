@@ -12,4 +12,5 @@ public interface ProductInStateSegmentJpaRepository extends JpaRepository<Produc
         JpaSpecificationExecutor<ProductInStateSegment> {
 
     List<ProductInStateSegment> getByEstateSegmentId(Long estateSegmentId);
+    ProductInStateSegment findTop1ByProductId(Long id);
 }

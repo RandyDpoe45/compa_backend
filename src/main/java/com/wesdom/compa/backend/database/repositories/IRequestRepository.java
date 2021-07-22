@@ -11,4 +11,5 @@ public interface IRequestRepository {
     public Request create(Request request);
     public Request update(Long requestId, Request request);
     public void delete(Long requestId);
+    public Request findTop1ByProductId(Long id);
 }

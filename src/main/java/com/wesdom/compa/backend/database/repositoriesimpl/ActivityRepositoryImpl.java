@@ -60,4 +60,9 @@ public class ActivityRepositoryImpl implements IActivityRepository {
     public void delete(Long activityId) {
         activityJpaRepository.deleteById(activityId);
     }
+
+    @Override
+    public Activity findTop1ByProductionStageId(Long id) {
+        return activityJpaRepository.findTop1ByProductionStageId(id);
+    }
 }

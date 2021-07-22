@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -27,6 +29,7 @@ public class ExpertAlert {
 
     @JsonView({SystemViews.ExpertAlertBasicView.class})
     @ManyToOne(targetEntity = ProductInStateSegment.class, fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private ProductInStateSegment productInStateSegment;
 
     @JsonView({SystemViews.ExpertAlertBasicView.class})

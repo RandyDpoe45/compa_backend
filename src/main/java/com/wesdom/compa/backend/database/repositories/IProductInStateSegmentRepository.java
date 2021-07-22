@@ -13,4 +13,5 @@ public interface IProductInStateSegmentRepository {
     public ProductInStateSegment update(Long productId, ProductInStateSegment productInStateSegment);
     public void delete(Long productId);
     public List<ProductInStateSegment> getProductsByEstateSegmentId(Long estateSegmentId);
+    public ProductInStateSegment findTop1ByProductId(Long id);
 }

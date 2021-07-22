@@ -14,4 +14,5 @@ public interface IProductRepository {
     public Product update(Long productId, Product product);
     public List<ProductType> getAllTypes();
     public void delete(Long productId);
+    public Product findTop1ByMeasureUnitId(Long id);
 }

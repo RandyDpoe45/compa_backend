@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -42,6 +44,7 @@ public class EstateSegment {
     @JsonView({SystemViews.EstateSegmentBasicView.class,SystemViews.EstateSegmentDetailView.class})
     @ManyToOne(targetEntity = Estate.class,fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Estate estate;
 
     @ManyToOne(targetEntity = EstateSegmentType.class, fetch = FetchType.LAZY)

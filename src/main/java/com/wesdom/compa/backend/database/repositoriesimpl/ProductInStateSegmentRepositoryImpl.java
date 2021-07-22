@@ -65,4 +65,9 @@ public class ProductInStateSegmentRepositoryImpl implements IProductInStateSegme
         List<ProductInStateSegment> products = productInStateSegmentJpaRepository.getByEstateSegmentId(estateSegmentId);
         return products;
     }
+
+    @Override
+    public ProductInStateSegment findTop1ByProductId(Long id) {
+        return productInStateSegmentJpaRepository.findTop1ByProductId(id);
+    }
 }

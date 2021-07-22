@@ -6,6 +6,7 @@ import com.wesdom.compa.backend.database.model.Flora;
 import com.wesdom.compa.backend.database.repositories.IFloraRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
+import com.wesdom.compa.backend.service.interfaces.IFloraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Propagation;
@@ -22,6 +23,8 @@ public class FloraRestController {
     @Autowired
     private IFloraRepository floraRepository;
 
+    @Autowired
+    private IFloraService floraService;
 
     @PostMapping
     @Transactional(propagation = Propagation.REQUIRES_NEW)
@@ -48,7 +51,7 @@ public class FloraRestController {
     @DeleteMapping(value = "/{id}")
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
-        floraRepository.delete(id);
-        return new GeneralResponse().setErrorCode("000").setResponse("Predio eliminado con exito");
+        floraService.deleteFlora(id);
+        return new GeneralResponse().setErrorCode("000").setResponse("Predio flora con exito");
     }
 }

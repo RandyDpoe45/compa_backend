@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -32,6 +34,7 @@ public class ProductInStateSegment {
 
     @ManyToOne(targetEntity = EstateSegment.class, fetch = FetchType.LAZY)
     @JsonView({SystemViews.ProductInStateBasicView.class, SystemViews.ExpertVisitBasicView.class,})
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private EstateSegment estateSegment;
 
     @JsonFormat(pattern = "yyyy-MM-dd")

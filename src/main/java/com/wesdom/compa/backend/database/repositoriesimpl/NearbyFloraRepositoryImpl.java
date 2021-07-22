@@ -58,4 +58,9 @@ public class NearbyFloraRepositoryImpl implements INearbyFloraRepository {
     public void delete(Long estateSegmentId) {
         nearbyFloraJpaRepository.deleteById(estateSegmentId);
     }
+
+    @Override
+    public NearbyFlora findTop1ByFloraId(Long id) {
+        return nearbyFloraJpaRepository.findTop1ByFloraId(id);
+    }
 }

@@ -11,4 +11,5 @@ public interface IActivityRepository {
     public Activity create(Activity activity);
     public Activity update(Long activityId, Activity activity);
     public void delete(Long activityId);
+    public Activity findTop1ByProductionStageId(Long id);
 }

@@ -6,6 +6,7 @@ import com.wesdom.compa.backend.database.model.ProductionStage;
 import com.wesdom.compa.backend.database.repositories.IProductionStageRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
+import com.wesdom.compa.backend.service.interfaces.IProductionStageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Propagation;
@@ -22,6 +23,8 @@ public class ProductionStageRestController {
     @Autowired
     private IProductionStageRepository productionStageRepository;
 
+    @Autowired
+    private IProductionStageService productionStageService;
 
     @PostMapping
     @Transactional(propagation = Propagation.REQUIRES_NEW)
@@ -52,7 +55,7 @@ public class ProductionStageRestController {
     @DeleteMapping(value = "/{id}")
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
-        productionStageRepository.delete(id);
+        productionStageService.deleteProductionStage(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Fase de produccion eliminada con exito");
     }
 }

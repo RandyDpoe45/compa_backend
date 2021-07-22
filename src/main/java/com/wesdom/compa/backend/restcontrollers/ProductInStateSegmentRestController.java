@@ -55,7 +55,7 @@ public class ProductInStateSegmentRestController {
     @DeleteMapping(value = "/{id}")
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
-        productInStateSegmentRepository.delete(id);
+        productInSegmentService.deleteProductInStateSegment(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Producto en predio eliminado con exito");
     }
 }

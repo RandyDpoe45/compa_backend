@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -27,10 +29,12 @@ public class ProductionActivity {
 
     @ManyToOne(targetEntity = ProductInStateSegment.class, fetch = FetchType.LAZY)
     @JsonView({SystemViews.ProductionActivityBasicView.class})
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private ProductInStateSegment productInStateSegment;
 
     @ManyToOne(targetEntity = Activity.class,fetch = FetchType.LAZY)
     @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Activity activity;
 
     @OneToMany(targetEntity = ProductionActivityAnswer.class,fetch = FetchType.LAZY,mappedBy = "productionActivity")

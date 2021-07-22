@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface NearbyFloraJpaRepository extends JpaRepository<NearbyFlora,Long>, JpaSpecificationExecutor<NearbyFlora> {
+
+    NearbyFlora findTop1ByFloraId(Long floraId);
 }

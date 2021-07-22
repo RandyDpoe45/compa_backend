@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ActivityJpaRepository extends JpaRepository<Activity,Long>, JpaSpecificationExecutor<Activity> {
+
+    Activity findTop1ByProductionStageId(Long id);
 }

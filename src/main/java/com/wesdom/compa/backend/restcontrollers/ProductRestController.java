@@ -9,6 +9,7 @@ import com.wesdom.compa.backend.database.model.ProductType;
 import com.wesdom.compa.backend.database.repositories.IProductRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
+import com.wesdom.compa.backend.service.interfaces.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Propagation;
@@ -25,6 +26,9 @@ public class ProductRestController {
 
     @Autowired
     private IProductRepository productRepository;
+
+    @Autowired
+    private IProductService productService;
 
     @GetMapping
     @JsonView(SystemViews.ProductBasicView.class)
@@ -58,7 +62,7 @@ public class ProductRestController {
 
     @DeleteMapping("/{id}")
     public GeneralResponse delete(@PathVariable Long id){
-        productRepository.delete(id);
+        productService.deleteProduct(id);
         return new GeneralResponse("Producto borrado con exito","000");
     }
 }

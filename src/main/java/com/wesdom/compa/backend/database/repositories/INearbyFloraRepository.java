@@ -11,4 +11,5 @@ public interface INearbyFloraRepository {
     public NearbyFlora create(NearbyFlora nearbyFlora);
     public NearbyFlora update(Long estateSegmentId, NearbyFlora nearbyFlora);
     public void delete(Long estateSegmentId);
+    public NearbyFlora findTop1ByFloraId(Long id);
 }

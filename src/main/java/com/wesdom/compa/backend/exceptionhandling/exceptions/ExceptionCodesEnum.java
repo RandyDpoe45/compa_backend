@@ -31,9 +31,14 @@ public enum ExceptionCodesEnum {
     EMAIL_IN_USE("015"),
     ADDRESS_NAME_IN_USE("016"),
     BAD_CREDENTIALS("017"),
-    NOT_ENOUGH_STOCK("018"),
-    ORDER_WITHOUT_PRODUCTS("019");
-    
+    PRODUCT_WITH_ACTIVITIES("018"),
+    MEASURE_UNIT_ASSIGNED("019"),
+    FLORA_IN_USE("020"),
+    PRODUCTION_STAGE_IN_USE("021"),
+    PRODUCT_IN_USE("022"),
+    WOOD_TYPE_IN_USE("023")
+    ;
+
     private String code;
     
     private ExceptionCodesEnum (String code){

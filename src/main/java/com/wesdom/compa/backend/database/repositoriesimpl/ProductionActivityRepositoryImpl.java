@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -64,5 +65,10 @@ public class ProductionActivityRepositoryImpl implements IProductionActivityRepo
     @Override
     public void delete(Long productionActivityId) {
         productionActivityJpaRepository.deleteById(productionActivityId);
+    }
+
+    @Override
+    public ProductionActivity findTop1ByProductInStateSegmentId(Long id) {
+        return productionActivityJpaRepository.findTop1ByProductInStateSegmentId(id);
     }
 }
