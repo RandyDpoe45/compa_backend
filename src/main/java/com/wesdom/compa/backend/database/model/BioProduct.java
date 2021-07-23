@@ -18,10 +18,10 @@ public class BioProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonView({SystemViews.BioProductBasicView.class})
+    @JsonView({SystemViews.BioProductBasicView.class, SystemViews.BioProductDetailView.class})
     private Long id;
 
-    @JsonView({SystemViews.BioProductBasicView.class})
+    @JsonView({SystemViews.BioProductBasicView.class, SystemViews.BioProductDetailView.class})
     private String name;
 
     @JsonView({SystemViews.BioProductBasicView.class})
@@ -31,6 +31,7 @@ public class BioProduct {
     @Column(length = 1000)
     private String description;
 
+    @JsonView({SystemViews.BioProductBasicView.class})
     @ManyToOne(targetEntity = Promoter.class, fetch = FetchType.LAZY)
     private Promoter promoter;
 }

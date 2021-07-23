@@ -34,7 +34,7 @@ public class PromoterRestController {
         return promoterRepository.getAll(allParams);
     }
 
-    @JsonView(SystemViews.PromoterBasicView.class)
+    @JsonView(SystemViews.PromoterDetailedView.class)
     @GetMapping("/{id}")
     public Promoter get(@PathVariable Long id){
         return promoterRepository.get(id);

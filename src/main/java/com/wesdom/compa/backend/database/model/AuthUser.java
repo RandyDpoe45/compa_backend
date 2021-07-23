@@ -18,29 +18,44 @@ public class AuthUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonView({SystemViews.AuthUserBasicView.class,SystemViews.ManufacturerBasicView.class,
+    @JsonView({
+            SystemViews.AuthUserBasicView.class,SystemViews.ManufacturerBasicView.class,
             SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class})
+            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
+            SystemViews.PromoterDetailedView.class
+    })
     private Long id;
 
-    @JsonView({SystemViews.AuthUserBasicView.class,SystemViews.ManufacturerBasicView.class,
+    @JsonView({
+            SystemViews.AuthUserBasicView.class,SystemViews.ManufacturerBasicView.class,
             SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class})
+            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
+            SystemViews.PromoterDetailedView.class
+    })
     private String username;
 
-    @JsonView({SystemViews.AuthUserBasicView.class,SystemViews.ManufacturerBasicView.class,
+    @JsonView({
+            SystemViews.AuthUserBasicView.class,SystemViews.ManufacturerBasicView.class,
             SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class})
+            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
+            SystemViews.PromoterDetailedView.class
+    })
     private String email;
 
-    @JsonView({SystemViews.AuthUserBasicView.class,SystemViews.ManufacturerBasicView.class,
+    @JsonView({
+            SystemViews.AuthUserBasicView.class,SystemViews.ManufacturerBasicView.class,
             SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class})
+            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
+            SystemViews.PromoterDetailedView.class
+    })
     private String type;
 
-    @JsonView({SystemViews.AuthUserBasicView.class,SystemViews.ManufacturerBasicView.class,
+    @JsonView({
+            SystemViews.AuthUserBasicView.class,SystemViews.ManufacturerBasicView.class,
             SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class})
+            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
+            SystemViews.PromoterDetailedView.class
+    })
     private Boolean isActive = true;
 
     @Column(length = 600)

@@ -18,15 +18,27 @@ import javax.persistence.Id;
 public class Department {
 
     @Id
-    @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-        SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class})
+    @JsonView({
+            SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
+            SystemViews.CommercialPartnerBasicView.class,SystemViews.EstateBasicView.class,
+            SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class,
+            SystemViews.PromoterDetailedView.class
+    })
     private Long id;
 
-    @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class})
+    @JsonView({
+            SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
+            SystemViews.CommercialPartnerBasicView.class,SystemViews.EstateBasicView.class,
+            SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class,
+            SystemViews.PromoterDetailedView.class
+    })
     private String code;
 
-    @JsonView({SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
-            SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class})
+    @JsonView({
+            SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
+            SystemViews.CommercialPartnerBasicView.class,SystemViews.EstateBasicView.class,
+            SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class,
+            SystemViews.PromoterDetailedView.class
+    })
     private String name;
 }

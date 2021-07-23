@@ -18,12 +18,21 @@ import javax.persistence.Id;
 public class ManufacturerType {
 
     @Id
-    @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class})
+    @JsonView({
+            SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,
+            SystemViews.PromoterDetailedView.class
+    })
     private Long id;
 
-    @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class})
+    @JsonView({
+            SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,
+            SystemViews.PromoterDetailedView.class
+    })
     private String code;
 
-    @JsonView({SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class})
+    @JsonView({
+            SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,
+            SystemViews.PromoterDetailedView.class
+    })
     private String name;
 }

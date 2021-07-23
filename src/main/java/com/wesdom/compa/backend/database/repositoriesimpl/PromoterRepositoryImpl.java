@@ -47,14 +47,15 @@ public class PromoterRepositoryImpl implements IPromoterRepository {
     public Promoter update(Long promoterId, Promoter promoter) {
         Promoter m = promoterJpaRepository.getOne(promoterId);
         m.setLatitude(promoter.getLatitude()).setLongitude(promoter.getLongitude())
-                .setPlantation(promoter.getPlantation()).setType(promoter.getType()).setGender(promoter.getGender())
-                .setFirstName(promoter.getFirstName()).setFirstLastname(promoter.getFirstLastname())
-                .setSecondName(promoter.getSecondName()).setSecondLastName(promoter.getSecondLastName())
-                .setBirthday(promoter.getBirthday()).setPhone(promoter.getPhone()).setDepartment(promoter.getDepartment())
-                .setMunicipality(promoter.getMunicipality()).setGender(promoter.getGender())
-                .setIdentificationType(promoter.getIdentificationType()).setIdentificationNumber(promoter.getIdentificationNumber());
-        m.setMorning(promoter.getMorning()).setAfternoon(promoter.getAfternoon()).setAvailableDays(promoter.getAvailableDays())
-                .setMotorcycle(promoter.getMotorcycle()).setIntroduction(promoter.getIntroduction());
+            .setPlantation(promoter.getPlantation()).setType(promoter.getType()).setGender(promoter.getGender())
+            .setFirstName(promoter.getFirstName()).setFirstLastname(promoter.getFirstLastname())
+            .setSecondName(promoter.getSecondName()).setSecondLastName(promoter.getSecondLastName())
+            .setBirthday(promoter.getBirthday()).setPhone(promoter.getPhone()).setDepartment(promoter.getDepartment())
+            .setMunicipality(promoter.getMunicipality()).setGender(promoter.getGender())
+            .setIdentificationType(promoter.getIdentificationType()).setIdentificationNumber(promoter.getIdentificationNumber());
+        m.setMorning(promoter.getMorning()).setAfternoon(promoter.getAfternoon())
+                .setAvailableDays(promoter.getAvailableDays()).setMotorcycle(promoter.getMotorcycle())
+                .setIntroduction(promoter.getIntroduction()).setManufacturerGroupList(promoter.getManufacturerGroupList());
         m = promoterJpaRepository.saveAndFlush(m);
         em.refresh(m);
         return m;

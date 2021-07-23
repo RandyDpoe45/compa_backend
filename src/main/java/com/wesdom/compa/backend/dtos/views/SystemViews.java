@@ -6,6 +6,7 @@ public class SystemViews {
     public static class ManufacturerBasicView{};
     public static class CommercialPartnerBasicView{};
     public static class PromoterBasicView{};
+    public static class PromoterDetailedView {};
     public static class GroupBasicView{};
     public static class GroupDetailedView{};
     public static class EstateBasicView {};
@@ -30,6 +31,6 @@ public class SystemViews {
     public static class RequestBasicView {};
     public static class RequestOfferBasicView {};
     public static class BioProductBasicView {};
-
+    public static class BioProductDetailView {};
 
 }

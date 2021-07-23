@@ -21,7 +21,9 @@ public class Advertising {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    //solo un producto??
+    @ManyToOne(targetEntity = Product.class, fetch = FetchType.LAZY)
+    private Product product;
+
     @ManyToOne(targetEntity = Association.class, fetch = FetchType.LAZY)
     private Association association;
 
