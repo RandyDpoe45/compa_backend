@@ -1,5 +1,8 @@
 package com.wesdom.compa.backend.database.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum BioProductTypeEnum {
 
     SYSTEM("SYSTEM"), ORIGINAL("ORGINAL");

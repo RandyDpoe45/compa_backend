@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -68,8 +70,16 @@ public class Promoter extends BaseUser{
     private Boolean afternoon;
 
     @JsonView({
-            SystemViews.PromoterBasicView.class, SystemViews.PromoterDetailedView.class
+            SystemViews.PromoterDetailedView.class
     })
     @ManyToMany(targetEntity = ManufacturerGroup.class, fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<ManufacturerGroup> manufacturerGroupList;
+
+    @JsonView({
+            SystemViews.PromoterDetailedView.class
+    })
+    @ManyToMany(targetEntity = BioProduct.class, fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private List<BioProduct> systemBioProductList;
 }

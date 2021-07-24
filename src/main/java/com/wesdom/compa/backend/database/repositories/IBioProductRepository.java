@@ -12,4 +12,5 @@ public interface IBioProductRepository {
     public BioProduct create(BioProduct product);
     public BioProduct update(Long productId, BioProduct product);
     public void delete(Long productId);
+    public List<BioProduct> findAllById(List<Long> ids);
 }

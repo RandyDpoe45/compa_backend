@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.wesdom.compa.backend.database.model.Promoter;
 import com.wesdom.compa.backend.database.repositories.IPromoterRepository;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
+import com.wesdom.compa.backend.service.interfaces.IPromoterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Propagation;
@@ -21,11 +22,14 @@ public class PromoterRestController {
     @Autowired
     private IPromoterRepository promoterRepository;
 
+    @Autowired
+    private IPromoterService promoterService;
+
     @PostMapping
-    @JsonView(SystemViews.PromoterBasicView.class)
+    @JsonView(SystemViews.PromoterDetailedView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Promoter createUser(@RequestBody Promoter promoter){
-        return promoterRepository.create(promoter);
+        return promoterService.createPromoter(promoter);
     }
 
     @JsonView(SystemViews.PromoterBasicView.class)
@@ -40,11 +44,11 @@ public class PromoterRestController {
         return promoterRepository.get(id);
     }
 
-    @JsonView(SystemViews.PromoterBasicView.class)
+    @JsonView(SystemViews.PromoterDetailedView.class)
     @PutMapping(value = "/{id}")
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Promoter update(@PathVariable Long id, @RequestBody Promoter promoter) throws JsonProcessingException {
-        return promoterRepository.update(id,promoter);
+        return promoterService.updatePromoter(id,promoter);
     }
     
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -44,5 +45,10 @@ public class BioProductRepositoryImpl implements IBioProductRepository {
     @Override
     public void delete(Long bioProductId) {
         bioProductJpaRepository.deleteById(bioProductId);
+    }
+
+    @Override
+    public List<BioProduct> findAllById(List<Long> ids) {
+        return bioProductJpaRepository.findAllById(ids);
     }
 }

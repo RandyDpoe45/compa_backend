@@ -18,16 +18,26 @@ public class BioProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonView({SystemViews.BioProductBasicView.class, SystemViews.BioProductDetailView.class})
+    @JsonView({
+            SystemViews.BioProductBasicView.class, SystemViews.BioProductDetailView.class,
+            SystemViews.PromoterDetailedView.class
+    })
     private Long id;
 
-    @JsonView({SystemViews.BioProductBasicView.class, SystemViews.BioProductDetailView.class})
+    @JsonView({
+            SystemViews.BioProductBasicView.class, SystemViews.BioProductDetailView.class,
+            SystemViews.PromoterDetailedView.class
+    })
     private String name;
 
-    @JsonView({SystemViews.BioProductBasicView.class})
+    @JsonView({
+            SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class
+    })
     private String type;
 
-    @JsonView({SystemViews.BioProductBasicView.class})
+    @JsonView({
+            SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class
+    })
     @Column(length = 1000)
     private String description;
 

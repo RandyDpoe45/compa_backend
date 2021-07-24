@@ -55,7 +55,8 @@ public class PromoterRepositoryImpl implements IPromoterRepository {
             .setIdentificationType(promoter.getIdentificationType()).setIdentificationNumber(promoter.getIdentificationNumber());
         m.setMorning(promoter.getMorning()).setAfternoon(promoter.getAfternoon())
                 .setAvailableDays(promoter.getAvailableDays()).setMotorcycle(promoter.getMotorcycle())
-                .setIntroduction(promoter.getIntroduction()).setManufacturerGroupList(promoter.getManufacturerGroupList());
+                .setIntroduction(promoter.getIntroduction()).setManufacturerGroupList(promoter.getManufacturerGroupList())
+                .setSystemBioProductList(promoter.getSystemBioProductList());
         m = promoterJpaRepository.saveAndFlush(m);
         em.refresh(m);
         return m;
