@@ -20,7 +20,7 @@ public class Association{
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonView({
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.RequestBasicView.class
+            SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class
     })
     private Long id;
 
@@ -33,25 +33,25 @@ public class Association{
 
     @JsonView({
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.RequestBasicView.class
+            SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class
     })
     private String code;
 
     @JsonView({
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.RequestBasicView.class
+            SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class
     })
     private String name;
 
     @JsonView({
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.RequestBasicView.class
+            SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class
     })
     private String type;
 
     @JsonView({
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.RequestBasicView.class
+            SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class
     })
     private String rut;
 
@@ -81,7 +81,7 @@ public class Association{
 
     @JsonView({
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.RequestBasicView.class
+            SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class
     })
     private String contactName;
 
@@ -93,7 +93,7 @@ public class Association{
 
     @JsonView({
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.RequestBasicView.class
+            SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class
     })
     private String businessHours;
 

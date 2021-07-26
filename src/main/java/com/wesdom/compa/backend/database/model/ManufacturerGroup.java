@@ -25,7 +25,7 @@ public class ManufacturerGroup {
             SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateBasicView.class ,SystemViews.EstateSegmentDetailView.class,
             SystemViews.RequestOfferBasicView.class, SystemViews.AssociationMemberBasicView.class,
-            SystemViews.PromoterDetailedView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingBasicView.class
     })
     private Long id;
 
@@ -33,7 +33,7 @@ public class ManufacturerGroup {
             SystemViews.GroupBasicView.class, SystemViews.GroupDetailedView.class,
             SystemViews.EstateBasicView.class, SystemViews.EstateSegmentDetailView.class,
             SystemViews.RequestOfferBasicView.class, SystemViews.AssociationMemberBasicView.class,
-            SystemViews.PromoterDetailedView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingBasicView.class
     })
     private String name;
 
@@ -41,7 +41,7 @@ public class ManufacturerGroup {
             SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class,
             SystemViews.RequestOfferBasicView.class,SystemViews.AssociationMemberBasicView.class,
-            SystemViews.PromoterDetailedView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingBasicView.class
     })
     @Column(length = 1000)
     private String history;
