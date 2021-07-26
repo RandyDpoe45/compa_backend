@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +21,9 @@ public class AdvertisingRepositoryImpl implements IAdvertisingRepository {
     
     @Autowired
     private AdvertisingJpaRepository advertisingJpaRepository;
+
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
     public Advertising get(Long id) {
@@ -34,12 +39,16 @@ public class AdvertisingRepositoryImpl implements IAdvertisingRepository {
 
     @Override
     public Advertising create(Advertising advertising) {
-        return advertisingJpaRepository.save(advertising);
+        Advertising a = advertisingJpaRepository.saveAndFlush(advertising);
+        em.refresh(a);
+        return a;
     }
 
     @Override
     public Advertising update(Long advertisingId, Advertising advertising) {
-        return  advertisingJpaRepository.saveAndFlush(advertising);
+        Advertising a = advertisingJpaRepository.saveAndFlush(advertising);
+        em.refresh(a);
+        return  a;
     }
 
     @Override
