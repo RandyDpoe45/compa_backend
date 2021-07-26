@@ -35,6 +35,10 @@ public class Request {
     @JsonView({SystemViews.RequestBasicView.class})
     private CommercialPartner commercialPartner;
 
+    @ManyToOne(targetEntity = Association.class, fetch = FetchType.LAZY)
+    @JsonView({SystemViews.RequestBasicView.class})
+    private Association association;
+
     @ManyToOne(targetEntity = Product.class, fetch = FetchType.LAZY)
     @JsonView({SystemViews.RequestBasicView.class})
     private Product product;
