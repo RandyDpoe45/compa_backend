@@ -28,6 +28,6 @@ public class MeasureUnitServiceImpl implements IMeasureUnitService {
                     "No se puede eliminar esta unidad de medida, porque algunos productos ya la tienen asociada"
             );
         }
-        productRepository.delete(id);
+        measureUnitRepository.delete(id);
     }
 }
