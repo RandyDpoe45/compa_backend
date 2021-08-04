@@ -40,7 +40,7 @@ public class ApiaryWoodTypeRepositoryImpl implements IApiaryWoodTypeRepository {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public ApiaryWoodType create(ApiaryWoodType apiaryWoodType) {
+    public ApiaryWoodType save(ApiaryWoodType apiaryWoodType) {
         apiaryWoodType = apiaryWoodTypeJpaRepository.saveAndFlush(apiaryWoodType);
         em.refresh(apiaryWoodType);
         return apiaryWoodType;

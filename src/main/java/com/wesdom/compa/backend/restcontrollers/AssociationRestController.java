@@ -39,8 +39,8 @@ public class AssociationRestController {
     @PostMapping
     @JsonView(SystemViews.AssociationDetailedView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public Association create(@RequestBody Association association){
-        return associationRepository.create(association);
+    public Association save(@RequestBody Association association){
+        return associationRepository.save(association);
     }
 
     @JsonView(SystemViews.AssociationBasicView.class)

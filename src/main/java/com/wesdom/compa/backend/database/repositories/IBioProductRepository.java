@@ -9,7 +9,7 @@ import java.util.Map;
 public interface IBioProductRepository {
     public BioProduct get(Long id);
     public Page<BioProduct> getAll(Map<String,String> params);
-    public BioProduct create(BioProduct product);
+    public BioProduct save(BioProduct product);
     public BioProduct update(Long productId, BioProduct product);
     public void delete(Long productId);
     public List<BioProduct> findAllById(List<Long> ids);

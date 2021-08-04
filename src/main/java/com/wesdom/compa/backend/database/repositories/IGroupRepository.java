@@ -10,7 +10,7 @@ import java.util.Map;
 public interface IGroupRepository {
     public ManufacturerGroup get(Long id);
     public Page<ManufacturerGroup> getAll(Map<String,String> params);
-    public ManufacturerGroup create(ManufacturerGroup group);
+    public ManufacturerGroup save(ManufacturerGroup group);
     public ManufacturerGroup update(Long groupId, ManufacturerGroup group);
     public void delete(Long groupId);
     public List<GroupType> getGroupTypeList();

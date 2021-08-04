@@ -28,7 +28,7 @@ public interface IMultimediaDataService {
         }
     }
     
-    MultimediaData create(String imgType, Long entityId, String entityType, MultipartFile file);
+    MultimediaData save(String imgType, Long entityId, String entityType, MultipartFile file);
     
     Resource getMultimedia(Long multimediaId);
        

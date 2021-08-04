@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 
@@ -22,10 +24,12 @@ public class AssociationMember {
     private Long id;
 
     @ManyToOne(targetEntity = Association.class,fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
     private Association association;
 
     @ManyToOne(targetEntity = ManufacturerGroup.class, fetch = FetchType.LAZY)
     @JsonView({SystemViews.AssociationMemberBasicView.class})
+    @NotFound(action = NotFoundAction.IGNORE)
     private ManufacturerGroup manufacturerGroup;
 
 }

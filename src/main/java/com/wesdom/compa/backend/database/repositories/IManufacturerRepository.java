@@ -10,7 +10,7 @@ import java.util.Map;
 public interface IManufacturerRepository {
     public Manufacturer get(Long id);
     public Page<Manufacturer> getAll(Map<String,String> params);
-    public Manufacturer create(Manufacturer manufacturer);
+    public Manufacturer save(Manufacturer manufacturer);
     public Manufacturer update(Long manufacturerId, Manufacturer manufacturer);
     public void delete(Long manufacturerId);
     public List<ManufacturerType> getManufacturerTypeList();

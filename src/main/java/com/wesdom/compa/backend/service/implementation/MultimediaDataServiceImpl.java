@@ -41,7 +41,7 @@ public class MultimediaDataServiceImpl implements IMultimediaDataService {
     private IMultimediaDataRepository multimediaDataRepository;
 
     @Override
-    public MultimediaData create(String imgType, Long entityId, String entityType, MultipartFile file) throws GeneralException {
+    public MultimediaData save(String imgType, Long entityId, String entityType, MultipartFile file) throws GeneralException {
         MultimediaData multimediaData = null;
         try {
             multimediaData = multimediaDataRepository.createMultimediaData(new MultimediaData().setEntityId(entityId).setEntityName(entityType));

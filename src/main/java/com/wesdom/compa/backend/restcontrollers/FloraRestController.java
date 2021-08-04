@@ -29,7 +29,7 @@ public class FloraRestController {
     @PostMapping
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Flora createUser(@RequestBody Flora flora){
-        return floraRepository.create(flora);
+        return floraRepository.save(flora);
     }
 
     @GetMapping

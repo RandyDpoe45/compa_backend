@@ -6,6 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -22,10 +26,14 @@ public class ProductionActivityAnswer {
     private Long id;
 
     @ManyToOne(targetEntity = ProductionActivity.class,fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private ProductionActivity productionActivity;
 
     @JsonView({SystemViews.ProductionActivityAnswerBasicView.class})
     @ManyToOne(targetEntity = ActivityOption.class, fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private ActivityOption activityOption;
 
     @JsonView({SystemViews.ProductionActivityAnswerBasicView.class})

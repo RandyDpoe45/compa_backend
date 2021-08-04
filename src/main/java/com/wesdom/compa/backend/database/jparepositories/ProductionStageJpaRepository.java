@@ -7,4 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProductionStageJpaRepository extends JpaRepository<ProductionStage,Long>, JpaSpecificationExecutor<ProductionStage> {
+
+    ProductionStage findTop1ByEstateSegmentTypeIdOrderByStageOrderDesc(Long id);
+    ProductionStage findTop1ByStageOrderAndEstateSegmentTypeId(Long stageOrder, Long estateSegmentTypeId);
 }

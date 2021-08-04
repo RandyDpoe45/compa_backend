@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 
@@ -29,6 +31,7 @@ public class Association{
     @JsonView({
             SystemViews.AssociationBasicView.class, SystemViews.AssociationDetailedView.class
     })
+    @NotFound(action = NotFoundAction.IGNORE)
     private AuthUser authUser;
 
     @JsonView({

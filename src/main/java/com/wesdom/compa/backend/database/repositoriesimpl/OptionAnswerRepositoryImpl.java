@@ -32,7 +32,7 @@ public class OptionAnswerRepositoryImpl implements IOptionAnswerRepository {
     }
 
     @Override
-    public OptionAnswer create(OptionAnswer optionAnswer) {
+    public OptionAnswer save(OptionAnswer optionAnswer) {
         return optionAnswerJpaRepository.save(optionAnswer);
     }
 

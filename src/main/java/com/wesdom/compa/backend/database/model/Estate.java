@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -30,10 +32,12 @@ public class Estate {
     private String name;
 
     @ManyToOne(targetEntity = Department.class, fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
     @JsonView({SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class})
     private Department department;
 
     @ManyToOne(targetEntity = Municipality.class, fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
     @JsonView({SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class})
     private Municipality municipality;
 
@@ -52,5 +56,6 @@ public class Estate {
     @JsonView({SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class})
     @ManyToOne(targetEntity = ManufacturerGroup.class, fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotFound(action = NotFoundAction.IGNORE)
     private ManufacturerGroup manufacturerGroup;
 }

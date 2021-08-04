@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,6 +34,7 @@ public class Manufacturer extends BaseUser {
     private BigDecimal longitude;
 
     @JsonView({SystemViews.ManufacturerBasicView.class})
+    @NotFound(action = NotFoundAction.IGNORE)
     @ManyToMany(targetEntity = ManufacturerType.class, fetch = FetchType.LAZY)
     private List<ManufacturerType> type;
 

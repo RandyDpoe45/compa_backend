@@ -37,7 +37,7 @@ public class PromoterRepositoryImpl implements IPromoterRepository {
     }
 
     @Override
-    public Promoter create(Promoter promoter) {
+    public Promoter save(Promoter promoter) {
         promoter = promoterJpaRepository.saveAndFlush(promoter);
         em.refresh(promoter);
         return promoter;

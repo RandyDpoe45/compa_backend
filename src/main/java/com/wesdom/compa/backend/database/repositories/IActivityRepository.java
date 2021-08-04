@@ -8,7 +8,7 @@ import java.util.Map;
 public interface IActivityRepository {
     public Activity get(Long id);
     public Page<Activity> getAll(Map<String,String> params);
-    public Activity create(Activity activity);
+    public Activity save(Activity activity);
     public Activity update(Long activityId, Activity activity);
     public void delete(Long activityId);
     public Activity findTop1ByProductionStageId(Long id);

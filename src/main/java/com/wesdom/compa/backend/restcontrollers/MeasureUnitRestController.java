@@ -28,8 +28,8 @@ public class MeasureUnitRestController {
 
     @PostMapping
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public MeasureUnit create(@RequestBody MeasureUnit measureUnit){
-        return measureUnitRepository.create(measureUnit);
+    public MeasureUnit save(@RequestBody MeasureUnit measureUnit){
+        return measureUnitRepository.save(measureUnit);
     }
 
     @GetMapping

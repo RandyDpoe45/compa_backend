@@ -8,7 +8,7 @@ import java.util.Map;
 public interface IProductionActivityAnswerRepository {
     public ProductionActivityAnswer get(Long id);
     public Page<ProductionActivityAnswer> getAll(Map<String,String> params);
-    public ProductionActivityAnswer create(ProductionActivityAnswer activity);
+    public ProductionActivityAnswer save(ProductionActivityAnswer activity);
     public ProductionActivityAnswer update(Long activityId, ProductionActivityAnswer activity);
     public void delete(Long activityId);
 }

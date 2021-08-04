@@ -1,6 +1,10 @@
 package com.wesdom.compa.backend.service.interfaces;
 
-public interface IProductionStageService {
+import com.wesdom.compa.backend.database.model.ProductionStage;
+import com.wesdom.compa.backend.dtos.ProductionStageOrderDto;
 
+public interface IProductionStageService {
+     ProductionStage save(ProductionStage productionStage);
+     ProductionStage updateOrder(ProductionStageOrderDto productionStageOrderDto);
      void deleteProductionStage(Long id);
 }

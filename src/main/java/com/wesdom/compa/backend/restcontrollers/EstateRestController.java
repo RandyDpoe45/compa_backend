@@ -27,7 +27,7 @@ public class EstateRestController {
     @JsonView(SystemViews.EstateBasicView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Estate createUser(@RequestBody Estate estate){
-        return estateRepository.create(estate);
+        return estateRepository.save(estate);
     }
 
     @JsonView(SystemViews.EstateBasicView.class)

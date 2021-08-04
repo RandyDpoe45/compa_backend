@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -46,6 +48,8 @@ public class Promoter extends BaseUser{
             SystemViews.PromoterBasicView.class, SystemViews.PromoterDetailedView.class
     })
     @ManyToMany(targetEntity = ManufacturerType.class, fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<ManufacturerType> type;
 
     @JsonView({
@@ -74,6 +78,7 @@ public class Promoter extends BaseUser{
     })
     @ManyToMany(targetEntity = ManufacturerGroup.class, fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotFound(action = NotFoundAction.IGNORE)
     private List<ManufacturerGroup> manufacturerGroupList;
 
     @JsonView({
@@ -81,5 +86,6 @@ public class Promoter extends BaseUser{
     })
     @ManyToMany(targetEntity = BioProduct.class, fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotFound(action = NotFoundAction.IGNORE)
     private List<BioProduct> systemBioProductList;
 }

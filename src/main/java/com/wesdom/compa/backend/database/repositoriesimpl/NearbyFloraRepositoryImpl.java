@@ -40,7 +40,7 @@ public class NearbyFloraRepositoryImpl implements INearbyFloraRepository {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public NearbyFlora create(NearbyFlora nearbyFlora) {
+    public NearbyFlora save(NearbyFlora nearbyFlora) {
         nearbyFlora = nearbyFloraJpaRepository.saveAndFlush(nearbyFlora);
         em.refresh(nearbyFlora);
         return nearbyFlora;

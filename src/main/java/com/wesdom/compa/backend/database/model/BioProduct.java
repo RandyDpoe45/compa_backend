@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 
@@ -43,5 +45,6 @@ public class BioProduct {
 
     @JsonView({SystemViews.BioProductBasicView.class})
     @ManyToOne(targetEntity = Promoter.class, fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
     private Promoter promoter;
 }

@@ -37,7 +37,7 @@ public class AssociationRepositoryImpl implements IAssociationRepository {
     }
 
     @Override
-    public Association create(Association association) {
+    public Association save(Association association) {
         Association m = associationJpaRepository.saveAndFlush(association);
         em.refresh(m);
         return m;

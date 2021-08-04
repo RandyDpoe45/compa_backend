@@ -1,7 +1,9 @@
 package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.ExpertVisitJpaRepository;
+import com.wesdom.compa.backend.database.jparepositories.ExpertVisitTypeJpaRepository;
 import com.wesdom.compa.backend.database.model.ExpertVisit;
+import com.wesdom.compa.backend.database.model.ExpertVisitType;
 import com.wesdom.compa.backend.database.repositories.IExpertVisitRepository;
 import com.wesdom.compa.backend.service.implementation.PaginationBuilderImpl;
 import com.wesdom.compa.backend.service.implementation.PredicateBuilderServiceImpl;
@@ -15,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -22,6 +25,9 @@ public class ExpertVisitRepositoryImpl implements IExpertVisitRepository {
 
     @Autowired
     private ExpertVisitJpaRepository expertVisitJpaRepository;
+
+    @Autowired
+    private ExpertVisitTypeJpaRepository expertVisitTypeJpaRepository;
 
     @PersistenceContext
     private EntityManager em;
@@ -40,7 +46,7 @@ public class ExpertVisitRepositoryImpl implements IExpertVisitRepository {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public ExpertVisit create(ExpertVisit expertVisit) {
+    public ExpertVisit save(ExpertVisit expertVisit) {
         expertVisit = expertVisitJpaRepository.saveAndFlush(expertVisit);
         em.refresh(expertVisit);
         return expertVisit;
@@ -52,6 +58,11 @@ public class ExpertVisitRepositoryImpl implements IExpertVisitRepository {
         expertVisit = expertVisitJpaRepository.saveAndFlush(expertVisit);
         em.refresh(expertVisit);
         return expertVisit;
+    }
+
+    @Override
+    public List<ExpertVisitType> getTypes() {
+        return expertVisitTypeJpaRepository.findAll();
     }
 
     @Override

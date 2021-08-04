@@ -38,7 +38,7 @@ public class AdvertisingRepositoryImpl implements IAdvertisingRepository {
     }
 
     @Override
-    public Advertising create(Advertising advertising) {
+    public Advertising save(Advertising advertising) {
         Advertising a = advertisingJpaRepository.saveAndFlush(advertising);
         em.refresh(a);
         return a;

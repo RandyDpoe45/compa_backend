@@ -29,7 +29,7 @@ public class ProductInStateSegmentRestController {
     @PostMapping
     @JsonView(SystemViews.ProductInStateBasicView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public ProductInStateSegment create(@RequestBody ProductInStateSegment productInStateSegment){
+    public ProductInStateSegment save(@RequestBody ProductInStateSegment productInStateSegment){
         return productInSegmentService.createProductInSegment(productInStateSegment);
     }
 

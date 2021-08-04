@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -31,6 +32,11 @@ public class ActivityOptionRepositoryImpl implements IActivityOptionRepository {
     }
 
     @Override
+    public List<ActivityOption> findById(List<Long> ids) {
+        return activityOptionJpaRepository.findAllById(ids);
+    }
+
+    @Override
     public Page<ActivityOption> getAll(Map<String, String> params) {
         IPredicateBuilder<ActivityOption> predicate = new PredicateBuilderServiceImpl<>();
         IPaginationBuilder paginaton = new PaginationBuilderImpl();
@@ -39,7 +45,7 @@ public class ActivityOptionRepositoryImpl implements IActivityOptionRepository {
 
     @Override
     @Transactional
-    public ActivityOption create(ActivityOption activityOption) {
+    public ActivityOption save(ActivityOption activityOption) {
         ActivityOption a = activityOptionJpaRepository.saveAndFlush(activityOption);
         em.refresh(a);
         return a;

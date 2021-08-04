@@ -40,7 +40,7 @@ public class EstateSegmentRestController {
     @JsonView(SystemViews.EstateSegmentDetailView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public EstateSegment createEstateSegment(@RequestBody EstateSegment estateSegment){
-        return estateSegmentRepository.create(estateSegment);
+        return estateSegmentRepository.save(estateSegment);
     }
 
     @JsonView(SystemViews.EstateSegmentBasicView.class)
@@ -100,7 +100,7 @@ public class EstateSegmentRestController {
     @JsonView(SystemViews.EstateSegmentBasicView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public NearbyEstateSegment createNearbyEstateSegment(@RequestBody NearbyEstateSegment estateSegment){
-        return nearbyEstateSegmentRepository.create(estateSegment);
+        return nearbyEstateSegmentRepository.save(estateSegment);
     }
 
     @JsonView(SystemViews.EstateSegmentBasicView.class)
@@ -134,7 +134,7 @@ public class EstateSegmentRestController {
     @JsonView(SystemViews.NearbyFloraBasicView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public NearbyFlora createNearbyFlora(@RequestBody NearbyFlora nearbyFlora){
-        return nearbyFloraRepository.create(nearbyFlora);
+        return nearbyFloraRepository.save(nearbyFlora);
     }
 
     @JsonView(SystemViews.NearbyFloraBasicView.class)

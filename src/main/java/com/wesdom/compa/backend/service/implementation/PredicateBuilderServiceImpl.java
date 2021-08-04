@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 public class PredicateBuilderServiceImpl<T> implements IPredicateBuilder<T> {
 
     /**
-     * Method to create dynamic predicates for query using specification jpa
+     * Method to save dynamic predicates for query using specification jpa
      * API.
      * @param params
      */
@@ -118,7 +118,7 @@ public class PredicateBuilderServiceImpl<T> implements IPredicateBuilder<T> {
     }
 
     /**
-     * Method to create Path to access nested properties in entity.
+     * Method to save Path to access nested properties in entity.
      */
     private Path<T> buildPath(Root<T> root, String property) {
         Path<T> p = root;

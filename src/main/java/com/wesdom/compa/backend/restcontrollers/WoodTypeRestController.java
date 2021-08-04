@@ -24,7 +24,7 @@ public class WoodTypeRestController {
     @PostMapping
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ApiaryWoodType createUser(@RequestBody ApiaryWoodType flora){
-        return apiaryWoodTypeRepository.create(flora);
+        return apiaryWoodTypeRepository.save(flora);
     }
 
     @GetMapping

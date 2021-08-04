@@ -32,7 +32,7 @@ public class AuthUserRepositoryImpl implements IAuthUserRepository {
     }
 
     @Override
-    public AuthUser create(AuthUser authUser) {
+    public AuthUser save(AuthUser authUser) {
         return authUserJpaRepository.saveAndFlush(authUser);
     }
 

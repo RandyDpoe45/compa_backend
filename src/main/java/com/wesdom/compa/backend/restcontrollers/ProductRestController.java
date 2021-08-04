@@ -49,8 +49,8 @@ public class ProductRestController {
 
     @PostMapping
     @JsonView(SystemViews.ProductBasicView.class)
-    public Product create(@RequestBody Product product){
-        return productRepository.create(product);
+    public Product save(@RequestBody Product product){
+        return productRepository.save(product);
     }
 
     @PutMapping(value = "/{id}")

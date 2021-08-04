@@ -37,7 +37,7 @@ public class RequestRepositoryImpl implements IRequestRepository {
     }
 
     @Override
-    public Request create(Request request) {
+    public Request save(Request request) {
         request = requestJpaRepository.saveAndFlush(request);
         em.refresh(request);
         return request;

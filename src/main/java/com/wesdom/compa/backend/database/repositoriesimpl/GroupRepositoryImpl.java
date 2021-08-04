@@ -43,7 +43,7 @@ public class GroupRepositoryImpl implements IGroupRepository {
     }
 
     @Override
-    public ManufacturerGroup create(ManufacturerGroup group) {
+    public ManufacturerGroup save(ManufacturerGroup group) {
         ManufacturerGroup g =  groupJpaRepository.saveAndFlush(group);
         em.refresh(g);
         return g;

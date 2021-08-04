@@ -38,7 +38,7 @@ public class ManufacturerRepositoryImpl implements IManufacturerRepository {
     }
 
     @Override
-    public Manufacturer create(Manufacturer manufacturer) {
+    public Manufacturer save(Manufacturer manufacturer) {
         return manufacturerJpaRepository.save(manufacturer);
     }
 

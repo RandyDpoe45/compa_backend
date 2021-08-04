@@ -9,7 +9,7 @@ public interface IExpertVisitNoteRepository {
 
     public ExpertVisitNote get(Long id);
     Page<ExpertVisitNote> getAll(Map<String, String> params);
-    public ExpertVisitNote create(ExpertVisitNote expertVisitNote);
+    public ExpertVisitNote save(ExpertVisitNote expertVisitNote);
     public ExpertVisitNote update(Long expertVisitNoteId, ExpertVisitNote expertVisitNote);
     public void delete(Long expertVisitNoteId);
 }

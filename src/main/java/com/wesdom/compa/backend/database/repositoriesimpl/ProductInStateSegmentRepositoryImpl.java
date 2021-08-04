@@ -38,7 +38,7 @@ public class ProductInStateSegmentRepositoryImpl implements IProductInStateSegme
     }
 
     @Override
-    public ProductInStateSegment create(ProductInStateSegment productInStateSegment) {
+    public ProductInStateSegment save(ProductInStateSegment productInStateSegment) {
         ProductInStateSegment p = productInStateSegmentJpaRepository.saveAndFlush(productInStateSegment);
         em.refresh(p);
         return p;

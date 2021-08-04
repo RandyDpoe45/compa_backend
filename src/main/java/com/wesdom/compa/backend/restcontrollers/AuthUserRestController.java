@@ -44,7 +44,7 @@ public class AuthUserRestController {
     @JsonView(SystemViews.AuthUserBasicView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public AuthUser createUser(@RequestBody AuthUser authUser){
-        return userService.create(authUser);
+        return userService.save(authUser);
     }
 
     @JsonView(SystemViews.AuthUserBasicView.class)

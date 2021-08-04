@@ -37,7 +37,7 @@ public class AssociationPromoterRepositoryImpl implements IAssociationPromoterRe
     }
 
     @Override
-    public AssociationPromoter create(AssociationPromoter associationPromoter) {
+    public AssociationPromoter save(AssociationPromoter associationPromoter) {
         AssociationPromoter m = associationPromoterJpaRepository.saveAndFlush(associationPromoter);
         em.refresh(m);
         return m;

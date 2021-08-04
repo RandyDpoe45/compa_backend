@@ -28,7 +28,7 @@ public class GroupRestController {
     @JsonView(SystemViews.GroupBasicView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ManufacturerGroup createUser(@RequestBody ManufacturerGroup group){
-        return groupRepository.create(group);
+        return groupRepository.save(group);
     }
 
     @JsonView(SystemViews.GroupBasicView.class)

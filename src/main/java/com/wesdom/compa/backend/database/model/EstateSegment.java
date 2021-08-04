@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -45,9 +47,11 @@ public class EstateSegment {
     @ManyToOne(targetEntity = Estate.class,fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotFound(action = NotFoundAction.IGNORE)
     private Estate estate;
 
     @ManyToOne(targetEntity = EstateSegmentType.class, fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
     @JsonView({SystemViews.EstateSegmentBasicView.class,SystemViews.EstateSegmentDetailView.class})
     private EstateSegmentType estateSegmentType;
 
@@ -65,6 +69,7 @@ public class EstateSegment {
 
     @JsonView({SystemViews.EstateSegmentDetailView.class})
     @ManyToMany(targetEntity = Manufacturer.class, fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
     private List<Manufacturer> manufacturerList;
 
 }

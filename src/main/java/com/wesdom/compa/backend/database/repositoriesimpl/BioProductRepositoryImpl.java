@@ -33,7 +33,7 @@ public class BioProductRepositoryImpl implements IBioProductRepository {
     }
 
     @Override
-    public BioProduct create(BioProduct bioProduct) {
+    public BioProduct save(BioProduct bioProduct) {
         return bioProductJpaRepository.save(bioProduct);
     }
 

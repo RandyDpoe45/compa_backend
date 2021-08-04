@@ -76,7 +76,7 @@ public class EstateSegmentRepositoryImpl implements IEstateSegmentRepository {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public EstateSegment create(EstateSegment estateSegment) {
+    public EstateSegment save(EstateSegment estateSegment) {
         estateSegment = estateSegmentJpaRepository.saveAndFlush(estateSegment);
         em.refresh(estateSegment);
         return estateSegment;

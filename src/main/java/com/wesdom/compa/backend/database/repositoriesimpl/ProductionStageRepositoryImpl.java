@@ -18,7 +18,7 @@ import javax.persistence.PersistenceContext;
 import java.util.Map;
 
 @Service
-public class ProductionStageRepositoryImpl implements IProductionStageRepository {
+public class ProductionStageRepositoryImpl implements IProductionStageRepository{
     
     @Autowired
     private ProductionStageJpaRepository productionStageJpaRepository;
@@ -40,7 +40,7 @@ public class ProductionStageRepositoryImpl implements IProductionStageRepository
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public ProductionStage create(ProductionStage productionStage) {
+    public ProductionStage save(ProductionStage productionStage) {
         productionStage = productionStageJpaRepository.saveAndFlush(productionStage);
         em.refresh(productionStage);
         return productionStage;
@@ -49,13 +49,31 @@ public class ProductionStageRepositoryImpl implements IProductionStageRepository
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ProductionStage update(Long productionStageId, ProductionStage productionStage) {
-        productionStage = productionStageJpaRepository.saveAndFlush(productionStage);
+        ProductionStage p = productionStageJpaRepository.getOne(productionStageId);
+        p.setEstateSegmentType(productionStage.getEstateSegmentType())
+                .setName(productionStage.getName());
+        productionStage = productionStageJpaRepository.saveAndFlush(p);
         em.refresh(productionStage);
         return productionStage;
     }
 
     @Override
+    public ProductionStage getLastStageByEstateSegmentTypeId(Long estateSegmentTypeId) {
+        return productionStageJpaRepository.findTop1ByEstateSegmentTypeIdOrderByStageOrderDesc(
+                estateSegmentTypeId
+        );
+    }
+
+    @Override
     public void delete(Long productionStageId) {
         productionStageJpaRepository.deleteById(productionStageId);
+    }
+
+    @Override
+    public ProductionStage getByStageOrderAndEstateSegmentTypeId(Long stageOrder, Long estateSegmentTypeId) {
+        return productionStageJpaRepository.findTop1ByStageOrderAndEstateSegmentTypeId(
+                stageOrder,
+                estateSegmentTypeId
+        );
     }
 }

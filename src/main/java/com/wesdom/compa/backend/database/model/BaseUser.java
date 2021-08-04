@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.springframework.data.util.Lazy;
 
 import javax.persistence.*;
@@ -36,6 +38,7 @@ public abstract class BaseUser {
             SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,
             SystemViews.CommercialPartnerBasicView.class, SystemViews.PromoterDetailedView.class
     })
+    @NotFound(action = NotFoundAction.IGNORE)
     private AuthUser authUser;
 
     @JsonView({
@@ -118,6 +121,7 @@ public abstract class BaseUser {
             SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
             SystemViews.CommercialPartnerBasicView.class, SystemViews.PromoterDetailedView.class
     })
+    @NotFound(action = NotFoundAction.IGNORE)
     private Municipality municipality;
 
     @ManyToOne(targetEntity = Department.class,fetch = FetchType.LAZY)
@@ -125,6 +129,7 @@ public abstract class BaseUser {
             SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
             SystemViews.CommercialPartnerBasicView.class, SystemViews.PromoterDetailedView.class
     })
+    @NotFound(action = NotFoundAction.IGNORE)
     private Department department;
 
 

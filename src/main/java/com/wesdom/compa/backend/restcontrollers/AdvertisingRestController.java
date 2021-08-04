@@ -37,8 +37,8 @@ public class AdvertisingRestController {
     @PostMapping
     @JsonView(SystemViews.AdvertisingBasicView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public Advertising create(@RequestBody Advertising advertising){
-        return advertisingRepository.create(advertising);
+    public Advertising save(@RequestBody Advertising advertising){
+        return advertisingRepository.save(advertising);
     }
 
     @PutMapping(value = "/{id}")

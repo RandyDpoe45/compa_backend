@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,8 +21,10 @@ public class Activity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
-            SystemViews.ActivityBasicView.class})
+    @JsonView({
+            SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
+            SystemViews.ActivityBasicView.class
+    })
     private Long id;
 
     @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
@@ -34,13 +38,16 @@ public class Activity {
     @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
             SystemViews.ActivityBasicView.class})
     @ManyToOne(targetEntity = EstateSegmentType.class, fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
     private EstateSegmentType estateSegmentType;
 
     @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
             SystemViews.ActivityBasicView.class})
     @ManyToOne(targetEntity = ProductionStage.class, fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
     private ProductionStage productionStage;
 
     @OneToMany(targetEntity = ActivityOption.class, fetch = FetchType.LAZY, mappedBy = "activity")
+    @NotFound(action = NotFoundAction.IGNORE)
     private List<ActivityOption> activityOptionList;
 }

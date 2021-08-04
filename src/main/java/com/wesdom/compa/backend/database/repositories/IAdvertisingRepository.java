@@ -8,7 +8,7 @@ import java.util.Map;
 public interface IAdvertisingRepository {
     public Advertising get(Long id);
     public Page<Advertising> getAll(Map<String,String> params);
-    public Advertising create(Advertising advertising);
+    public Advertising save(Advertising advertising);
     public Advertising update(Long advertisingId, Advertising advertising);
     public void delete(Long advertisingId);
 }

@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -30,15 +32,27 @@ public class ProductionActivity {
     @ManyToOne(targetEntity = ProductInStateSegment.class, fetch = FetchType.LAZY)
     @JsonView({SystemViews.ProductionActivityBasicView.class})
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotFound(action = NotFoundAction.IGNORE)
     private ProductInStateSegment productInStateSegment;
 
     @ManyToOne(targetEntity = Activity.class,fetch = FetchType.LAZY)
     @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotFound(action = NotFoundAction.IGNORE)
     private Activity activity;
 
     @OneToMany(targetEntity = ProductionActivityAnswer.class,fetch = FetchType.LAZY,mappedBy = "productionActivity")
 //    @JsonView({SystemViews.ProductionActivityBasicView.class})
+    @NotFound(action = NotFoundAction.IGNORE)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<ProductionActivityAnswer> activityAnswers;
+
+    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    public Float getActivityScore(){
+        Float activityScore = this.activityAnswers.stream()
+                .map(x -> x.getActivityOption().getScore())
+                .reduce(0f,Float::sum);
+        return activityScore / this.activityAnswers.size();
+    }
 
 }

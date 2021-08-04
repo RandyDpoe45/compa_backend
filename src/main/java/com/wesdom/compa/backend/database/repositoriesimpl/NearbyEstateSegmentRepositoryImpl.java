@@ -42,7 +42,7 @@ public class NearbyEstateSegmentRepositoryImpl implements INearbyEstateSegmentRe
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public NearbyEstateSegment create(NearbyEstateSegment estateSegment) {
+    public NearbyEstateSegment save(NearbyEstateSegment estateSegment) {
         estateSegment = nearbyEstateSegmentJpaRepository.saveAndFlush(estateSegment);
         em.refresh(estateSegment);
         return estateSegment;

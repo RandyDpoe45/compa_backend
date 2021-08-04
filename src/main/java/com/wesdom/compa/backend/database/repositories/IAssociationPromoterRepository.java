@@ -8,7 +8,7 @@ import java.util.Map;
 public interface IAssociationPromoterRepository {
     public AssociationPromoter get(Long id);
     public Page<AssociationPromoter> getAll(Map<String,String> params);
-    public AssociationPromoter create(AssociationPromoter associationPromoter);
+    public AssociationPromoter save(AssociationPromoter associationPromoter);
     public AssociationPromoter update(Long associationPromoterId, AssociationPromoter associationPromoter);
     public AssociationPromoter getByAssociationIdAndPromoterId(Long assId, Long promId);
     public void delete(Long associationPromoterId);

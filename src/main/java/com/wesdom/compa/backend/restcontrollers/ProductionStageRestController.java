@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.wesdom.compa.backend.database.model.ProductionStage;
 import com.wesdom.compa.backend.database.repositories.IProductionStageRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
+import com.wesdom.compa.backend.dtos.ProductionStageOrderDto;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
 import com.wesdom.compa.backend.service.interfaces.IProductionStageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class ProductionStageRestController {
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     @JsonView(SystemViews.ProductionStageBasicView.class)
     public ProductionStage createUser(@RequestBody ProductionStage productionStage){
-        return productionStageRepository.create(productionStage);
+        return productionStageService.save(productionStage);
     }
 
     @GetMapping
@@ -50,6 +51,23 @@ public class ProductionStageRestController {
     @JsonView(SystemViews.ProductionStageBasicView.class)
     public ProductionStage update(@PathVariable Long id, @RequestBody ProductionStage productionStage) throws JsonProcessingException {
         return productionStageRepository.update(id,productionStage);
+    }
+
+    @PatchMapping("/stageOrder")
+    public ProductionStage updateStageOrder(@RequestBody ProductionStageOrderDto productionStageOrderDto){
+        ProductionStage productionStage = productionStageRepository.get(
+                productionStageOrderDto.getProductionStageId()
+        );
+        ProductionStage conflictStage = productionStageRepository.getByStageOrderAndEstateSegmentTypeId(
+                productionStageOrderDto.getDesiredStageOrder(),
+                productionStage.getEstateSegmentType().getId()
+        );
+        if(conflictStage != null){
+            conflictStage.setStageOrder(productionStageOrderDto.getCurrentStageOrder());
+            productionStageRepository.save(conflictStage);
+        }
+        productionStage.setStageOrder(productionStageOrderDto.getDesiredStageOrder());
+        return productionStageRepository.save(productionStage);
     }
 
     @DeleteMapping(value = "/{id}")

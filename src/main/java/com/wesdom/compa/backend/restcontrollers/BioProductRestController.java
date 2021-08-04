@@ -36,8 +36,8 @@ public class BioProductRestController {
 
     @PostMapping
     @JsonView(SystemViews.BioProductBasicView.class)
-    public BioProduct create(@RequestBody BioProduct bioProduct){
-        return bioProductRepository.create(bioProduct);
+    public BioProduct save(@RequestBody BioProduct bioProduct){
+        return bioProductRepository.save(bioProduct);
     }
 
     @PutMapping(value = "/{id}")

@@ -27,7 +27,7 @@ public class RequestRestController {
     @JsonView({SystemViews.RequestBasicView.class})
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Request createUser(@RequestBody Request request){
-        return requestRepository.create(request);
+        return requestRepository.save(request);
     }
 
     @GetMapping

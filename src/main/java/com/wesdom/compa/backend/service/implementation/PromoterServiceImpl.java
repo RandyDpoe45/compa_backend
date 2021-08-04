@@ -26,7 +26,7 @@ public class PromoterServiceImpl implements IPromoterService {
     @Override
     public Promoter createPromoter(Promoter promoter) {
         validateBioProducts(promoter.getSystemBioProductList());
-        return promoterRepository.create(promoter);
+        return promoterRepository.save(promoter);
     }
 
     @Override

@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -25,7 +27,8 @@ public class ManufacturerGroup {
             SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateBasicView.class ,SystemViews.EstateSegmentDetailView.class,
             SystemViews.RequestOfferBasicView.class, SystemViews.AssociationMemberBasicView.class,
-            SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingBasicView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingBasicView.class,
+            SystemViews.RequestOfferDetailView.class
     })
     private Long id;
 
@@ -33,7 +36,8 @@ public class ManufacturerGroup {
             SystemViews.GroupBasicView.class, SystemViews.GroupDetailedView.class,
             SystemViews.EstateBasicView.class, SystemViews.EstateSegmentDetailView.class,
             SystemViews.RequestOfferBasicView.class, SystemViews.AssociationMemberBasicView.class,
-            SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingBasicView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingBasicView.class,
+            SystemViews.RequestOfferDetailView.class
     })
     private String name;
 
@@ -55,9 +59,13 @@ public class ManufacturerGroup {
     private GroupType groupType;
 
     @OneToMany(targetEntity = Estate.class, mappedBy = "manufacturerGroup",fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Estate> estateList;
 
     @JsonView({SystemViews.GroupDetailedView.class})
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotFound(action = NotFoundAction.IGNORE)
     @ManyToMany(targetEntity = Manufacturer.class, fetch = FetchType.LAZY)
     private List<Manufacturer> manufacturerList;
 }

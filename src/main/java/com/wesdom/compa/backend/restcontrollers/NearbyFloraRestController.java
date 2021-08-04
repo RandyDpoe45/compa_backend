@@ -28,7 +28,7 @@ public class NearbyFloraRestController {
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     @JsonView(SystemViews.NearbyFloraBasicView.class)
     public NearbyFlora createUser(@RequestBody NearbyFlora NearbyFlora){
-        return nearbyFloraRepository.create(NearbyFlora);
+        return nearbyFloraRepository.save(NearbyFlora);
     }
 
     @GetMapping

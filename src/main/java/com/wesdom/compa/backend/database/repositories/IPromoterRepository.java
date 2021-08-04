@@ -8,7 +8,7 @@ import java.util.Map;
 public interface IPromoterRepository {
     public Promoter get(Long id);
     public Page<Promoter> getAll(Map<String,String> params);
-    public Promoter create(Promoter promoter);
+    public Promoter save(Promoter promoter);
     public Promoter update(Long promoterId, Promoter promoter);
     public void delete(Long promoterId);
 }

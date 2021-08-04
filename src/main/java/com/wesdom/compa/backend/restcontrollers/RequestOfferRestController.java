@@ -3,6 +3,7 @@ package com.wesdom.compa.backend.restcontrollers;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.wesdom.compa.backend.database.model.RequestOffer;
+import com.wesdom.compa.backend.database.model.RequestOfferStatus;
 import com.wesdom.compa.backend.database.repositories.IRequestOfferRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @CrossOrigin(origins = {"*"})
@@ -27,7 +29,12 @@ public class RequestOfferRestController {
     @JsonView({SystemViews.RequestOfferBasicView.class})
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public RequestOffer createUser(@RequestBody RequestOffer requestOffer){
-        return requestOfferRepository.create(requestOffer);
+        return requestOfferRepository.save(requestOffer);
+    }
+
+    @GetMapping("/status")
+    public List<RequestOfferStatus> getStatusList(){
+        return requestOfferRepository.getStatusList();
     }
 
     @GetMapping

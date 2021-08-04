@@ -41,7 +41,7 @@ public class EstateRepositoryImpl  implements IEstateRepository {
     }
 
     @Override
-    public Estate create(Estate estate) {
+    public Estate save(Estate estate) {
         Estate e = estateJpaRepository.saveAndFlush(estate);
         em.refresh(e);
         return e;

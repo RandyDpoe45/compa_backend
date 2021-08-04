@@ -30,7 +30,7 @@ public class AssociationServiceImpl implements IAssociationService {
                     ExceptionCodesEnum.GROUP_ALREADY_BINDED,
                     "El grupo  ya esta asociado a la asociacion");
         }
-        return associationMemberRepository.create(associationMember);
+        return associationMemberRepository.save(associationMember);
     }
 
     @Override
@@ -44,6 +44,6 @@ public class AssociationServiceImpl implements IAssociationService {
                     ExceptionCodesEnum.PROMOTER_ALREADY_BINDED,
                     "El promotor  ya esta asociado a la asociacion");
         }
-        return associationPromoterRepository.create(associationPromoter);
+        return associationPromoterRepository.save(associationPromoter);
     }
 }

@@ -39,7 +39,7 @@ public class ActivityRepositoryImpl implements IActivityRepository {
 
     @Override
     @Transactional
-    public Activity create(Activity activity) {
+    public Activity save(Activity activity) {
         Activity a = activityJpaRepository.saveAndFlush(activity);
         em.refresh(a);
         return a;

@@ -39,12 +39,12 @@ public class MultimediaDataRestController {
     
     @PostMapping
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public GeneralResponse create(@RequestParam("entityId") Long entityId, @RequestParam("entityType") String entityType,
+    public GeneralResponse save(@RequestParam("entityId") Long entityId, @RequestParam("entityType") String entityType,
                                   @RequestParam("imgType") String imgType, @RequestParam("files") MultipartFile[] files)
             throws JsonProcessingException{
         
         for(MultipartFile file :  files){
-            multimediaDataService.create(imgType, entityId, entityType, file);
+            multimediaDataService.save(imgType, entityId, entityType, file);
         }
         
         return new GeneralResponse("Cargado con exito", "000");

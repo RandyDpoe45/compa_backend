@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -39,6 +41,7 @@ public class Product {
             SystemViews.AdvertisingBasicView.class
     })
     @ManyToOne(targetEntity = ProductType.class, fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
     private ProductType productType;
 
     @JsonView({
@@ -59,6 +62,7 @@ public class Product {
             SystemViews.ProductBasicView.class
     })
     @ManyToOne(targetEntity = MeasureUnit.class, fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
     private MeasureUnit measureUnit;
 
     @JsonView({

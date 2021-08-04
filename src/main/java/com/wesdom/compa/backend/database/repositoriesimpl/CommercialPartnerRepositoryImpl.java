@@ -32,7 +32,7 @@ public class CommercialPartnerRepositoryImpl implements ICommercialPartnerReposi
     }
 
     @Override
-    public CommercialPartner create(CommercialPartner commercialPartner) {
+    public CommercialPartner save(CommercialPartner commercialPartner) {
         return commercialPartnerJpaRepository.save(commercialPartner);
     }
 

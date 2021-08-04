@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.Map;
 
 @Service
@@ -22,6 +24,9 @@ public class ProductionActivityAnswerRepositoryImpl implements IProductionActivi
 
     @Autowired
     private GroupTypeJpaRepository productionActivityAnswerTypeJpaRepository;
+
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
     public ProductionActivityAnswer get(Long id) {
@@ -36,8 +41,10 @@ public class ProductionActivityAnswerRepositoryImpl implements IProductionActivi
     }
 
     @Override
-    public ProductionActivityAnswer create(ProductionActivityAnswer productionActivityAnswer) {
-        return productionActivityAnswerJpaRepository.save(productionActivityAnswer);
+    public ProductionActivityAnswer save(ProductionActivityAnswer productionActivityAnswer) {
+        productionActivityAnswer = productionActivityAnswerJpaRepository.saveAndFlush(productionActivityAnswer);
+        em.refresh(productionActivityAnswer);
+        return productionActivityAnswer;
     }
 
     @Override
@@ -45,7 +52,8 @@ public class ProductionActivityAnswerRepositoryImpl implements IProductionActivi
         ProductionActivityAnswer e = productionActivityAnswerJpaRepository.getOne(productionActivityAnswerId);
         e.setAnswer(productionActivityAnswer.getAnswer()).setActivityOption(productionActivityAnswer.getActivityOption())
                 .setProductionActivity(productionActivityAnswer.getProductionActivity());
-        productionActivityAnswerJpaRepository.save(e);
+        e = productionActivityAnswerJpaRepository.saveAndFlush(e);
+        em.refresh(e);
         return e;
     }
 

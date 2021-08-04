@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 
@@ -22,10 +24,12 @@ public class ExpertVisitNote {
     private Long id;
 
     @JsonView({SystemViews.ExpertVisitNoteBasicView.class})
+    @NotFound(action = NotFoundAction.IGNORE)
     @ManyToOne(targetEntity = ExpertVisit.class,fetch = FetchType.LAZY)
     private ExpertVisit expertVisit;
 
     @JsonView({SystemViews.ExpertVisitNoteBasicView.class})
+    @NotFound(action = NotFoundAction.IGNORE)
     @ManyToOne(targetEntity = ProductionActivity.class,fetch = FetchType.LAZY)
     private ProductionActivity productionActivity;
 

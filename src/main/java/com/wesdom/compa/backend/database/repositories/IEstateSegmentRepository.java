@@ -12,7 +12,7 @@ public interface IEstateSegmentRepository {
     public Page<BeekeepingSegment> getAllBe(Map<String,String> params);
     public Page<AgriculturalSegment> getAllAg(Map<String,String> params);
     public Page<ConservationSegment> getAllCo(Map<String,String> params);
-    public EstateSegment create(EstateSegment estateSegment);
+    public EstateSegment save(EstateSegment estateSegment);
     public EstateSegment update(Long estateSegmentId, EstateSegment estateSegment);
     public void delete(Long estateSegmentId);
     public List<EstateSegmentType> getEstateSegmentTypeList();

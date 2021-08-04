@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -25,11 +27,13 @@ public class ExpertAlert {
 
     @JsonView({SystemViews.ExpertAlertBasicView.class})
     @ManyToOne(targetEntity = Promoter.class,fetch = FetchType.LAZY)
+    @NotFound(action = NotFoundAction.IGNORE)
     private Promoter promoter;
 
     @JsonView({SystemViews.ExpertAlertBasicView.class})
     @ManyToOne(targetEntity = ProductInStateSegment.class, fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotFound(action = NotFoundAction.IGNORE)
     private ProductInStateSegment productInStateSegment;
 
     @JsonView({SystemViews.ExpertAlertBasicView.class})

@@ -32,11 +32,15 @@ public class PaginationBuilderImpl implements IPaginationBuilder {
             String sortProp = params.get(PaginationParamsEnum.SORT_PROPERTY.getTag());
             if(sortProp != null){
                 if(sortDir != null){
-                    Direction direction =  sortProp.equals(PaginationParamsEnum.SORT_DIRECTION.getDefaultValue()) ? 
+                    Direction direction =  sortDir.equals(PaginationParamsEnum.SORT_DIRECTION.getDefaultValue()) ?
                             Direction.DESC : Direction.ASC;
-                    return PageRequest.of(Integer.parseInt(pageNumber), Integer.parseInt(pageSize), Sort.by(direction, sortProp));
+                    return PageRequest.of(
+                            Integer.parseInt(pageNumber),
+                            Integer.parseInt(pageSize),
+                            Sort.by(direction, sortProp.split(","))
+                    );
                 }
-                return PageRequest.of(Integer.parseInt(pageNumber), Integer.parseInt(pageSize), Sort.by(sortProp));
+                return PageRequest.of(Integer.parseInt(pageNumber), Integer.parseInt(pageSize), Sort.by(sortProp.split(",")));
             }
             return PageRequest.of(Integer.parseInt(pageNumber), Integer.parseInt(pageSize));
         }

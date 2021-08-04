@@ -45,8 +45,8 @@ public class ActivityRestController {
 
     @PostMapping
     @JsonView(SystemViews.ActivityBasicView.class)
-    public Activity create(@RequestBody Activity activity){
-        return activityRepository.create(activity);
+    public Activity save(@RequestBody Activity activity){
+        return activityRepository.save(activity);
     }
 
     @PutMapping(value = "/{id}")
@@ -77,7 +77,7 @@ public class ActivityRestController {
     @PostMapping("/activityOption")
     @JsonView(SystemViews.ActivityOptionBasicView.class)
     public ActivityOption createActivityOption(@RequestBody ActivityOption activityOption){
-        return activityOptionRepository.create(activityOption);
+        return activityOptionRepository.save(activityOption);
     }
 
     @PutMapping(value = "/activityOption/{id}")
@@ -108,7 +108,7 @@ public class ActivityRestController {
     @PostMapping("/activityOption/optionAnswer")
     @JsonView(SystemViews.OptionAnswerBasicView.class)
     public OptionAnswer createOptionAnswer(@RequestBody OptionAnswer optionAnswer){
-        return optionAnswerRepository.create(optionAnswer);
+        return optionAnswerRepository.save(optionAnswer);
     }
 
     @PutMapping(value = "/activityOption/optionAnswer/{id}")

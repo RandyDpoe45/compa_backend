@@ -1,7 +1,9 @@
 package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.RequestOfferJpaRepository;
+import com.wesdom.compa.backend.database.jparepositories.RequestOfferStatusJpaRepository;
 import com.wesdom.compa.backend.database.model.RequestOffer;
+import com.wesdom.compa.backend.database.model.RequestOfferStatus;
 import com.wesdom.compa.backend.database.repositories.IRequestOfferRepository;
 import com.wesdom.compa.backend.service.implementation.PaginationBuilderImpl;
 import com.wesdom.compa.backend.service.implementation.PredicateBuilderServiceImpl;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -20,6 +23,9 @@ public class RequestOfferRepositoryImpl implements IRequestOfferRepository {
 
     @Autowired
     private RequestOfferJpaRepository requestOfferJpaRepository;
+
+    @Autowired
+    private RequestOfferStatusJpaRepository requestOfferStatusJpaRepository;
 
     @PersistenceContext
     private EntityManager em;
@@ -37,10 +43,15 @@ public class RequestOfferRepositoryImpl implements IRequestOfferRepository {
     }
 
     @Override
-    public RequestOffer create(RequestOffer requestOffer) {
+    public RequestOffer save(RequestOffer requestOffer) {
         requestOffer = requestOfferJpaRepository.saveAndFlush(requestOffer);
         em.refresh(requestOffer);
         return requestOffer;
+    }
+
+    @Override
+    public List<RequestOfferStatus> getStatusList() {
+        return requestOfferStatusJpaRepository.findAll();
     }
 
     @Override

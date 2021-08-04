@@ -25,7 +25,7 @@ public class CommercialPartnerRestController {
     @JsonView(SystemViews.CommercialPartnerBasicView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public CommercialPartner createUser(@RequestBody CommercialPartner commercialPartner){
-        return commercialPartnerRepository.create(commercialPartner);
+        return commercialPartnerRepository.save(commercialPartner);
     }
 
     @JsonView(SystemViews.CommercialPartnerBasicView.class)

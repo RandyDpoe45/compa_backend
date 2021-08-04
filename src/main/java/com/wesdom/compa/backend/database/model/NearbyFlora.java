@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -28,11 +30,13 @@ public class NearbyFlora {
     @JsonView({SystemViews.NearbyFloraBasicView.class})
     @ManyToOne(targetEntity = Flora.class, fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotFound(action = NotFoundAction.IGNORE)
     private Flora flora;
 
     @ManyToOne(targetEntity = EstateSegment.class, fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonView({SystemViews.NearbyFloraBasicView.class})
+    @NotFound(action = NotFoundAction.IGNORE)
     private EstateSegment estateSegment;
 
     @JsonView({SystemViews.NearbyFloraBasicView.class})

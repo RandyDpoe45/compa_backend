@@ -28,7 +28,7 @@ public class ManufacturerRestController {
     @JsonView(SystemViews.ManufacturerBasicView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Manufacturer createUser(@RequestBody Manufacturer manufacturer){
-        return manufacturerRepository.create(manufacturer);
+        return manufacturerRepository.save(manufacturer);
     }
 
     @JsonView(SystemViews.ManufacturerBasicView.class)

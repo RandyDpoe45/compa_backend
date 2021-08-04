@@ -36,7 +36,7 @@ public class AuthUserServiceImpl implements IAuthUserService, UserDetailsService
     }
 
     @Override
-    public AuthUser create(AuthUser authUser) {
+    public AuthUser save(AuthUser authUser) {
         AuthUser auxUser = authUserRepository.getUserByUserNameOrEmail(authUser.getEmail());
         if(auxUser != null){
             throw new GeneralException(ExceptionCodesEnum.EMAIL_IN_USE,"El Email ya se encuentra en uso ");
@@ -49,7 +49,7 @@ public class AuthUserServiceImpl implements IAuthUserService, UserDetailsService
         String encodedPassword = authUser.getPassword();
         encodedPassword = passwordEncoder.encode(encodedPassword);
         authUser.setPassword(encodedPassword);
-        return authUserRepository.create(authUser);
+        return authUserRepository.save(authUser);
     }
 
     @Override
@@ -69,14 +69,14 @@ public class AuthUserServiceImpl implements IAuthUserService, UserDetailsService
     public AuthUser activateUser(Long authUserId) {
         AuthUser authUser = authUserRepository.get(authUserId);
         authUser.setIsActive(true);
-        return authUserRepository.create(authUser);
+        return authUserRepository.save(authUser);
     }
 
     @Override
     public AuthUser deactivateUser(Long authUserId) {
         AuthUser authUser = authUserRepository.get(authUserId);
         authUser.setIsActive(false);
-        return authUserRepository.create(authUser);
+        return authUserRepository.save(authUser);
     }
 
     @Override

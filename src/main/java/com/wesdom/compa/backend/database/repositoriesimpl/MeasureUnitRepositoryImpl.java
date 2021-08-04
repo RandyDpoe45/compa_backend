@@ -32,7 +32,7 @@ public class MeasureUnitRepositoryImpl implements IMeasureUnitRepository {
     }
 
     @Override
-    public MeasureUnit create(MeasureUnit measureUnit) {
+    public MeasureUnit save(MeasureUnit measureUnit) {
         return measureUnitJpaRepository.save(measureUnit);
     }
 

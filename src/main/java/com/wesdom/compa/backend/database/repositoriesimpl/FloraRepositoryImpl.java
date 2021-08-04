@@ -40,7 +40,7 @@ public class FloraRepositoryImpl implements IFloraRepository {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public Flora create(Flora flora) {
+    public Flora save(Flora flora) {
         flora = floraJpaRepository.saveAndFlush(flora);
         em.refresh(flora);
         return flora;

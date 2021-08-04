@@ -22,7 +22,21 @@ import java.math.BigInteger;
 @JsonTypeName("AgriculturalSegment")
 public class AgriculturalSegment extends EstateSegment{
 
-    @JsonView({SystemViews.EstateSegmentBasicView.class,SystemViews.ProductInStateBasicView.class
-            ,SystemViews.EstateSegmentDetailView.class})
+    @JsonView({
+            SystemViews.EstateSegmentBasicView.class,SystemViews.ProductInStateBasicView.class,
+            SystemViews.EstateSegmentDetailView.class
+    })
     private BigDecimal promHarvest;
+
+    @JsonView({
+            SystemViews.EstateSegmentBasicView.class,SystemViews.ProductInStateBasicView.class,
+            SystemViews.EstateSegmentDetailView.class
+    })
+    private BigDecimal ph;
+
+    @JsonView({
+            SystemViews.EstateSegmentBasicView.class,SystemViews.ProductInStateBasicView.class,
+            SystemViews.EstateSegmentDetailView.class
+    })
+    private String soilMinerals;
 }

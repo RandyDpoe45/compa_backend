@@ -2,8 +2,8 @@ package com.wesdom.compa.backend.restcontrollers;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.wesdom.compa.backend.database.model.ProductionActivityAnswer;
 import com.wesdom.compa.backend.database.model.ProductionActivity;
+import com.wesdom.compa.backend.database.model.ProductionActivityAnswer;
 import com.wesdom.compa.backend.database.repositories.IProductionActivityAnswerRepository;
 import com.wesdom.compa.backend.database.repositories.IProductionActivityRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
@@ -27,12 +27,12 @@ public class ProductionActivityRestController {
     @Autowired
     private IProductionActivityRepository productionActivityRepository;
 
-
+    //cambiar creacion a dto
     @PostMapping
     @JsonView(SystemViews.ProductionActivityBasicView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public ProductionActivity create(@RequestBody ProductionActivity productionActivity){
-        return productionActivityRepository.create(productionActivity);
+    public ProductionActivity save(@RequestBody ProductionActivity productionActivity){
+        return productionActivityRepository.save(productionActivity);
     }
 
     @GetMapping
@@ -65,7 +65,7 @@ public class ProductionActivityRestController {
     @JsonView(SystemViews.ProductionActivityAnswerBasicView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ProductionActivityAnswer createAnswer(@RequestBody ProductionActivityAnswer productionActivityAnswer){
-        return productionActivityAnswerRepository.create(productionActivityAnswer);
+        return productionActivityAnswerRepository.save(productionActivityAnswer);
     }
 
     @GetMapping("/productionActivityAnswer")

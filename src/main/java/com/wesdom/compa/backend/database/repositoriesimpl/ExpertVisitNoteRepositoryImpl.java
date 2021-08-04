@@ -41,7 +41,7 @@ public class ExpertVisitNoteRepositoryImpl implements IExpertVisitNoteRepository
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public ExpertVisitNote create(ExpertVisitNote expertVisitNote) {
+    public ExpertVisitNote save(ExpertVisitNote expertVisitNote) {
         expertVisitNote = expertVisitNoteJpaRepository.saveAndFlush(expertVisitNote);
         em.refresh(expertVisitNote);
         return expertVisitNote;

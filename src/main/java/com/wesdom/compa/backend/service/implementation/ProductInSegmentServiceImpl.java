@@ -1,8 +1,12 @@
 package com.wesdom.compa.backend.service.implementation;
 
+import com.wesdom.compa.backend.database.model.EstateSegment;
+import com.wesdom.compa.backend.database.model.Product;
 import com.wesdom.compa.backend.database.model.ProductInStateSegment;
 import com.wesdom.compa.backend.database.model.ProductionActivity;
+import com.wesdom.compa.backend.database.repositories.IEstateSegmentRepository;
 import com.wesdom.compa.backend.database.repositories.IProductInStateSegmentRepository;
+import com.wesdom.compa.backend.database.repositories.IProductRepository;
 import com.wesdom.compa.backend.database.repositories.IProductionActivityRepository;
 import com.wesdom.compa.backend.exceptionhandling.exceptions.ExceptionCodesEnum;
 import com.wesdom.compa.backend.exceptionhandling.exceptions.GeneralException;
@@ -21,12 +25,20 @@ public class ProductInSegmentServiceImpl implements IProductInSegmentService{
     @Autowired
     private IProductionActivityRepository productionActivityRepository;
 
+    @Autowired
+    private IProductRepository productRepository;
+
+    @Autowired
+    private IEstateSegmentRepository estateSegmentRepository;
+
     @Override
     public ProductInStateSegment createProductInSegment(ProductInStateSegment productInStateSegment) {
 
-        if(productInStateSegment.getProduct().getProductType().getCode()
-                .equals(productInStateSegment.getEstateSegment().getEstateSegmentType().getCode())){
-            return productInStateSegmentRepository.create(productInStateSegment);
+        Product product = productRepository.get(productInStateSegment.getProduct().getId());
+        EstateSegment estateSegment = estateSegmentRepository.get(productInStateSegment.getEstateSegment().getId());
+        if(product.getProductType().getCode()
+                .equals(estateSegment.getEstateSegmentType().getCode())){
+            return productInStateSegmentRepository.save(productInStateSegment);
         }else{
             throw new GeneralException(
                     ExceptionCodesEnum.DIFFERENT_TYPE_PROD_SEG,

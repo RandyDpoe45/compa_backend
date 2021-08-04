@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.wesdom.compa.backend.database.model.ExpertVisit;
 import com.wesdom.compa.backend.database.model.ExpertVisitNote;
+import com.wesdom.compa.backend.database.model.ExpertVisitType;
 import com.wesdom.compa.backend.database.repositories.IExpertVisitNoteRepository;
 import com.wesdom.compa.backend.database.repositories.IExpertVisitRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @CrossOrigin(origins = {"*"})
@@ -32,13 +34,18 @@ public class ExpertVisitRestController {
     @JsonView(SystemViews.ExpertVisitBasicView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ExpertVisit createUser(@RequestBody ExpertVisit expertVisit){
-        return expertVisitRepository.create(expertVisit);
+        return expertVisitRepository.save(expertVisit);
     }
 
     @GetMapping
     @JsonView(SystemViews.ExpertVisitBasicView.class)
     public Page<ExpertVisit> getAll(@RequestParam Map<String,String> allParams){
         return expertVisitRepository.getAll(allParams);
+    }
+
+    @GetMapping("/types")
+    public List<ExpertVisitType> getTypes(){
+        return expertVisitRepository.getTypes();
     }
 
     @GetMapping("/{id}")
@@ -66,7 +73,7 @@ public class ExpertVisitRestController {
     @JsonView(SystemViews.ExpertVisitNoteBasicView.class)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ExpertVisitNote createNote(@RequestBody ExpertVisitNote expertVisitNote){
-        return expertVisitNoteRepository.create(expertVisitNote);
+        return expertVisitNoteRepository.save(expertVisitNote);
     }
 
     @GetMapping("/note")

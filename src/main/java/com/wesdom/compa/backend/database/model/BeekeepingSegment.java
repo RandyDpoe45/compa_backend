@@ -12,6 +12,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -66,6 +68,7 @@ public class BeekeepingSegment extends EstateSegment{
     @JsonView({SystemViews.EstateSegmentDetailView.class})
     @ManyToMany(targetEntity = ApiaryWoodType.class, fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotFound(action = NotFoundAction.IGNORE)
     private List<ApiaryWoodType> woodTypeList;
 
 }

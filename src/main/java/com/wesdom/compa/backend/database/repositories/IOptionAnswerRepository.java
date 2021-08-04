@@ -8,7 +8,7 @@ import java.util.Map;
 public interface IOptionAnswerRepository {
     public OptionAnswer get(Long id);
     public Page<OptionAnswer> getAll(Map<String,String> params);
-    public OptionAnswer create(OptionAnswer activity);
+    public OptionAnswer save(OptionAnswer activity);
     public OptionAnswer update(Long activityId, OptionAnswer activity);
     public void delete(Long activityId);
 }

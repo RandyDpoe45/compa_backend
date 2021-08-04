@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -27,6 +29,9 @@ public class ActivityOption {
     @JsonView({SystemViews.ProductionActivityAnswerBasicView.class, SystemViews.ActivityOptionBasicView.class})
     private String name;
 
+    @JsonView({SystemViews.ProductionActivityAnswerBasicView.class, SystemViews.ActivityOptionBasicView.class})
+    private Float score;
+
     //daily or regular
     @JsonView({SystemViews.ProductionActivityAnswerBasicView.class, SystemViews.ActivityOptionBasicView.class})
     private String optionType;
@@ -37,6 +42,7 @@ public class ActivityOption {
 
     @ManyToOne(targetEntity = Activity.class, fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotFound(action = NotFoundAction.IGNORE)
     private Activity activity;
 
 //    @ManyToMany(targetEntity = OptionAnswer.class,fetch = FetchType.LAZY)
