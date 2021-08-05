@@ -27,26 +27,41 @@ public class Activity {
     })
     private Long id;
 
-    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
-            SystemViews.ActivityBasicView.class})
+    @JsonView({
+            SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
+            SystemViews.ActivityBasicView.class
+    })
     private String name;
 
-    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
-            SystemViews.ActivityBasicView.class})
+    @JsonView({
+            SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
+            SystemViews.ActivityBasicView.class
+    })
     private String description;
 
-    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
-            SystemViews.ActivityBasicView.class})
+    @JsonView({
+            SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
+            SystemViews.ActivityBasicView.class
+    })
+    private String answerType;
+
+    @JsonView({
+            SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
+            SystemViews.ActivityBasicView.class
+    })
     @ManyToOne(targetEntity = EstateSegmentType.class, fetch = FetchType.LAZY)
     @NotFound(action = NotFoundAction.IGNORE)
     private EstateSegmentType estateSegmentType;
 
-    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
-            SystemViews.ActivityBasicView.class})
+    @JsonView({
+            SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
+            SystemViews.ActivityBasicView.class
+    })
     @ManyToOne(targetEntity = ProductionStage.class, fetch = FetchType.LAZY)
     @NotFound(action = NotFoundAction.IGNORE)
     private ProductionStage productionStage;
 
+    @JsonView({SystemViews.ActivityBasicView.class})
     @OneToMany(targetEntity = ActivityOption.class, fetch = FetchType.LAZY, mappedBy = "activity")
     @NotFound(action = NotFoundAction.IGNORE)
     private List<ActivityOption> activityOptionList;

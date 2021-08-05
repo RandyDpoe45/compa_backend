@@ -23,21 +23,36 @@ public class ActivityOption {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonView({SystemViews.ProductionActivityAnswerBasicView.class, SystemViews.ActivityOptionBasicView.class})
+    @JsonView({
+            SystemViews.ProductionActivityAnswerBasicView.class, SystemViews.ActivityOptionBasicView.class,
+            SystemViews.ActivityBasicView.class
+    })
     private Long id;
 
-    @JsonView({SystemViews.ProductionActivityAnswerBasicView.class, SystemViews.ActivityOptionBasicView.class})
+    @JsonView({
+            SystemViews.ProductionActivityAnswerBasicView.class, SystemViews.ActivityOptionBasicView.class,
+            SystemViews.ActivityBasicView.class
+    })
     private String name;
 
-    @JsonView({SystemViews.ProductionActivityAnswerBasicView.class, SystemViews.ActivityOptionBasicView.class})
+    @JsonView({
+            SystemViews.ProductionActivityAnswerBasicView.class, SystemViews.ActivityOptionBasicView.class,
+            SystemViews.ActivityBasicView.class
+    })
     private Float score;
 
     //daily or regular
-    @JsonView({SystemViews.ProductionActivityAnswerBasicView.class, SystemViews.ActivityOptionBasicView.class})
+    @JsonView({
+            SystemViews.ProductionActivityAnswerBasicView.class, SystemViews.ActivityOptionBasicView.class,
+            SystemViews.ActivityBasicView.class
+    })
     private String optionType;
 
     //either Open or closed answer
-    @JsonView({SystemViews.ProductionActivityAnswerBasicView.class, SystemViews.ActivityOptionBasicView.class})
+    @JsonView({
+            SystemViews.ProductionActivityAnswerBasicView.class, SystemViews.ActivityOptionBasicView.class,
+            SystemViews.ActivityBasicView.class
+    })
     private String answerType;
 
     @ManyToOne(targetEntity = Activity.class, fetch = FetchType.LAZY)
