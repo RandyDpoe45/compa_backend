@@ -2,8 +2,7 @@ package com.wesdom.compa.backend.restcontrollers;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.wesdom.compa.backend.database.model.NearbyFlora;
-import com.wesdom.compa.backend.database.repositories.IFloraRepository;
+import com.wesdom.compa.backend.database.model.estatesegment.NearbyFlora;
 import com.wesdom.compa.backend.database.repositories.INearbyFloraRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
 import com.wesdom.compa.backend.dtos.views.SystemViews;

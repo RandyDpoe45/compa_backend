@@ -3,7 +3,7 @@ package com.wesdom.compa.backend.restcontrollers;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.wesdom.compa.backend.JWTAuthenticationUtils;
-import com.wesdom.compa.backend.database.model.AuthUser;
+import com.wesdom.compa.backend.database.model.users.AuthUser;
 import com.wesdom.compa.backend.database.repositories.IAuthUserRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
 import com.wesdom.compa.backend.dtos.UserLoginDto;

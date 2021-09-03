@@ -1,6 +1,6 @@
 package com.wesdom.compa.backend.database.repositories;
 
-import com.wesdom.compa.backend.database.model.ProductInStateSegment;
+import com.wesdom.compa.backend.database.model.estatesegment.ProductInStateSegment;
 import org.springframework.data.domain.Page;
 
 import java.util.List;

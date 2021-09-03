@@ -1,4 +1,4 @@
-package com.wesdom.compa.backend.database.model;
+package com.wesdom.compa.backend.database.model.estatesegment;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonTypeName;
@@ -18,8 +18,6 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.List;
 

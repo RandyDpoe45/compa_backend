@@ -23,59 +23,84 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
  * @author randy
  */
 @RestController
 @RequestMapping("v1/multimediaData")
 @CrossOrigin(origins = {"*"})
 public class MultimediaDataRestController {
-    
+
     @Autowired
     private IMultimediaDataRepository multimediaDataRepository;
-    
+
     @Autowired
     private IMultimediaDataService multimediaDataService;
-    
-    @PostMapping
+
+    @PostMapping("/tag")
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public GeneralResponse save(@RequestParam("entityId") Long entityId, @RequestParam("entityType") String entityType,
-                                  @RequestParam("imgType") String imgType, @RequestParam("files") MultipartFile[] files)
-            throws JsonProcessingException{
-        
-        for(MultipartFile file :  files){
-            multimediaDataService.save(imgType, entityId, entityType, file);
+    public GeneralResponse saveWithTag(
+            @RequestParam("entityId") Long entityId,
+            @RequestParam("entityType") String entityType,
+            @RequestParam("imgType") String imgType,
+            @RequestParam("files") MultipartFile[] files,
+            @RequestParam("tag") String tag
+    ) throws JsonProcessingException {
+
+        for (MultipartFile file : files) {
+            multimediaDataService.saveWithTag(imgType, entityId, entityType, file, tag);
         }
-        
+
         return new GeneralResponse("Cargado con exito", "000");
     }
-    
+
+    @PostMapping
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public GeneralResponse save(
+            @RequestParam("entityId") Long entityId,
+            @RequestParam("entityType") String entityType,
+            @RequestParam("imgType") String imgType,
+            @RequestParam("files") MultipartFile[] files
+    ) throws JsonProcessingException {
+
+        for (MultipartFile file : files) {
+            multimediaDataService.save(imgType, entityId, entityType, file);
+        }
+
+        return new GeneralResponse("Cargado con exito", "000");
+    }
+
     @GetMapping("/{multimediaId}")
-    public ResponseEntity<Resource> get(@PathVariable Long multimediaId){
+    public ResponseEntity<Resource> get(@PathVariable Long multimediaId) {
         Resource file = multimediaDataService.getMultimedia(multimediaId);
-        if(file != null){
+        if (file != null) {
             return ResponseEntity.ok()
-            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+                    .header(
+                            HttpHeaders.CONTENT_DISPOSITION,
+                            "attachment; filename=\"" + file.getFilename() + "\""
+                    ).body(file);
         }
         return ResponseEntity.ok()
-        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + null + "\"").body(null);
+                .header(
+                        HttpHeaders.CONTENT_DISPOSITION,
+                        "attachment; filename=\"" + null + "\""
+                ).body(null);
     }
-    
+
     @GetMapping
-    public List<MultimediaData> getMultimediaDescriptors(@RequestParam Map<String, String> params){
+    public List<MultimediaData> getMultimediaDescriptors(@RequestParam Map<String, String> params) {
         return multimediaDataRepository.getAll(params).getContent();
     }
-    
+
     @DeleteMapping("/{entityType}/{entityId}")
-    public GeneralResponse delete(@PathVariable String entityType, @PathVariable String entityId){
+    public GeneralResponse delete(@PathVariable String entityType, @PathVariable String entityId) {
         multimediaDataService.delete(entityType, entityId);
         return new GeneralResponse("Archivos borrados con exito", "000");
     }
-    
+
     @DeleteMapping("/{multimediaId}")
-    public GeneralResponse delete(@PathVariable Long multimediaId){
+    public GeneralResponse delete(@PathVariable Long multimediaId) {
         multimediaDataService.delete(multimediaId);
         return new GeneralResponse("Archivo borrados con exito", "000");
     }
-    
+
 }

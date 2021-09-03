@@ -2,7 +2,7 @@ package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.ManufacturerJpaRepository;
 import com.wesdom.compa.backend.database.jparepositories.ManufacturerTypeJpaRepository;
-import com.wesdom.compa.backend.database.model.Manufacturer;
+import com.wesdom.compa.backend.database.model.users.Manufacturer;
 import com.wesdom.compa.backend.database.model.ManufacturerType;
 import com.wesdom.compa.backend.database.repositories.IManufacturerRepository;
 import com.wesdom.compa.backend.service.implementation.PaginationBuilderImpl;

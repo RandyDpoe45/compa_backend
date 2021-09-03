@@ -1,6 +1,7 @@
-package com.wesdom.compa.backend.database.model;
+package com.wesdom.compa.backend.database.model.users;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.wesdom.compa.backend.database.model.ManufacturerType;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,6 @@ import org.hibernate.annotations.NotFoundAction;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import java.math.BigDecimal;
 import java.util.List;
 

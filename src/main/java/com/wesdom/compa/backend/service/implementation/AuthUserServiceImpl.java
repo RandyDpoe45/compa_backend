@@ -1,6 +1,6 @@
 package com.wesdom.compa.backend.service.implementation;
 
-import com.wesdom.compa.backend.database.model.AuthUser;
+import com.wesdom.compa.backend.database.model.users.AuthUser;
 import com.wesdom.compa.backend.database.repositories.IAuthUserRepository;
 import com.wesdom.compa.backend.exceptionhandling.exceptions.ExceptionCodesEnum;
 import com.wesdom.compa.backend.exceptionhandling.exceptions.GeneralException;

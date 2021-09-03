@@ -1,4 +1,4 @@
-package com.wesdom.compa.backend.database.model;
+package com.wesdom.compa.backend.database.model.activity;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.wesdom.compa.backend.dtos.views.SystemViews;

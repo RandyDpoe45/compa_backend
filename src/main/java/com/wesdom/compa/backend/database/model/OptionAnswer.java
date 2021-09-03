@@ -1,6 +1,7 @@
 package com.wesdom.compa.backend.database.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.wesdom.compa.backend.database.model.activity.ActivityOption;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

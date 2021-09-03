@@ -1,6 +1,6 @@
 package com.wesdom.compa.backend.database.repositories;
 
-import com.wesdom.compa.backend.database.model.Estate;
+import com.wesdom.compa.backend.database.model.estatesegment.Estate;
 import org.springframework.data.domain.Page;
 
 import java.util.Map;

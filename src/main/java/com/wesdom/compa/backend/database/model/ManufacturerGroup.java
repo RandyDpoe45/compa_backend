@@ -1,6 +1,8 @@
 package com.wesdom.compa.backend.database.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.wesdom.compa.backend.database.model.estatesegment.Estate;
+import com.wesdom.compa.backend.database.model.users.Manufacturer;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -34,5 +34,6 @@ public class SystemViews {
     public static class BioProductBasicView {};
     public static class BioProductDetailView {};
     public static class AdvertisingBasicView {};
+    public static class ProductWorkBasicView {};
 
 }

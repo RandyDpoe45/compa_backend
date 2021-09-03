@@ -1,4 +1,4 @@
-package com.wesdom.compa.backend.database.model;
+package com.wesdom.compa.backend.database.model.estatesegment;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -11,7 +11,6 @@ import lombok.experimental.Accessors;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
 @Entity
 @Getter

@@ -2,7 +2,7 @@ package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.ProductionActivityAnswerJpaRepository;
 import com.wesdom.compa.backend.database.jparepositories.GroupTypeJpaRepository;
-import com.wesdom.compa.backend.database.model.ProductionActivityAnswer;
+import com.wesdom.compa.backend.database.model.activity.ProductionActivityAnswer;
 import com.wesdom.compa.backend.database.repositories.IProductionActivityAnswerRepository;
 import com.wesdom.compa.backend.service.implementation.PaginationBuilderImpl;
 import com.wesdom.compa.backend.service.implementation.PredicateBuilderServiceImpl;

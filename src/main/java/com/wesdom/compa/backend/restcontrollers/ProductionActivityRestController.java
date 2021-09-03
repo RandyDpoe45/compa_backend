@@ -2,8 +2,8 @@ package com.wesdom.compa.backend.restcontrollers;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.wesdom.compa.backend.database.model.ProductionActivity;
-import com.wesdom.compa.backend.database.model.ProductionActivityAnswer;
+import com.wesdom.compa.backend.database.model.activity.ProductionActivity;
+import com.wesdom.compa.backend.database.model.activity.ProductionActivityAnswer;
 import com.wesdom.compa.backend.database.repositories.IProductionActivityAnswerRepository;
 import com.wesdom.compa.backend.database.repositories.IProductionActivityRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;

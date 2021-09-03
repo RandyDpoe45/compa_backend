@@ -1,7 +1,7 @@
 package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.ApiaryWoodTypeJpaRepository;
-import com.wesdom.compa.backend.database.model.ApiaryWoodType;
+import com.wesdom.compa.backend.database.model.estatesegment.ApiaryWoodType;
 import com.wesdom.compa.backend.database.repositories.IApiaryWoodTypeRepository;
 import com.wesdom.compa.backend.service.implementation.PaginationBuilderImpl;
 import com.wesdom.compa.backend.service.implementation.PredicateBuilderServiceImpl;

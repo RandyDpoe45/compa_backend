@@ -2,7 +2,7 @@ package com.wesdom.compa.backend.restcontrollers;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.wesdom.compa.backend.database.model.ProductInStateSegment;
+import com.wesdom.compa.backend.database.model.estatesegment.ProductInStateSegment;
 import com.wesdom.compa.backend.database.repositories.IProductInStateSegmentRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
 import com.wesdom.compa.backend.dtos.views.SystemViews;

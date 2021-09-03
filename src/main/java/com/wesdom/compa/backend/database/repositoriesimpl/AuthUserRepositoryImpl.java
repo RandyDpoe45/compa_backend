@@ -1,7 +1,7 @@
 package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.AuthUserJpaRepository;
-import com.wesdom.compa.backend.database.model.AuthUser;
+import com.wesdom.compa.backend.database.model.users.AuthUser;
 import com.wesdom.compa.backend.database.repositories.IAuthUserRepository;
 import com.wesdom.compa.backend.service.implementation.PaginationBuilderImpl;
 import com.wesdom.compa.backend.service.implementation.PredicateBuilderServiceImpl;

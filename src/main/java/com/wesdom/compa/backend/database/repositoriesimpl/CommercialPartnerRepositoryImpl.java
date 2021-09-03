@@ -1,7 +1,7 @@
 package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.CommercialPartnerJpaRepository;
-import com.wesdom.compa.backend.database.model.CommercialPartner;
+import com.wesdom.compa.backend.database.model.users.CommercialPartner;
 import com.wesdom.compa.backend.database.repositories.ICommercialPartnerRepository;
 import com.wesdom.compa.backend.service.implementation.PaginationBuilderImpl;
 import com.wesdom.compa.backend.service.implementation.PredicateBuilderServiceImpl;

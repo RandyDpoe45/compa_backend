@@ -2,7 +2,7 @@ package com.wesdom.compa.backend.service.implementation;
 
 import com.wesdom.compa.backend.database.enums.BioProductTypeEnum;
 import com.wesdom.compa.backend.database.model.BioProduct;
-import com.wesdom.compa.backend.database.model.Promoter;
+import com.wesdom.compa.backend.database.model.users.Promoter;
 import com.wesdom.compa.backend.database.repositories.IBioProductRepository;
 import com.wesdom.compa.backend.database.repositories.IPromoterRepository;
 import com.wesdom.compa.backend.exceptionhandling.exceptions.ExceptionCodesEnum;

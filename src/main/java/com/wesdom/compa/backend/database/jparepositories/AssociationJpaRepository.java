@@ -1,6 +1,6 @@
 package com.wesdom.compa.backend.database.jparepositories;
 
-import com.wesdom.compa.backend.database.model.Association;
+import com.wesdom.compa.backend.database.model.users.Association;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;

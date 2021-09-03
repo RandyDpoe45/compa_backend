@@ -1,7 +1,14 @@
-package com.wesdom.compa.backend.database.model;
+package com.wesdom.compa.backend.database.model.estatesegment;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.wesdom.compa.backend.database.model.Product;
+import com.wesdom.compa.backend.database.model.activity.ProductionActivity;
+import com.wesdom.compa.backend.database.model.ProductionStage;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -51,6 +58,8 @@ public class ProductInStateSegment {
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class
     })
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate beginning;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -58,6 +67,8 @@ public class ProductInStateSegment {
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class
     })
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate end;
 
     @JsonView({

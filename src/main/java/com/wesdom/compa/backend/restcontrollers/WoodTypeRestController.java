@@ -1,7 +1,7 @@
 package com.wesdom.compa.backend.restcontrollers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.wesdom.compa.backend.database.model.ApiaryWoodType;
+import com.wesdom.compa.backend.database.model.estatesegment.ApiaryWoodType;
 import com.wesdom.compa.backend.database.repositories.IApiaryWoodTypeRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
 import org.springframework.beans.factory.annotation.Autowired;

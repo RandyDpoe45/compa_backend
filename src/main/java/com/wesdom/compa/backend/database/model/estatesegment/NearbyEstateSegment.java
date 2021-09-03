@@ -1,4 +1,4 @@
-package com.wesdom.compa.backend.database.model;
+package com.wesdom.compa.backend.database.model.estatesegment;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
@@ -12,7 +12,6 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Getter

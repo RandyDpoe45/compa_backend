@@ -2,7 +2,7 @@ package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.ProductionActivityJpaRepository;
 import com.wesdom.compa.backend.database.jparepositories.GroupTypeJpaRepository;
-import com.wesdom.compa.backend.database.model.ProductionActivity;
+import com.wesdom.compa.backend.database.model.activity.ProductionActivity;
 import com.wesdom.compa.backend.database.repositories.IProductionActivityRepository;
 import com.wesdom.compa.backend.service.implementation.PaginationBuilderImpl;
 import com.wesdom.compa.backend.service.implementation.PredicateBuilderServiceImpl;
@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 import java.util.Map;
 
 @Service

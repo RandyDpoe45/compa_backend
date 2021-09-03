@@ -1,6 +1,6 @@
 package com.wesdom.compa.backend.database.repositories;
 
-import com.wesdom.compa.backend.database.model.Manufacturer;
+import com.wesdom.compa.backend.database.model.users.Manufacturer;
 import com.wesdom.compa.backend.database.model.ManufacturerType;
 import org.springframework.data.domain.Page;
 

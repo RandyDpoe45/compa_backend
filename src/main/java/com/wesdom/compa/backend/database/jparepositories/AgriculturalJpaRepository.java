@@ -1,6 +1,6 @@
 package com.wesdom.compa.backend.database.jparepositories;
 
-import com.wesdom.compa.backend.database.model.AgriculturalSegment;
+import com.wesdom.compa.backend.database.model.estatesegment.AgriculturalSegment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;

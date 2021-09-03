@@ -1,6 +1,6 @@
 package com.wesdom.compa.backend.service.implementation;
 
-import com.wesdom.compa.backend.database.model.Activity;
+import com.wesdom.compa.backend.database.model.activity.Activity;
 import com.wesdom.compa.backend.database.model.ProductionStage;
 import com.wesdom.compa.backend.database.repositories.IActivityRepository;
 import com.wesdom.compa.backend.database.repositories.IProductionStageRepository;

@@ -2,6 +2,11 @@ package com.wesdom.compa.backend.database.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.wesdom.compa.backend.database.model.users.Association;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,6 +42,8 @@ public class Advertising {
     private Association association;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     @JsonView({SystemViews.AdvertisingBasicView.class})
     private LocalDate date;
 

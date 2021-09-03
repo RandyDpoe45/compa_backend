@@ -1,7 +1,7 @@
 package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.ActivityJpaRepository;
-import com.wesdom.compa.backend.database.model.Activity;
+import com.wesdom.compa.backend.database.model.activity.Activity;
 import com.wesdom.compa.backend.database.repositories.IActivityRepository;
 import com.wesdom.compa.backend.service.implementation.PaginationBuilderImpl;
 import com.wesdom.compa.backend.service.implementation.PredicateBuilderServiceImpl;

@@ -1,7 +1,13 @@
-package com.wesdom.compa.backend.database.model;
+package com.wesdom.compa.backend.database.model.users;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.wesdom.compa.backend.database.model.Department;
+import com.wesdom.compa.backend.database.model.Municipality;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +15,6 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
-import org.springframework.data.util.Lazy;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -28,7 +33,8 @@ public abstract class BaseUser {
             SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
             SystemViews.RequestBasicView.class,SystemViews.AssociationMemberBasicView.class,
-            SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class
+            SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class,
+            SystemViews.ProductWorkBasicView.class
     })
     private Long id;
 
@@ -46,7 +52,8 @@ public abstract class BaseUser {
             SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
             SystemViews.RequestBasicView.class, SystemViews.AssociationMemberBasicView.class,
-            SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class
+            SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class,
+            SystemViews.ProductWorkBasicView.class
     })
     private String firstName;
 
@@ -55,7 +62,8 @@ public abstract class BaseUser {
             SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
             SystemViews.RequestBasicView.class, SystemViews.AssociationMemberBasicView.class,
-            SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class
+            SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class,
+            SystemViews.ProductWorkBasicView.class
     })
     private String secondName;
 
@@ -64,7 +72,8 @@ public abstract class BaseUser {
             SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
             SystemViews.RequestBasicView.class,SystemViews.AssociationMemberBasicView.class,
-            SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class
+            SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class,
+            SystemViews.ProductWorkBasicView.class
     })
     private String firstLastname;
 
@@ -73,7 +82,8 @@ public abstract class BaseUser {
             SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
             SystemViews.RequestBasicView.class,SystemViews.AssociationMemberBasicView.class,
-            SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class
+            SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class,
+            SystemViews.ProductWorkBasicView.class
     })
     private String secondLastName;
 
@@ -82,21 +92,23 @@ public abstract class BaseUser {
             SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
             SystemViews.RequestBasicView.class,SystemViews.AssociationMemberBasicView.class,
-            SystemViews.PromoterDetailedView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.ProductWorkBasicView.class
     })
     private String phone;
 
     @JsonView({
             SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
             SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
-            SystemViews.AssociationMemberBasicView.class, SystemViews.PromoterDetailedView.class
+            SystemViews.AssociationMemberBasicView.class, SystemViews.PromoterDetailedView.class,
+            SystemViews.ProductWorkBasicView.class
     })
     private String gender;
 
     @JsonView({
             SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
             SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
-            SystemViews.AssociationMemberBasicView.class, SystemViews.PromoterDetailedView.class
+            SystemViews.AssociationMemberBasicView.class, SystemViews.PromoterDetailedView.class,
+            SystemViews.ProductWorkBasicView.class
     })
     private String identificationType;
 
@@ -104,7 +116,8 @@ public abstract class BaseUser {
             SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
             SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateSegmentDetailView.class,SystemViews.AssociationMemberBasicView.class,
-            SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class
+            SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class,
+            SystemViews.ProductWorkBasicView.class
     })
     private String identificationNumber;
 
@@ -114,6 +127,8 @@ public abstract class BaseUser {
             SystemViews.EstateSegmentDetailView.class, SystemViews.PromoterDetailedView.class
     })
     @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate birthday;
 
     @ManyToOne(targetEntity = Municipality.class,fetch = FetchType.EAGER)

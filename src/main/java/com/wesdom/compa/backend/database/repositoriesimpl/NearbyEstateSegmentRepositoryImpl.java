@@ -1,9 +1,7 @@
 package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.NearbyEstateSegmentJpaRepository;
-import com.wesdom.compa.backend.database.model.AgriculturalSegment;
-import com.wesdom.compa.backend.database.model.BeekeepingSegment;
-import com.wesdom.compa.backend.database.model.NearbyEstateSegment;
+import com.wesdom.compa.backend.database.model.estatesegment.NearbyEstateSegment;
 import com.wesdom.compa.backend.database.repositories.INearbyEstateSegmentRepository;
 import com.wesdom.compa.backend.service.implementation.PaginationBuilderImpl;
 import com.wesdom.compa.backend.service.implementation.PredicateBuilderServiceImpl;

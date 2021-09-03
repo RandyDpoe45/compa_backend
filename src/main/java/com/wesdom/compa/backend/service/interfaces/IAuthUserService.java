@@ -1,7 +1,6 @@
 package com.wesdom.compa.backend.service.interfaces;
 
-import com.wesdom.compa.backend.database.model.AuthUser;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.wesdom.compa.backend.database.model.users.AuthUser;
 
 public interface IAuthUserService {
 

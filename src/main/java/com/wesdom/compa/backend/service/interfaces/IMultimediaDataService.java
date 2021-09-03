@@ -16,24 +16,36 @@ import java.nio.file.Paths;
 import java.util.List;
 
 /**
- *
  * @author randy
  */
 public interface IMultimediaDataService {
-    
-    default void init() throws IOException{
+
+    default void init() throws IOException {
         Path p = Paths.get("multimedia");
-        if(!Files.exists(p)){
+        if (!Files.exists(p)) {
             Files.createDirectory(p);
         }
     }
-    
-    MultimediaData save(String imgType, Long entityId, String entityType, MultipartFile file);
-    
+
+    MultimediaData save(
+            String imgType,
+            Long entityId,
+            String entityType,
+            MultipartFile file
+    );
+
+    MultimediaData saveWithTag(
+            String imgType,
+            Long entityId,
+            String entityType,
+            MultipartFile file,
+            String tag
+    );
+
     Resource getMultimedia(Long multimediaId);
-       
+
     void delete(Long multimediaDataId);
-    
+
     void delete(String entityType, String entityId);
 
     void deleteUrlData(List<Long> ids);

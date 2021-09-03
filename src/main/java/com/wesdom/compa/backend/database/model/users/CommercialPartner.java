@@ -1,4 +1,4 @@
-package com.wesdom.compa.backend.database.model;
+package com.wesdom.compa.backend.database.model.users;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
@@ -39,6 +39,5 @@ public class CommercialPartner extends BaseUser{
 
     @JsonView({SystemViews.CommercialPartnerBasicView.class})
     private String accountNumber;
-
 
 }

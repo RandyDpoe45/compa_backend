@@ -2,7 +2,7 @@ package com.wesdom.compa.backend.restcontrollers;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.wesdom.compa.backend.database.model.CommercialPartner;
+import com.wesdom.compa.backend.database.model.users.CommercialPartner;
 import com.wesdom.compa.backend.database.repositories.ICommercialPartnerRepository;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
 import org.springframework.beans.factory.annotation.Autowired;

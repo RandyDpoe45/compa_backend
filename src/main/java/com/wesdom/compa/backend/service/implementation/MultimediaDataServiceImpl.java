@@ -41,10 +41,55 @@ public class MultimediaDataServiceImpl implements IMultimediaDataService {
     private IMultimediaDataRepository multimediaDataRepository;
 
     @Override
-    public MultimediaData save(String imgType, Long entityId, String entityType, MultipartFile file) throws GeneralException {
+    public MultimediaData save(
+            String imgType,
+            Long entityId,
+            String entityType,
+            MultipartFile file
+    ) throws GeneralException {
         MultimediaData multimediaData = null;
         try {
-            multimediaData = multimediaDataRepository.createMultimediaData(new MultimediaData().setEntityId(entityId).setEntityName(entityType));
+            multimediaData = multimediaDataRepository.createMultimediaData(
+                    new MultimediaData()
+                            .setEntityId(entityId)
+                            .setEntityName(entityType)
+            );
+
+            String fileName = multimediaData.getId() + "." + FilenameUtils.getExtension(file.getOriginalFilename());
+            multimediaData.setFileName(fileName);
+            multimediaData.setImgType(imgType);
+            multimediaDataRepository.updateMultimediaData(multimediaData.getId(), multimediaData);
+
+            Path p = Paths.get("multimedia/" + entityType);
+            if (!Files.exists(p)) {
+                Files.createDirectory(p);
+            }
+            Files.copy(file.getInputStream(), p.resolve(multimediaData.getFileName()));
+
+        } catch (IOException ex) {
+            Logger.getLogger(MultimediaDataServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new GeneralException(ExceptionCodesEnum.ERROR_UPLOADING_FILES, "Error cargando los archivos");
+        }
+
+        return multimediaData;
+    }
+
+    @Override
+    public MultimediaData saveWithTag(
+            String imgType,
+            Long entityId,
+            String entityType,
+            MultipartFile file,
+            String tag
+    ) throws GeneralException {
+        MultimediaData multimediaData = null;
+        try {
+            multimediaData = multimediaDataRepository.createMultimediaData(
+                    new MultimediaData()
+                            .setEntityId(entityId)
+                            .setEntityName(entityType)
+                            .setTag(tag)
+            );
 
             String fileName = multimediaData.getId() + "." + FilenameUtils.getExtension(file.getOriginalFilename());
             multimediaData.setFileName(fileName);
@@ -96,14 +141,15 @@ public class MultimediaDataServiceImpl implements IMultimediaDataService {
             }
         } catch (IOException ex) {
             Logger.getLogger(MultimediaDataServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
-            throw new GeneralException(ExceptionCodesEnum.ERROR_UPLOADING_FILES, "Error cargando los archivos");
+            throw new GeneralException(ExceptionCodesEnum.ERROR_UPLOADING_FILES, "Error eliminando los archivos");
         }
 
     }
 
     @Override
     public void deleteUrlData(List<Long> ids) {
-        List<MultimediaData> multimediaDataList = multimediaDataRepository.findAllByIdAndEntityTypeAndImgType(ids,"Product" , "URL");
+        List<MultimediaData> multimediaDataList = multimediaDataRepository
+                .findAllByIdAndEntityTypeAndImgType(ids,"Product" , "URL");
         multimediaDataRepository.deleteAll(multimediaDataList);
     }
 

@@ -2,7 +2,7 @@ package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.GroupTypeJpaRepository;
 import com.wesdom.compa.backend.database.jparepositories.EstateJpaRepository;
-import com.wesdom.compa.backend.database.model.Estate;
+import com.wesdom.compa.backend.database.model.estatesegment.Estate;
 import com.wesdom.compa.backend.database.repositories.IEstateRepository;
 import com.wesdom.compa.backend.service.implementation.PaginationBuilderImpl;
 import com.wesdom.compa.backend.service.implementation.PredicateBuilderServiceImpl;

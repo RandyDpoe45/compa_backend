@@ -2,8 +2,8 @@ package com.wesdom.compa.backend.restcontrollers;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.wesdom.compa.backend.database.model.Activity;
-import com.wesdom.compa.backend.database.model.ActivityOption;
+import com.wesdom.compa.backend.database.model.activity.Activity;
+import com.wesdom.compa.backend.database.model.activity.ActivityOption;
 import com.wesdom.compa.backend.database.model.OptionAnswer;
 import com.wesdom.compa.backend.database.repositories.IActivityRepository;
 import com.wesdom.compa.backend.database.repositories.IActivityOptionRepository;

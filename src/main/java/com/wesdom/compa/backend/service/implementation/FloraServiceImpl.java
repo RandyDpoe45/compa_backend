@@ -1,6 +1,6 @@
 package com.wesdom.compa.backend.service.implementation;
 
-import com.wesdom.compa.backend.database.model.NearbyFlora;
+import com.wesdom.compa.backend.database.model.estatesegment.NearbyFlora;
 import com.wesdom.compa.backend.database.repositories.IFloraRepository;
 import com.wesdom.compa.backend.database.repositories.INearbyFloraRepository;
 import com.wesdom.compa.backend.exceptionhandling.exceptions.ExceptionCodesEnum;

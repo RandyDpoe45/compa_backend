@@ -2,7 +2,7 @@ package com.wesdom.compa.backend.restcontrollers;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.wesdom.compa.backend.database.model.*;
+import com.wesdom.compa.backend.database.model.estatesegment.*;
 import com.wesdom.compa.backend.database.repositories.IEstateSegmentRepository;
 import com.wesdom.compa.backend.database.repositories.INearbyEstateSegmentRepository;
 import com.wesdom.compa.backend.database.repositories.INearbyFloraRepository;

@@ -1,9 +1,7 @@
 package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.*;
-import com.wesdom.compa.backend.database.model.*;
-import com.wesdom.compa.backend.database.model.EstateSegmentType;
-import com.wesdom.compa.backend.database.model.EstateSegment;
+import com.wesdom.compa.backend.database.model.estatesegment.*;
 import com.wesdom.compa.backend.database.repositories.IEstateSegmentRepository;
 import com.wesdom.compa.backend.service.implementation.PaginationBuilderImpl;
 import com.wesdom.compa.backend.service.implementation.PredicateBuilderServiceImpl;

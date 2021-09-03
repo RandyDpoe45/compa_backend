@@ -2,7 +2,6 @@ package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.ClassificationScoreJpaRepository;
 import com.wesdom.compa.backend.database.model.ClassificationScore;
-import com.wesdom.compa.backend.database.model.CommercialPartner;
 import com.wesdom.compa.backend.database.repositories.IClassificationScoreRepository;
 import com.wesdom.compa.backend.service.implementation.PaginationBuilderImpl;
 import com.wesdom.compa.backend.service.implementation.PredicateBuilderServiceImpl;

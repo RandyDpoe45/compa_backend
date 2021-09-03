@@ -1,7 +1,7 @@
 package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.NearbyFloraJpaRepository;
-import com.wesdom.compa.backend.database.model.NearbyFlora;
+import com.wesdom.compa.backend.database.model.estatesegment.NearbyFlora;
 import com.wesdom.compa.backend.database.repositories.INearbyFloraRepository;
 import com.wesdom.compa.backend.service.implementation.PaginationBuilderImpl;
 import com.wesdom.compa.backend.service.implementation.PredicateBuilderServiceImpl;

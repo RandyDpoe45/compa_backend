@@ -1,7 +1,12 @@
-package com.wesdom.compa.backend.database.model;
+package com.wesdom.compa.backend.database.model.estatesegment;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.wesdom.compa.backend.database.model.Flora;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,6 +46,8 @@ public class NearbyFlora {
 
     @JsonView({SystemViews.NearbyFloraBasicView.class})
     @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate date;
 
     @JsonView({SystemViews.NearbyFloraBasicView.class})

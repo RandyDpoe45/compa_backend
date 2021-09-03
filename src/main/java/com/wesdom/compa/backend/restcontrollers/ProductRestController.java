@@ -2,8 +2,6 @@ package com.wesdom.compa.backend.restcontrollers;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.wesdom.compa.backend.database.jparepositories.ProductJpaRepository;
-import com.wesdom.compa.backend.database.model.Manufacturer;
 import com.wesdom.compa.backend.database.model.Product;
 import com.wesdom.compa.backend.database.model.ProductType;
 import com.wesdom.compa.backend.database.repositories.IProductRepository;

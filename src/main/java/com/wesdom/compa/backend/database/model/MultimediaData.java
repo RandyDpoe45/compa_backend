@@ -15,7 +15,6 @@ import lombok.experimental.Accessors;
 import javax.persistence.*;
 
 /**
- *
  * @author randy
  */
 
@@ -25,7 +24,7 @@ import javax.persistence.*;
 @Accessors(chain = true)
 @Entity
 public class MultimediaData {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonView({SystemViews.GeneralView.class})
@@ -44,7 +43,15 @@ public class MultimediaData {
     @JsonView({SystemViews.GeneralView.class})
     private String fileName;
 
-    public MultimediaData(String imgType, String entityName, Long entityId, String fileName) {
+    @Column(length = 255)
+    @JsonView({SystemViews.GeneralView.class})
+    private String tag;
+
+    public MultimediaData(
+            String imgType,
+            String entityName,
+            Long entityId,
+            String fileName) {
         this.imgType = imgType;
         this.entityName = entityName;
         this.entityId = entityId;

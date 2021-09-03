@@ -1,7 +1,7 @@
 package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.AssociationJpaRepository;
-import com.wesdom.compa.backend.database.model.Association;
+import com.wesdom.compa.backend.database.model.users.Association;
 import com.wesdom.compa.backend.database.repositories.IAssociationRepository;
 import com.wesdom.compa.backend.service.implementation.PaginationBuilderImpl;
 import com.wesdom.compa.backend.service.implementation.PredicateBuilderServiceImpl;

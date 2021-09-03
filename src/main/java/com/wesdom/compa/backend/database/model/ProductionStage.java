@@ -1,6 +1,7 @@
 package com.wesdom.compa.backend.database.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.wesdom.compa.backend.database.model.estatesegment.EstateSegmentType;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,14 +24,14 @@ public class ProductionStage {
     @JsonView({
             SystemViews.ActivityBasicView.class, SystemViews.ProductionStageBasicView.class,
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
-            SystemViews.ExpertVisitBasicView.class
+            SystemViews.ExpertVisitBasicView.class,SystemViews.ProductWorkBasicView.class
     })
     private Long id;
 
     @JsonView({
             SystemViews.ActivityBasicView.class, SystemViews.ProductionStageBasicView.class,
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
-            SystemViews.ExpertVisitBasicView.class
+            SystemViews.ExpertVisitBasicView.class, SystemViews.ProductWorkBasicView.class
     })
     private Long stageOrder = 1l;
 
@@ -42,7 +43,7 @@ public class ProductionStage {
     @JsonView({
             SystemViews.ActivityBasicView.class, SystemViews.ProductionStageBasicView.class,
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
-            SystemViews.ExpertVisitBasicView.class
+            SystemViews.ExpertVisitBasicView.class, SystemViews.ProductWorkBasicView.class
     })
     private String name;
 }

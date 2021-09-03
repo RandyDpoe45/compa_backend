@@ -1,6 +1,6 @@
 package com.wesdom.compa.backend.database.repositories;
 
-import com.wesdom.compa.backend.database.model.AuthUser;
+import com.wesdom.compa.backend.database.model.users.AuthUser;
 import org.springframework.data.domain.Page;
 
 import java.util.Map;

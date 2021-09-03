@@ -1,6 +1,6 @@
 package com.wesdom.compa.backend.service.implementation;
 
-import com.wesdom.compa.backend.database.model.ProductInStateSegment;
+import com.wesdom.compa.backend.database.model.estatesegment.ProductInStateSegment;
 import com.wesdom.compa.backend.database.model.Request;
 import com.wesdom.compa.backend.database.repositories.IProductInStateSegmentRepository;
 import com.wesdom.compa.backend.database.repositories.IProductRepository;

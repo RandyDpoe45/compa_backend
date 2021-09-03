@@ -1,7 +1,7 @@
 package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.PromoterJpaRepository;
-import com.wesdom.compa.backend.database.model.Promoter;
+import com.wesdom.compa.backend.database.model.users.Promoter;
 import com.wesdom.compa.backend.database.repositories.IPromoterRepository;
 import com.wesdom.compa.backend.service.implementation.PaginationBuilderImpl;
 import com.wesdom.compa.backend.service.implementation.PredicateBuilderServiceImpl;

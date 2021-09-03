@@ -1,9 +1,9 @@
 package com.wesdom.compa.backend.service.implementation;
 
-import com.wesdom.compa.backend.database.model.EstateSegment;
+import com.wesdom.compa.backend.database.model.estatesegment.EstateSegment;
 import com.wesdom.compa.backend.database.model.Product;
-import com.wesdom.compa.backend.database.model.ProductInStateSegment;
-import com.wesdom.compa.backend.database.model.ProductionActivity;
+import com.wesdom.compa.backend.database.model.estatesegment.ProductInStateSegment;
+import com.wesdom.compa.backend.database.model.activity.ProductionActivity;
 import com.wesdom.compa.backend.database.repositories.IEstateSegmentRepository;
 import com.wesdom.compa.backend.database.repositories.IProductInStateSegmentRepository;
 import com.wesdom.compa.backend.database.repositories.IProductRepository;
@@ -13,8 +13,6 @@ import com.wesdom.compa.backend.exceptionhandling.exceptions.GeneralException;
 import com.wesdom.compa.backend.service.interfaces.IProductInSegmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class ProductInSegmentServiceImpl implements IProductInSegmentService{

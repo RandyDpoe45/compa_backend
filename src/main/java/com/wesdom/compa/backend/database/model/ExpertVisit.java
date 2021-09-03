@@ -2,6 +2,12 @@ package com.wesdom.compa.backend.database.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import com.wesdom.compa.backend.database.model.estatesegment.ProductInStateSegment;
+import com.wesdom.compa.backend.database.model.users.Promoter;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +35,8 @@ public class ExpertVisit {
 
     @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
     @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate date;
 
     @JsonView({SystemViews.ExpertVisitBasicView.class})

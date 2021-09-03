@@ -1,6 +1,9 @@
-package com.wesdom.compa.backend.database.model;
+package com.wesdom.compa.backend.database.model.estatesegment;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.wesdom.compa.backend.database.model.Department;
+import com.wesdom.compa.backend.database.model.ManufacturerGroup;
+import com.wesdom.compa.backend.database.model.Municipality;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,12 +26,16 @@ public class Estate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonView({SystemViews.EstateBasicView.class, SystemViews.EstateSegmentBasicView.class
-            ,SystemViews.EstateSegmentDetailView.class})
+    @JsonView({
+            SystemViews.EstateBasicView.class, SystemViews.EstateSegmentBasicView.class,
+            SystemViews.EstateSegmentDetailView.class
+    })
     private Long id;
 
-    @JsonView({SystemViews.EstateBasicView.class, SystemViews.EstateSegmentBasicView.class
-            ,SystemViews.EstateSegmentDetailView.class})
+    @JsonView({
+            SystemViews.EstateBasicView.class, SystemViews.EstateSegmentBasicView.class,
+            SystemViews.EstateSegmentDetailView.class
+    })
     private String name;
 
     @ManyToOne(targetEntity = Department.class, fetch = FetchType.LAZY)

@@ -1,7 +1,7 @@
 package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.ActivityOptionJpaRepository;
-import com.wesdom.compa.backend.database.model.ActivityOption;
+import com.wesdom.compa.backend.database.model.activity.ActivityOption;
 import com.wesdom.compa.backend.database.repositories.IActivityOptionRepository;
 import com.wesdom.compa.backend.service.implementation.PaginationBuilderImpl;
 import com.wesdom.compa.backend.service.implementation.PredicateBuilderServiceImpl;
