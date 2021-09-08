@@ -72,5 +72,19 @@ public class Product {
     })
     private String species;
 
+    @JsonView({
+            SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
+            SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class,
+            SystemViews.AdvertisingBasicView.class
+    })
+    private String seasonType;
+
+    @JsonView({
+            SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
+            SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class,
+            SystemViews.AdvertisingBasicView.class
+    })
+    private String harvestMonths;
+
 }
 

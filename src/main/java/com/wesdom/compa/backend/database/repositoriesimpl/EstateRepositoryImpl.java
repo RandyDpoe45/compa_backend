@@ -50,9 +50,17 @@ public class EstateRepositoryImpl  implements IEstateRepository {
     @Override
     public Estate update(Long estateId, Estate estate) {
         Estate e = estateJpaRepository.getOne(estateId);
-        e.setDepartment(estate.getDepartment()).setMunicipality(estate.getMunicipality()).setLatitude(estate.getLatitude())
-                .setLongitude(estate.getLongitude()).setTotalArea(estate.getTotalArea()).setPlantation(estate.getPlantation())
-                .setManufacturerGroup(estate.getManufacturerGroup()).setName(estate.getName());
+        e.setDepartment(estate.getDepartment())
+                .setMunicipality(estate.getMunicipality())
+                .setLatitude(estate.getLatitude())
+                .setLongitude(estate.getLongitude())
+                .setTotalArea(estate.getTotalArea())
+                .setPlantation(estate.getPlantation())
+                .setManufacturerGroup(estate.getManufacturerGroup())
+                .setName(estate.getName())
+                .setHasSpacePlan(estate.getHasSpacePlan())
+                .setHasFuturePlan(estate.getHasFuturePlan())
+                .setForestArea(estate.getForestArea());
         e = estateJpaRepository.saveAndFlush(e);
         em.refresh(e);
         return e;

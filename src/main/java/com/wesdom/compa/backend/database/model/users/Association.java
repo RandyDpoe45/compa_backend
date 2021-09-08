@@ -1,6 +1,8 @@
 package com.wesdom.compa.backend.database.model.users;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.wesdom.compa.backend.database.model.Department;
+import com.wesdom.compa.backend.database.model.Municipality;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -90,6 +92,18 @@ public class Association{
 
     @JsonView({
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
+            SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class
+    })
+    private String contactPhone;
+
+    @JsonView({
+            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
+            SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class
+    })
+    private String contactCharge;
+
+    @JsonView({
+            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
             SystemViews.RequestBasicView.class
     })
     private String docLegalRep;
@@ -99,5 +113,25 @@ public class Association{
             SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class
     })
     private String businessHours;
+
+    @JsonView({
+            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class
+    })
+    @Column(length = 600)
+    private String introduction;
+
+    @ManyToOne(targetEntity = Municipality.class,fetch = FetchType.EAGER)
+    @JsonView({
+            SystemViews.AssociationDetailedView.class,
+    })
+    @NotFound(action = NotFoundAction.IGNORE)
+    private Municipality municipality;
+
+    @ManyToOne(targetEntity = Department.class,fetch = FetchType.LAZY)
+    @JsonView({
+            SystemViews.AssociationDetailedView.class,
+    })
+    @NotFound(action = NotFoundAction.IGNORE)
+    private Department department;
 
 }

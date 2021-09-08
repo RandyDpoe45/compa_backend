@@ -21,26 +21,26 @@ public class Municipality {
 
     @Id
     @JsonView({
-            SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
-            SystemViews.CommercialPartnerBasicView.class,SystemViews.EstateBasicView.class,
+            SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,
+            SystemViews.CommercialPartnerBasicView.class, SystemViews.EstateBasicView.class,
             SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class,
-            SystemViews.PromoterDetailedView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.AssociationDetailedView.class
     })
     private Long id;
 
     @JsonView({
-            SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
-            SystemViews.CommercialPartnerBasicView.class,SystemViews.EstateBasicView.class,
+            SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,
+            SystemViews.CommercialPartnerBasicView.class, SystemViews.EstateBasicView.class,
             SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class,
-            SystemViews.PromoterDetailedView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.AssociationDetailedView.class,
     })
     private String code;
 
     @JsonView({
-            SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
-            SystemViews.CommercialPartnerBasicView.class,SystemViews.EstateBasicView.class,
+            SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,
+            SystemViews.CommercialPartnerBasicView.class, SystemViews.EstateBasicView.class,
             SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class,
-            SystemViews.PromoterDetailedView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.AssociationDetailedView.class,
     })
     private String name;
 

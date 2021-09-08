@@ -22,23 +22,23 @@ public class ProductType {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonView({
-            SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
+            SystemViews.ProductInStateBasicView.class, SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
-            SystemViews.AdvertisingBasicView.class
+            SystemViews.AdvertisingBasicView.class, SystemViews.PackingOptionBasicView.class
     })
     private Long id;
 
     @JsonView({
-            SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
+            SystemViews.ProductInStateBasicView.class, SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
-            SystemViews.AdvertisingBasicView.class
+            SystemViews.AdvertisingBasicView.class, SystemViews.PackingOptionBasicView.class
     })
     private String code;
 
     @JsonView({
-            SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
+            SystemViews.ProductInStateBasicView.class, SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
-            SystemViews.AdvertisingBasicView.class
+            SystemViews.AdvertisingBasicView.class, SystemViews.PackingOptionBasicView.class
     })
     private String description;
 }

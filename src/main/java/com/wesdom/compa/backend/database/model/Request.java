@@ -35,6 +35,9 @@ public class Request {
     @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class})
     private String type;
 
+    @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class})
+    private String status;
+
     @ManyToOne(targetEntity = CommercialPartner.class, fetch = FetchType.LAZY)
     @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class})
     @NotFound(action = NotFoundAction.IGNORE)
@@ -91,5 +94,8 @@ public class Request {
     @JsonView({SystemViews.RequestBasicView.class})
     @Column(length = 600)
     private String comments;
+
+    @JsonView({SystemViews.RequestBasicView.class})
+    private BigDecimal maxAmountOffer;
 
 }

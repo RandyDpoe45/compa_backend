@@ -49,7 +49,16 @@ public class ManufacturerGroup {
             SystemViews.RequestOfferBasicView.class,SystemViews.AssociationMemberBasicView.class,
             SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingBasicView.class
     })
-    @Column(length = 1000)
+    @Column(length = 500)
+    private String historyTitle;
+
+    @JsonView({
+            SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class,
+            SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class,
+            SystemViews.RequestOfferBasicView.class,SystemViews.AssociationMemberBasicView.class,
+            SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingBasicView.class
+    })
+    @Column(length = 500)
     private String history;
 
     @JsonView({

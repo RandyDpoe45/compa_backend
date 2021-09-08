@@ -1,6 +1,8 @@
 package com.wesdom.compa.backend.database.model.estatesegment;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.wesdom.compa.backend.dtos.views.SystemViews;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,4 +20,6 @@ import javax.persistence.Entity;
 @JsonTypeName("ConservationSegment")
 public class ConservationSegment extends EstateSegment{
 
+    @JsonView({SystemViews.EstateSegmentDetailView.class})
+    private String conservationStatus;
 }

@@ -38,4 +38,10 @@ public class AgriculturalSegment extends EstateSegment{
             SystemViews.EstateSegmentDetailView.class
     })
     private String soilMinerals;
+
+    @JsonView({
+            SystemViews.EstateSegmentBasicView.class,SystemViews.ProductInStateBasicView.class,
+            SystemViews.EstateSegmentDetailView.class
+    })
+    private String lateUse;
 }

@@ -18,6 +18,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -29,9 +30,6 @@ import java.util.List;
 @Accessors(chain = true)
 @JsonTypeName("BeekeepingSegment")
 public class BeekeepingSegment extends EstateSegment{
-
-    @JsonView({SystemViews.EstateSegmentDetailView.class})
-    private String name;
 
     @JsonView({SystemViews.EstateSegmentDetailView.class})
     private Long numberOfChambers;
@@ -62,6 +60,12 @@ public class BeekeepingSegment extends EstateSegment{
 
     @JsonView({SystemViews.EstateSegmentDetailView.class})
     private String troughType;
+
+    @JsonView({SystemViews.EstateSegmentDetailView.class})
+    private BigDecimal promHarvest;
+
+    @JsonView({SystemViews.EstateSegmentDetailView.class})
+    private BigDecimal maxHarvest;
 
     @JsonView({SystemViews.EstateSegmentDetailView.class})
     @ManyToMany(targetEntity = ApiaryWoodType.class, fetch = FetchType.LAZY)

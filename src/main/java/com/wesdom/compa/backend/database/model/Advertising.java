@@ -41,6 +41,10 @@ public class Advertising {
     @NotFound(action = NotFoundAction.IGNORE)
     private Association association;
 
+    @JsonView({SystemViews.AdvertisingBasicView.class})
+    @Column(length = 600)
+    private String description;
+
     @JsonFormat(pattern = "yyyy-MM-dd")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)

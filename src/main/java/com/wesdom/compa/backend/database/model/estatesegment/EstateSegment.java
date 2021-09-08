@@ -44,6 +44,10 @@ public class EstateSegment {
             ,SystemViews.EstateSegmentDetailView.class, SystemViews.NearbyFloraBasicView.class})
     private String code;
 
+    @JsonView({SystemViews.EstateSegmentBasicView.class,SystemViews.ProductInStateBasicView.class
+            ,SystemViews.EstateSegmentDetailView.class, SystemViews.NearbyFloraBasicView.class})
+    private String name;
+
     @JsonView({SystemViews.EstateSegmentBasicView.class,SystemViews.EstateSegmentDetailView.class})
     @ManyToOne(targetEntity = Estate.class,fetch = FetchType.LAZY)
     @JoinColumn(nullable = false)
@@ -72,5 +76,9 @@ public class EstateSegment {
     @ManyToMany(targetEntity = Manufacturer.class, fetch = FetchType.LAZY)
     @NotFound(action = NotFoundAction.IGNORE)
     private List<Manufacturer> manufacturerList;
+
+    @OneToMany(targetEntity = ProductInStateSegment.class, fetch = FetchType.LAZY, mappedBy = "estateSegment")
+    @NotFound(action = NotFoundAction.IGNORE)
+    private List<ProductInStateSegment> productInStateSegmentList;
 
 }

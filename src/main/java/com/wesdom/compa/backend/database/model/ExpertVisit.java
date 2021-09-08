@@ -34,6 +34,9 @@ public class ExpertVisit {
     private Long id;
 
     @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    private String status;
+
+    @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
     @JsonFormat(pattern = "dd/MM/yyyy")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
@@ -53,6 +56,21 @@ public class ExpertVisit {
     @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
     @Column(length = 800)
     private String comment;
+
+    @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @Column(length = 800)
+    private String futureTask;
+
+    @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @Column(length = 500)
+    private String floraQuality;
+
+    @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    private Boolean hasWater;
+
+    @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @Column(length = 800)
+    private String isClean;
 
     @JsonView({SystemViews.ExpertVisitBasicView.class})
     @NotFound(action = NotFoundAction.IGNORE)

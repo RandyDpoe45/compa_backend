@@ -18,7 +18,7 @@ import java.util.Map;
 
 @Service
 public class ProductRepositoryImpl implements IProductRepository {
-    
+
     @Autowired
     private ProductJpaRepository productJpaRepository;
 
@@ -34,7 +34,7 @@ public class ProductRepositoryImpl implements IProductRepository {
     public Page<Product> getAll(Map<String, String> params) {
         IPredicateBuilder<Product> predicate = new PredicateBuilderServiceImpl<>();
         IPaginationBuilder paginaton = new PaginationBuilderImpl();
-        return productJpaRepository.findAll(predicate.createPredicate(params),paginaton.createPagination(params));
+        return productJpaRepository.findAll(predicate.createPredicate(params), paginaton.createPagination(params));
     }
 
     @Override
@@ -45,9 +45,15 @@ public class ProductRepositoryImpl implements IProductRepository {
     @Override
     public Product update(Long productId, Product product) {
         Product p = productJpaRepository.getOne(productId);
-        p.setCode(product.getCode()).setAvProductivity(product.getAvProductivity()).setProductType(product.getProductType())
-                .setName(product.getName()).setMeasureUnit(product.getMeasureUnit()).setSpecies(product.getSpecies());
-        return  productJpaRepository.save(p);
+        p.setCode(product.getCode())
+                .setAvProductivity(product.getAvProductivity())
+                .setProductType(product.getProductType())
+                .setName(product.getName())
+                .setMeasureUnit(product.getMeasureUnit())
+                .setSpecies(product.getSpecies())
+                .setSeasonType(product.getSeasonType())
+                .setHarvestMonths(product.getHarvestMonths());
+        return productJpaRepository.save(p);
     }
 
     @Override

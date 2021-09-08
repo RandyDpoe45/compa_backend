@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +47,7 @@ public class AuthUserServiceImpl implements IAuthUserService, UserDetailsService
             throw new GeneralException(ExceptionCodesEnum.USERNAME_IN_USE,"El nombe de usuario ya se encuentra en uso");
         }
         authUser.setIsActive(true);
+        authUser.setRegistryDate(LocalDate.now());
         String encodedPassword = authUser.getPassword();
         encodedPassword = passwordEncoder.encode(encodedPassword);
         authUser.setPassword(encodedPassword);

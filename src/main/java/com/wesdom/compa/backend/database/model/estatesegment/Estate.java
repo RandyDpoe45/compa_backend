@@ -16,6 +16,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Getter
@@ -61,8 +62,22 @@ public class Estate {
     private BigDecimal totalArea;
 
     @JsonView({SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class})
+    private BigDecimal forestArea;
+
+    @JsonView({SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class})
+    private Boolean hasSpacePlan;
+
+    @JsonView({SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class})
+    private Boolean hasFuturePlan;
+
+    @JsonView({SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class})
     @ManyToOne(targetEntity = ManufacturerGroup.class, fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @NotFound(action = NotFoundAction.IGNORE)
     private ManufacturerGroup manufacturerGroup;
+
+    @OneToMany(targetEntity = EstateSegment.class, fetch = FetchType.LAZY, mappedBy = "estate")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotFound(action = NotFoundAction.IGNORE)
+    private List<EstateSegment> estateSegmentList;
 }

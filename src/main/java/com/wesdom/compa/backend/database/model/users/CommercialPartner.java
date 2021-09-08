@@ -14,7 +14,7 @@ import javax.persistence.Entity;
 @Setter
 @NoArgsConstructor
 @Accessors(chain = true)
-public class CommercialPartner extends BaseUser{
+public class CommercialPartner extends BaseUser {
 
     @JsonView({
             SystemViews.CommercialPartnerBasicView.class, SystemViews.RequestBasicView.class,
@@ -39,5 +39,8 @@ public class CommercialPartner extends BaseUser{
 
     @JsonView({SystemViews.CommercialPartnerBasicView.class})
     private String accountNumber;
+
+    @JsonView({SystemViews.CommercialPartnerBasicView.class})
+    private String personType;
 
 }

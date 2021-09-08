@@ -30,6 +30,10 @@ public class ProductionActivity {
     @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
     private Boolean approved = false;
 
+    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @Column(length = 600)
+    private String comments;
+
     @ManyToOne(targetEntity = ProductInStateSegment.class, fetch = FetchType.LAZY)
     @JsonView({SystemViews.ProductionActivityBasicView.class})
     @OnDelete(action = OnDeleteAction.CASCADE)
