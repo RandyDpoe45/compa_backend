@@ -26,8 +26,12 @@ public class ProductionStageServiceImpl implements IProductionStageService {
                 .getLastStageByEstateSegmentTypeId(
                         productionStage.getEstateSegmentType().getId()
                 );
-        System.out.println(last.getStageOrder());
-        productionStage.setStageOrder(last.getStageOrder() + 1);
+        if(last != null){
+            System.out.println(last.getStageOrder());
+            productionStage.setStageOrder(last.getStageOrder() + 1);
+        }else{
+            productionStage.setStageOrder(1l);
+        }
         return productionStageRepository.save(productionStage);
     }
 
