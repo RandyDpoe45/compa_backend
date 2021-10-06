@@ -27,7 +27,7 @@ public class PromoterRestController {
 
     @PostMapping
     @JsonView(SystemViews.PromoterDetailedView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public Promoter createUser(@RequestBody Promoter promoter){
         return promoterService.createPromoter(promoter);
     }
@@ -46,7 +46,7 @@ public class PromoterRestController {
 
     @JsonView(SystemViews.PromoterDetailedView.class)
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public Promoter update(@PathVariable Long id, @RequestBody Promoter promoter) throws JsonProcessingException {
         return promoterService.updatePromoter(id,promoter);
     }

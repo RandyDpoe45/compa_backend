@@ -41,7 +41,7 @@ public class BioProductRestController {
     }
 
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     @JsonView(SystemViews.BioProductBasicView.class)
     public BioProduct update(@PathVariable Long id, @RequestBody BioProduct bioProduct) throws JsonProcessingException {
         return bioProductRepository.update(id,bioProduct);

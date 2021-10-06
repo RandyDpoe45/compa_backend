@@ -24,7 +24,7 @@ public class EstateRestController {
 
     @PostMapping
     @JsonView(SystemViews.EstateBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public Estate createUser(@RequestBody Estate estate){
         return estateRepository.save(estate);
     }
@@ -43,13 +43,13 @@ public class EstateRestController {
 
     @JsonView(SystemViews.EstateBasicView.class)
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public Estate update(@PathVariable Long id, @RequestBody Estate estate) throws JsonProcessingException {
         return estateRepository.update(id,estate);
     }
 
     @DeleteMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
         estateRepository.delete(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Predio eliminado con exito");

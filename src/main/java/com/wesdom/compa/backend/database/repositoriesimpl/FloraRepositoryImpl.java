@@ -39,7 +39,7 @@ public class FloraRepositoryImpl implements IFloraRepository {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public Flora save(Flora flora) {
         flora = floraJpaRepository.saveAndFlush(flora);
         em.refresh(flora);
@@ -47,7 +47,7 @@ public class FloraRepositoryImpl implements IFloraRepository {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public Flora update(Long estateSegmentId, Flora flora) {
         flora = floraJpaRepository.saveAndFlush(flora);
         em.refresh(flora);

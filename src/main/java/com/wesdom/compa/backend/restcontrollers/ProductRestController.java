@@ -52,7 +52,7 @@ public class ProductRestController {
     }
 
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     @JsonView(SystemViews.ProductBasicView.class)
     public Product update(@PathVariable Long id, @RequestBody Product product) throws JsonProcessingException {
         return productRepository.update(id,product);

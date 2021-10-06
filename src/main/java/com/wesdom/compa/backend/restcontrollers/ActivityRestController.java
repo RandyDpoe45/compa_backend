@@ -51,7 +51,7 @@ public class ActivityRestController {
 
     @PutMapping(value = "/{id}")
     @JsonView(SystemViews.ActivityBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public Activity update(@PathVariable Long id, @RequestBody Activity activity) throws JsonProcessingException {
         return activityRepository.update(id,activity);
     }
@@ -82,7 +82,7 @@ public class ActivityRestController {
 
     @PutMapping(value = "/activityOption/{id}")
     @JsonView(SystemViews.ActivityOptionBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ActivityOption updateActivityOption(@PathVariable Long id, @RequestBody ActivityOption activityOption) throws JsonProcessingException {
         return activityOptionRepository.update(id,activityOption);
     }
@@ -113,7 +113,7 @@ public class ActivityRestController {
 
     @PutMapping(value = "/activityOption/optionAnswer/{id}")
     @JsonView(SystemViews.OptionAnswerBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public OptionAnswer updateOptionAnswer(@PathVariable Long id, @RequestBody OptionAnswer optionAnswer) throws JsonProcessingException {
         return optionAnswerRepository.update(id,optionAnswer);
     }

@@ -33,6 +33,7 @@ public class ExpertVisit {
     @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
     private Long id;
 
+    //
     @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
     private String status;
 

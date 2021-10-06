@@ -24,7 +24,8 @@ public class Municipality {
             SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,
             SystemViews.CommercialPartnerBasicView.class, SystemViews.EstateBasicView.class,
             SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class,
-            SystemViews.PromoterDetailedView.class, SystemViews.AssociationDetailedView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.AssociationDetailedView.class,
+            SystemViews.AdvertisingDetailView.class, SystemViews.CommercialPartnerDetailView.class
     })
     private Long id;
 
@@ -33,6 +34,7 @@ public class Municipality {
             SystemViews.CommercialPartnerBasicView.class, SystemViews.EstateBasicView.class,
             SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class,
             SystemViews.PromoterDetailedView.class, SystemViews.AssociationDetailedView.class,
+            SystemViews.AdvertisingDetailView.class, SystemViews.CommercialPartnerDetailView.class
     })
     private String code;
 
@@ -41,6 +43,7 @@ public class Municipality {
             SystemViews.CommercialPartnerBasicView.class, SystemViews.EstateBasicView.class,
             SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class,
             SystemViews.PromoterDetailedView.class, SystemViews.AssociationDetailedView.class,
+            SystemViews.AdvertisingDetailView.class, SystemViews.CommercialPartnerDetailView.class
     })
     private String name;
 

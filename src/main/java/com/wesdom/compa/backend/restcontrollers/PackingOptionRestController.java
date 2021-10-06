@@ -24,7 +24,7 @@ public class PackingOptionRestController {
 
 
     @PostMapping
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     @JsonView(SystemViews.PackingOptionBasicView.class)
     public PackingOption createUser(@RequestBody PackingOption packingOption) {
         return packingOptionRepository.save(packingOption);
@@ -43,14 +43,14 @@ public class PackingOptionRestController {
     }
 
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     @JsonView(SystemViews.PackingOptionBasicView.class)
     public PackingOption update(@PathVariable Long id, @RequestBody PackingOption packingOption) throws JsonProcessingException {
         return packingOptionRepository.update(id, packingOption);
     }
 
     @DeleteMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
         packingOptionRepository.delete(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Opcion de empaque eliminada con exito");

@@ -39,7 +39,7 @@ public class ProductionStageRepositoryImpl implements IProductionStageRepository
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ProductionStage save(ProductionStage productionStage) {
         productionStage = productionStageJpaRepository.saveAndFlush(productionStage);
         em.refresh(productionStage);
@@ -47,7 +47,7 @@ public class ProductionStageRepositoryImpl implements IProductionStageRepository
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ProductionStage update(Long productionStageId, ProductionStage productionStage) {
         ProductionStage p = productionStageJpaRepository.getOne(productionStageId);
         p.setEstateSegmentType(productionStage.getEstateSegmentType())

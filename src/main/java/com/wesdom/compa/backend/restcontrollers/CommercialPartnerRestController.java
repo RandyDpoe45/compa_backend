@@ -23,7 +23,7 @@ public class CommercialPartnerRestController {
 
     @PostMapping
     @JsonView(SystemViews.CommercialPartnerBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public CommercialPartner createUser(@RequestBody CommercialPartner commercialPartner){
         return commercialPartnerRepository.save(commercialPartner);
     }
@@ -34,7 +34,7 @@ public class CommercialPartnerRestController {
         return commercialPartnerRepository.getAll(allParams);
     }
 
-    @JsonView(SystemViews.CommercialPartnerBasicView.class)
+    @JsonView(SystemViews.CommercialPartnerDetailView.class)
     @GetMapping("/{id}")
     public CommercialPartner get(@PathVariable Long id){
         return commercialPartnerRepository.get(id);
@@ -42,7 +42,7 @@ public class CommercialPartnerRestController {
 
     @JsonView(SystemViews.CommercialPartnerBasicView.class)
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public CommercialPartner update(@PathVariable Long id, @RequestBody CommercialPartner commercialPartner) throws JsonProcessingException {
         return commercialPartnerRepository.update(id,commercialPartner);
     }

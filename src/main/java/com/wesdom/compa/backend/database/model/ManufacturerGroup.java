@@ -29,7 +29,7 @@ public class ManufacturerGroup {
             SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateBasicView.class ,SystemViews.EstateSegmentDetailView.class,
             SystemViews.RequestOfferBasicView.class, SystemViews.AssociationMemberBasicView.class,
-            SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingBasicView.class,
+            SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingDetailView.class,
             SystemViews.RequestOfferDetailView.class
     })
     private Long id;
@@ -38,7 +38,7 @@ public class ManufacturerGroup {
             SystemViews.GroupBasicView.class, SystemViews.GroupDetailedView.class,
             SystemViews.EstateBasicView.class, SystemViews.EstateSegmentDetailView.class,
             SystemViews.RequestOfferBasicView.class, SystemViews.AssociationMemberBasicView.class,
-            SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingBasicView.class,
+            SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingDetailView.class,
             SystemViews.RequestOfferDetailView.class
     })
     private String name;
@@ -47,7 +47,7 @@ public class ManufacturerGroup {
             SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class,
             SystemViews.RequestOfferBasicView.class,SystemViews.AssociationMemberBasicView.class,
-            SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingBasicView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingDetailView.class
     })
     @Column(length = 500)
     private String historyTitle;
@@ -56,7 +56,7 @@ public class ManufacturerGroup {
             SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class,
             SystemViews.RequestOfferBasicView.class,SystemViews.AssociationMemberBasicView.class,
-            SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingBasicView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingDetailView.class
     })
     @Column(length = 500)
     private String history;

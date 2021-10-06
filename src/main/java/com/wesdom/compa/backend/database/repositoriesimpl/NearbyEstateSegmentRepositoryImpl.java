@@ -39,7 +39,7 @@ public class NearbyEstateSegmentRepositoryImpl implements INearbyEstateSegmentRe
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public NearbyEstateSegment save(NearbyEstateSegment estateSegment) {
         estateSegment = nearbyEstateSegmentJpaRepository.saveAndFlush(estateSegment);
         em.refresh(estateSegment);
@@ -47,7 +47,7 @@ public class NearbyEstateSegmentRepositoryImpl implements INearbyEstateSegmentRe
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public NearbyEstateSegment update(Long estateSegmentId, NearbyEstateSegment estateSegment) {
         estateSegment = nearbyEstateSegmentJpaRepository.saveAndFlush(estateSegment);
         em.refresh(estateSegment);

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
 import com.wesdom.compa.backend.exceptionhandling.exceptions.ExceptionCodesEnum;
 import com.wesdom.compa.backend.exceptionhandling.exceptions.GeneralException;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -37,6 +38,7 @@ public class GeneralExceptionHandler {
     @ResponseBody
     public GeneralResponse HandlerException(Exception exception){
         exception.printStackTrace();
+        TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
         return new GeneralResponse("Error inesperado",ExceptionCodesEnum.UNEXPECTED_ERROR.getCode());
     }
     

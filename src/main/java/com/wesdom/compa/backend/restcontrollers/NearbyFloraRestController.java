@@ -24,7 +24,7 @@ public class NearbyFloraRestController {
 
 
     @PostMapping
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     @JsonView(SystemViews.NearbyFloraBasicView.class)
     public NearbyFlora createUser(@RequestBody NearbyFlora NearbyFlora){
         return nearbyFloraRepository.save(NearbyFlora);
@@ -43,14 +43,14 @@ public class NearbyFloraRestController {
     }
 
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     @JsonView(SystemViews.NearbyFloraBasicView.class)
     public NearbyFlora update(@PathVariable Long id, @RequestBody NearbyFlora NearbyFlora) throws JsonProcessingException {
         return nearbyFloraRepository.update(id,NearbyFlora);
     }
 
     @DeleteMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
         nearbyFloraRepository.delete(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Flora cerca eliminada con exito");

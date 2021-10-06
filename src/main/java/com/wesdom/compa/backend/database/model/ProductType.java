@@ -24,21 +24,21 @@ public class ProductType {
     @JsonView({
             SystemViews.ProductInStateBasicView.class, SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
-            SystemViews.AdvertisingBasicView.class, SystemViews.PackingOptionBasicView.class
+            SystemViews.AdvertisingDetailView.class, SystemViews.PackingOptionBasicView.class
     })
     private Long id;
 
     @JsonView({
             SystemViews.ProductInStateBasicView.class, SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
-            SystemViews.AdvertisingBasicView.class, SystemViews.PackingOptionBasicView.class
+            SystemViews.AdvertisingDetailView.class, SystemViews.PackingOptionBasicView.class
     })
     private String code;
 
     @JsonView({
             SystemViews.ProductInStateBasicView.class, SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
-            SystemViews.AdvertisingBasicView.class, SystemViews.PackingOptionBasicView.class
+            SystemViews.AdvertisingDetailView.class, SystemViews.PackingOptionBasicView.class
     })
     private String description;
 }

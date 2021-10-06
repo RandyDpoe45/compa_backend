@@ -43,7 +43,7 @@ public class ProductionActivityRepositoryImpl implements IProductionActivityRepo
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ProductionActivity save(ProductionActivity productionActivity) {
         productionActivity = productionActivityJpaRepository.saveAndFlush(productionActivity);
         em.refresh(productionActivity);
@@ -51,7 +51,7 @@ public class ProductionActivityRepositoryImpl implements IProductionActivityRepo
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ProductionActivity update(Long productionActivityId, ProductionActivity productionActivity) {
         ProductionActivity e = productionActivityJpaRepository.getOne(productionActivityId);
         e.setActivity(productionActivity.getActivity())

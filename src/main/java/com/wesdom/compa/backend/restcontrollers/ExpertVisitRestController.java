@@ -9,6 +9,7 @@ import com.wesdom.compa.backend.database.repositories.IExpertVisitNoteRepository
 import com.wesdom.compa.backend.database.repositories.IExpertVisitRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
+import com.wesdom.compa.backend.service.interfaces.IExpertVisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Propagation;
@@ -27,12 +28,15 @@ public class ExpertVisitRestController {
     private IExpertVisitRepository expertVisitRepository;
 
     @Autowired
+    private IExpertVisitService expertVisitService;
+
+    @Autowired
     private IExpertVisitNoteRepository expertVisitNoteRepository;
 
 
     @PostMapping
     @JsonView(SystemViews.ExpertVisitBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ExpertVisit createUser(@RequestBody ExpertVisit expertVisit){
         return expertVisitRepository.save(expertVisit);
     }
@@ -56,14 +60,13 @@ public class ExpertVisitRestController {
 
     @PutMapping(value = "/{id}")
     @JsonView(SystemViews.ExpertVisitBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ExpertVisit update(@PathVariable Long id, @RequestBody ExpertVisit expertVisit) throws JsonProcessingException {
-        return expertVisitRepository.update(id,expertVisit);
+        return expertVisitService.update(id,expertVisit);
     }
 
     @DeleteMapping(value = "/{id}")
-    @JsonView(SystemViews.ExpertVisitBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
         expertVisitRepository.delete(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Predio eliminado con exito");
@@ -71,7 +74,7 @@ public class ExpertVisitRestController {
 
     @PostMapping("/note")
     @JsonView(SystemViews.ExpertVisitNoteBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ExpertVisitNote createNote(@RequestBody ExpertVisitNote expertVisitNote){
         return expertVisitNoteRepository.save(expertVisitNote);
     }
@@ -90,14 +93,13 @@ public class ExpertVisitRestController {
 
     @PutMapping(value = "/note/{id}")
     @JsonView(SystemViews.ExpertVisitNoteBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ExpertVisitNote updateNote(@PathVariable Long id, @RequestBody ExpertVisitNote expertVisitNote) throws JsonProcessingException {
         return expertVisitNoteRepository.update(id,expertVisitNote);
     }
 
     @DeleteMapping(value = "/note/{id}")
-    @JsonView(SystemViews.ExpertVisitNoteBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse deleteNote(@PathVariable Long id) throws JsonProcessingException {
         expertVisitNoteRepository.delete(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Observacion eliminada con exito");

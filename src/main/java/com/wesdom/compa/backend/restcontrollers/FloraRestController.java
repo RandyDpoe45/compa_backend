@@ -27,7 +27,7 @@ public class FloraRestController {
     private IFloraService floraService;
 
     @PostMapping
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public Flora createUser(@RequestBody Flora flora){
         return floraRepository.save(flora);
     }
@@ -43,13 +43,13 @@ public class FloraRestController {
     }
 
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public Flora update(@PathVariable Long id, @RequestBody Flora flora) throws JsonProcessingException {
         return floraRepository.update(id,flora);
     }
 
     @DeleteMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
         floraService.deleteFlora(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Predio flora con exito");

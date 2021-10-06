@@ -40,7 +40,7 @@ public class ExpertVisitNoteRepositoryImpl implements IExpertVisitNoteRepository
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ExpertVisitNote save(ExpertVisitNote expertVisitNote) {
         expertVisitNote = expertVisitNoteJpaRepository.saveAndFlush(expertVisitNote);
         em.refresh(expertVisitNote);
@@ -48,7 +48,7 @@ public class ExpertVisitNoteRepositoryImpl implements IExpertVisitNoteRepository
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ExpertVisitNote update(Long estateSegmentId, ExpertVisitNote expertVisitNote) {
         expertVisitNote = expertVisitNoteJpaRepository.saveAndFlush(expertVisitNote);
         em.refresh(expertVisitNote);

@@ -34,7 +34,8 @@ public abstract class BaseUser {
             SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
             SystemViews.RequestBasicView.class,SystemViews.AssociationMemberBasicView.class,
             SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class,
-            SystemViews.ProductWorkBasicView.class
+            SystemViews.ProductWorkBasicView.class, SystemViews.RequestDetailView.class,
+            SystemViews.CommercialPartnerDetailView.class
     })
     private Long id;
 
@@ -42,48 +43,49 @@ public abstract class BaseUser {
     @JoinColumn(nullable = false)
     @JsonView({
             SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,
-            SystemViews.CommercialPartnerBasicView.class, SystemViews.PromoterDetailedView.class
+            SystemViews.CommercialPartnerBasicView.class, SystemViews.PromoterDetailedView.class,
+            SystemViews.CommercialPartnerDetailView.class
     })
     @NotFound(action = NotFoundAction.IGNORE)
     private AuthUser authUser;
 
     @JsonView({
             SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,
-            SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
+            SystemViews.CommercialPartnerDetailView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
             SystemViews.RequestBasicView.class, SystemViews.AssociationMemberBasicView.class,
             SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class,
-            SystemViews.ProductWorkBasicView.class
+            SystemViews.ProductWorkBasicView.class, SystemViews.RequestDetailView.class
     })
     private String firstName;
 
     @JsonView({
             SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
-            SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
+            SystemViews.CommercialPartnerDetailView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
             SystemViews.RequestBasicView.class, SystemViews.AssociationMemberBasicView.class,
             SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class,
-            SystemViews.ProductWorkBasicView.class
+            SystemViews.ProductWorkBasicView.class, SystemViews.RequestDetailView.class
     })
     private String secondName;
 
     @JsonView({
             SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
-            SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
+            SystemViews.CommercialPartnerDetailView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
             SystemViews.RequestBasicView.class,SystemViews.AssociationMemberBasicView.class,
             SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class,
-            SystemViews.ProductWorkBasicView.class
+            SystemViews.ProductWorkBasicView.class, SystemViews.RequestDetailView.class
     })
     private String firstLastname;
 
     @JsonView({
             SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
-            SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
+            SystemViews.CommercialPartnerDetailView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
             SystemViews.RequestBasicView.class,SystemViews.AssociationMemberBasicView.class,
             SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class,
-            SystemViews.ProductWorkBasicView.class
+            SystemViews.ProductWorkBasicView.class, SystemViews.RequestDetailView.class
     })
     private String secondLastName;
 
@@ -92,13 +94,14 @@ public abstract class BaseUser {
             SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateSegmentDetailView.class,SystemViews.ExpertVisitBasicView.class,
             SystemViews.RequestBasicView.class,SystemViews.AssociationMemberBasicView.class,
-            SystemViews.PromoterDetailedView.class, SystemViews.ProductWorkBasicView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.ProductWorkBasicView.class,
+            SystemViews.CommercialPartnerDetailView.class
     })
     private String phone;
 
     @JsonView({
             SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
-            SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
+            SystemViews.CommercialPartnerDetailView.class,SystemViews.GroupDetailedView.class,
             SystemViews.AssociationMemberBasicView.class, SystemViews.PromoterDetailedView.class,
             SystemViews.ProductWorkBasicView.class
     })
@@ -106,7 +109,7 @@ public abstract class BaseUser {
 
     @JsonView({
             SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
-            SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
+            SystemViews.CommercialPartnerDetailView.class,SystemViews.GroupDetailedView.class,
             SystemViews.AssociationMemberBasicView.class, SystemViews.PromoterDetailedView.class,
             SystemViews.ProductWorkBasicView.class
     })
@@ -114,7 +117,7 @@ public abstract class BaseUser {
 
     @JsonView({
             SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
-            SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
+            SystemViews.CommercialPartnerDetailView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateSegmentDetailView.class,SystemViews.AssociationMemberBasicView.class,
             SystemViews.BioProductBasicView.class, SystemViews.PromoterDetailedView.class,
             SystemViews.ProductWorkBasicView.class
@@ -123,7 +126,7 @@ public abstract class BaseUser {
 
     @JsonView({
             SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
-            SystemViews.CommercialPartnerBasicView.class,SystemViews.GroupDetailedView.class,
+            SystemViews.CommercialPartnerDetailView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateSegmentDetailView.class, SystemViews.PromoterDetailedView.class
     })
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -134,7 +137,8 @@ public abstract class BaseUser {
     @ManyToOne(targetEntity = Municipality.class,fetch = FetchType.EAGER)
     @JsonView({
             SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
-            SystemViews.CommercialPartnerBasicView.class, SystemViews.PromoterDetailedView.class
+            SystemViews.CommercialPartnerBasicView.class, SystemViews.PromoterDetailedView.class,
+            SystemViews.CommercialPartnerDetailView.class
     })
     @NotFound(action = NotFoundAction.IGNORE)
     private Municipality municipality;
@@ -142,7 +146,7 @@ public abstract class BaseUser {
     @ManyToOne(targetEntity = Department.class,fetch = FetchType.LAZY)
     @JsonView({
             SystemViews.ManufacturerBasicView.class,  SystemViews.PromoterBasicView.class,
-            SystemViews.CommercialPartnerBasicView.class, SystemViews.PromoterDetailedView.class
+            SystemViews.CommercialPartnerDetailView.class, SystemViews.PromoterDetailedView.class
     })
     @NotFound(action = NotFoundAction.IGNORE)
     private Department department;

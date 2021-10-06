@@ -39,7 +39,7 @@ public class NearbyFloraRepositoryImpl implements INearbyFloraRepository {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public NearbyFlora save(NearbyFlora nearbyFlora) {
         nearbyFlora = nearbyFloraJpaRepository.saveAndFlush(nearbyFlora);
         em.refresh(nearbyFlora);
@@ -47,7 +47,7 @@ public class NearbyFloraRepositoryImpl implements INearbyFloraRepository {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public NearbyFlora update(Long estateSegmentId, NearbyFlora nearbyFlora) {
         nearbyFlora = nearbyFloraJpaRepository.saveAndFlush(nearbyFlora);
         em.refresh(nearbyFlora);

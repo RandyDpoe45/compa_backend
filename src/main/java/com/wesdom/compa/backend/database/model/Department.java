@@ -20,25 +20,28 @@ public class Department {
     @Id
     @JsonView({
             SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,
-            SystemViews.CommercialPartnerBasicView.class, SystemViews.EstateBasicView.class,
+            SystemViews.CommercialPartnerDetailView.class, SystemViews.EstateBasicView.class,
             SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class,
             SystemViews.PromoterDetailedView.class, SystemViews.AssociationDetailedView.class,
+            SystemViews.AdvertisingDetailView.class,
     })
     private Long id;
 
     @JsonView({
             SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,
-            SystemViews.CommercialPartnerBasicView.class, SystemViews.EstateBasicView.class,
+            SystemViews.CommercialPartnerDetailView.class, SystemViews.EstateBasicView.class,
             SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class,
             SystemViews.PromoterDetailedView.class, SystemViews.AssociationDetailedView.class,
+            SystemViews.AdvertisingDetailView.class,
     })
     private String code;
 
     @JsonView({
             SystemViews.ManufacturerBasicView.class, SystemViews.PromoterBasicView.class,
-            SystemViews.CommercialPartnerBasicView.class, SystemViews.EstateBasicView.class,
+            SystemViews.CommercialPartnerDetailView.class, SystemViews.EstateBasicView.class,
             SystemViews.EstateSegmentDetailView.class, SystemViews.LocationBasicView.class,
             SystemViews.PromoterDetailedView.class, SystemViews.AssociationDetailedView.class,
+            SystemViews.AdvertisingDetailView.class,
     })
     private String name;
 }

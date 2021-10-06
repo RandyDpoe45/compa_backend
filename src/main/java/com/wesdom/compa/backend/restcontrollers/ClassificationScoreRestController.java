@@ -23,7 +23,7 @@ public class ClassificationScoreRestController {
     private IClassificationScoreRepository classificationScoreRepository;
 
     @PostMapping
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ClassificationScore create(@RequestBody ClassificationScore classificationScore){
         return classificationScoreRepository.save(classificationScore);
     }
@@ -44,13 +44,13 @@ public class ClassificationScoreRestController {
     }
 
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ClassificationScore update(@PathVariable Long id, @RequestBody ClassificationScore classificationScore) throws JsonProcessingException {
         return classificationScoreRepository.update(id,classificationScore);
     }
 
     @DeleteMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
         classificationScoreRepository.delete(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Clasificacion eliminada con exito");

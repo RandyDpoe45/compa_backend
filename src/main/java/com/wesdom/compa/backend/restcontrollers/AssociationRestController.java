@@ -38,7 +38,7 @@ public class AssociationRestController {
 
     @PostMapping
     @JsonView(SystemViews.AssociationDetailedView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public Association save(@RequestBody Association association){
         return associationRepository.save(association);
     }
@@ -57,14 +57,14 @@ public class AssociationRestController {
 
     @JsonView(SystemViews.AssociationDetailedView.class)
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public Association update(@PathVariable Long id, @RequestBody Association association) throws JsonProcessingException {
         return associationRepository.update(id,association);
     }
 
     @PostMapping("/member")
     @JsonView(SystemViews.AssociationMemberBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public AssociationMember createMember(@RequestBody AssociationMember associationMember){
         return associationService.addMember(associationMember);
     }
@@ -83,7 +83,7 @@ public class AssociationRestController {
 
     @JsonView(SystemViews.AssociationMemberBasicView.class)
     @PutMapping(value = "/member/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public AssociationMember updateMember(@PathVariable Long id, @RequestBody AssociationMember associationMember) throws JsonProcessingException {
         return associationMemberRepository.update(id,associationMember);
     }
@@ -96,7 +96,7 @@ public class AssociationRestController {
 
     @PostMapping("/promoter")
     @JsonView(SystemViews.AssociationMemberBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public AssociationPromoter createPromoter(@RequestBody AssociationPromoter associationPromoter){
         return associationService.addPromoter(associationPromoter);
     }
@@ -115,7 +115,7 @@ public class AssociationRestController {
 
     @JsonView(SystemViews.AssociationMemberBasicView.class)
     @PutMapping(value = "/promoter/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public AssociationPromoter updatePromoter(@PathVariable Long id, @RequestBody AssociationPromoter associationPromoter) throws JsonProcessingException {
         return associationPromoterRepository.update(id,associationPromoter);
     }

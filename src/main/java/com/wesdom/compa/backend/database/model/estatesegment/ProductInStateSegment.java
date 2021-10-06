@@ -35,7 +35,7 @@ public class ProductInStateSegment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonView({
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
-            SystemViews.ExpertVisitBasicView.class
+            SystemViews.ExpertVisitBasicView.class, SystemViews.AdvertisingDetailView.class
     })
     private Long id;
 
@@ -80,7 +80,7 @@ public class ProductInStateSegment {
 
     @JsonView({
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
-            SystemViews.ExpertVisitBasicView.class
+            SystemViews.ExpertVisitBasicView.class, SystemViews.AdvertisingDetailView.class
     })
     private BigDecimal area;
 
@@ -94,9 +94,12 @@ public class ProductInStateSegment {
     private List<ProductionActivity> productionActivityList;
 
     @JsonView({
-            SystemViews.ProductInStateBasicView.class,SystemViews.ExpertVisitBasicView.class
+            SystemViews.ProductInStateBasicView.class,SystemViews.ExpertVisitBasicView.class,
+            SystemViews.AdvertisingDetailView.class
     })
     public Float getProductionScore(){
+        if (this.productionActivityList.isEmpty())
+            return 0f;
         Float productionScore = this.productionActivityList.stream()
                 .map(x -> x.getActivityScore())
                 .reduce(0f, Float::sum);

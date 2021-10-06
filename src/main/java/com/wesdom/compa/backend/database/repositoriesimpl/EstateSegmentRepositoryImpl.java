@@ -73,7 +73,7 @@ public class EstateSegmentRepositoryImpl implements IEstateSegmentRepository {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public EstateSegment save(EstateSegment estateSegment) {
         estateSegment = estateSegmentJpaRepository.saveAndFlush(estateSegment);
         em.refresh(estateSegment);
@@ -81,7 +81,7 @@ public class EstateSegmentRepositoryImpl implements IEstateSegmentRepository {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public EstateSegment update(Long estateSegmentId, EstateSegment estateSegment) {
         estateSegment = estateSegmentJpaRepository.saveAndFlush(estateSegment);
         em.refresh(estateSegment);

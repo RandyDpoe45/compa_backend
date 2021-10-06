@@ -27,7 +27,7 @@ public class MeasureUnitRestController {
 
 
     @PostMapping
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public MeasureUnit save(@RequestBody MeasureUnit measureUnit){
         return measureUnitRepository.save(measureUnit);
     }
@@ -43,13 +43,13 @@ public class MeasureUnitRestController {
     }
 
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public MeasureUnit update(@PathVariable Long id, @RequestBody MeasureUnit measureUnit) throws JsonProcessingException {
         return measureUnitRepository.update(id,measureUnit);
     }
 
     @DeleteMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
         measureUnitService.deleteMeasureUnit(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Unidad de medida eliminada con exito");

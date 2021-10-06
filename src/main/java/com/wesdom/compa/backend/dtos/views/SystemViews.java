@@ -5,6 +5,7 @@ public class SystemViews {
     public static class AuthUserBasicView {};
     public static class ManufacturerBasicView{};
     public static class CommercialPartnerBasicView{};
+    public static class CommercialPartnerDetailView{};
     public static class PromoterBasicView{};
     public static class PromoterDetailedView {};
     public static class GroupBasicView{};
@@ -29,12 +30,18 @@ public class SystemViews {
     public static class AssociationDetailedView {};
     public static class AssociationMemberBasicView {};
     public static class RequestBasicView {};
+    public static class RequestDetailView {};
     public static class RequestOfferBasicView {};
     public static class RequestOfferDetailView {};
     public static class BioProductBasicView {};
     public static class BioProductDetailView {};
     public static class AdvertisingBasicView {};
+    public static class AdvertisingDetailView {};
     public static class ProductWorkBasicView {};
     public static class PostHarvestCheckBasicView {};
     public static class PackingOptionBasicView {};
+    public static class ClassificationScoreDescriptionBasicView{};
+    public static class UserLastNotificationReadBasicView{};
+    public static class NotificationBasicView{};
+
 }

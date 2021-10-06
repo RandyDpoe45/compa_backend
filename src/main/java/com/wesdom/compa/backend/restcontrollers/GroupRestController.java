@@ -26,7 +26,7 @@ public class GroupRestController {
 
     @PostMapping
     @JsonView(SystemViews.GroupBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ManufacturerGroup createUser(@RequestBody ManufacturerGroup group){
         return groupRepository.save(group);
     }
@@ -50,13 +50,13 @@ public class GroupRestController {
 
     @JsonView(SystemViews.GroupDetailedView.class)
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ManufacturerGroup update(@PathVariable Long id, @RequestBody ManufacturerGroup group) throws JsonProcessingException {
         return groupRepository.update(id,group);
     }
 
     @DeleteMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
         groupRepository.delete(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Grupo eliminado con exito");

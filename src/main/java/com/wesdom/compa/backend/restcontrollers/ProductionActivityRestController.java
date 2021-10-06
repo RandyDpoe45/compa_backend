@@ -30,7 +30,7 @@ public class ProductionActivityRestController {
     //cambiar creacion a dto
     @PostMapping
     @JsonView(SystemViews.ProductionActivityBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ProductionActivity save(@RequestBody ProductionActivity productionActivity){
         return productionActivityRepository.save(productionActivity);
     }
@@ -49,13 +49,13 @@ public class ProductionActivityRestController {
 
     @PutMapping(value = "/{id}")
     @JsonView(SystemViews.ProductionActivityBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ProductionActivity update(@PathVariable Long id, @RequestBody ProductionActivity productionActivity) throws JsonProcessingException {
         return productionActivityRepository.update(id,productionActivity);
     }
 
     @DeleteMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
         productionActivityRepository.delete(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Producto en predio eliminado con exito");
@@ -63,7 +63,7 @@ public class ProductionActivityRestController {
 
     @PostMapping("/productionActivityAnswer")
     @JsonView(SystemViews.ProductionActivityAnswerBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ProductionActivityAnswer createAnswer(@RequestBody ProductionActivityAnswer productionActivityAnswer){
         return productionActivityAnswerRepository.save(productionActivityAnswer);
     }
@@ -82,13 +82,13 @@ public class ProductionActivityRestController {
 
     @PutMapping(value = "/productionActivityAnswer/{id}")
     @JsonView(SystemViews.ProductionActivityAnswerBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ProductionActivityAnswer updateAnswer(@PathVariable Long id, @RequestBody ProductionActivityAnswer productionActivityAnswer) throws JsonProcessingException {
         return productionActivityAnswerRepository.update(id,productionActivityAnswer);
     }
 
     @DeleteMapping(value = "/productionActivityAnswer/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse deleteAnswer(@PathVariable Long id) throws JsonProcessingException {
         productionActivityAnswerRepository.delete(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Producto en predio eliminado con exito");

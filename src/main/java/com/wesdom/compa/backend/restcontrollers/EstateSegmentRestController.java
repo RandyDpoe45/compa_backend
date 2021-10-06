@@ -38,7 +38,7 @@ public class EstateSegmentRestController {
 
     @PostMapping
     @JsonView(SystemViews.EstateSegmentDetailView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public EstateSegment createEstateSegment(@RequestBody EstateSegment estateSegment){
         return estateSegmentRepository.save(estateSegment);
     }
@@ -84,13 +84,13 @@ public class EstateSegmentRestController {
 
     @JsonView(SystemViews.EstateSegmentDetailView.class)
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public EstateSegment update(@PathVariable Long id, @RequestBody EstateSegment estateSegment) throws JsonProcessingException {
         return estateSegmentRepository.update(id,estateSegment);
     }
 
     @DeleteMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
         estateSegmentService.deleteEstateSegment(id);
         return new GeneralResponse("Segmento eliminado con exito","000");
@@ -98,7 +98,7 @@ public class EstateSegmentRestController {
 
     @PostMapping(value = "/nearbyEstateSegment")
     @JsonView(SystemViews.EstateSegmentBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public NearbyEstateSegment createNearbyEstateSegment(@RequestBody NearbyEstateSegment estateSegment){
         return nearbyEstateSegmentRepository.save(estateSegment);
     }
@@ -118,13 +118,13 @@ public class EstateSegmentRestController {
 
     @JsonView(SystemViews.EstateSegmentBasicView.class)
     @PutMapping(value = "/nearbyEstateSegment/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public NearbyEstateSegment updateNearbyEstateSegment(@PathVariable Long id, @RequestBody NearbyEstateSegment estateSegment) throws JsonProcessingException {
         return nearbyEstateSegmentRepository.update(id,estateSegment);
     }
 
     @DeleteMapping(value = "/nearbyEstateSegment/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse deleteNearbyEstateSegment(@PathVariable Long id) throws JsonProcessingException {
         nearbyEstateSegmentRepository.delete(id);
         return new GeneralResponse("Segmento cercano eliminado con exito","000");
@@ -132,7 +132,7 @@ public class EstateSegmentRestController {
 
     @PostMapping(value = "/nearbyFlora")
     @JsonView(SystemViews.NearbyFloraBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public NearbyFlora createNearbyFlora(@RequestBody NearbyFlora nearbyFlora){
         return nearbyFloraRepository.save(nearbyFlora);
     }
@@ -152,13 +152,13 @@ public class EstateSegmentRestController {
 
     @JsonView(SystemViews.NearbyFloraBasicView.class)
     @PutMapping(value = "/nearbyFlora/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public NearbyFlora updateNearbyFlora(@PathVariable Long id, @RequestBody NearbyFlora nearbyFlora) throws JsonProcessingException {
         return nearbyFloraRepository.update(id,nearbyFlora);
     }
 
     @DeleteMapping(value = "/nearbyFlora/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse deleteNearbyFlora(@PathVariable Long id) throws JsonProcessingException {
         nearbyFloraRepository.delete(id);
         return new GeneralResponse("Flora cercana eliminada con exito","000");

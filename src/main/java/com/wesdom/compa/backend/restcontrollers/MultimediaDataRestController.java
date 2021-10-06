@@ -37,7 +37,7 @@ public class MultimediaDataRestController {
     private IMultimediaDataService multimediaDataService;
 
     @PostMapping("/tag")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse saveWithTag(
             @RequestParam("entityId") Long entityId,
             @RequestParam("entityType") String entityType,
@@ -54,7 +54,7 @@ public class MultimediaDataRestController {
     }
 
     @PostMapping
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse save(
             @RequestParam("entityId") Long entityId,
             @RequestParam("entityType") String entityType,

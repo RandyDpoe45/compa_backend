@@ -35,20 +35,20 @@ public class PredicateBuilderServiceImpl<T> implements IPredicateBuilder<T> {
         boolean index = false;
         List<String> paginationParams = Arrays.asList(PaginationParamsEnum.values()).
                 stream().map(x -> x.getTag()).collect(Collectors.toList());
-        Specification<T> specifications = Specification.where((root, query, builder) -> {
-            query.distinct(true);
-            return null;
-        });
+        Specification<T> specifications = null; //Specification.where((root, query, builder) -> {
+//            query.distinct(true);
+//            return null;
+//        });
         for (String k : params.keySet()) {
             //Omits pagination paramas
             if (!paginationParams.contains(k)) {
                 String value = params.get(k);
-//                if (index) {
+                if (index) {
                     specifications = specifications.and(createSpecification(k, value));
-//                } else {
-//                    specifications = Specification.where(createSpecification(k, value));
-//                    index = true;
-//                }
+                } else {
+                    specifications = Specification.where(createSpecification(k, value));
+                    index = true;
+                }
             }
         }
 

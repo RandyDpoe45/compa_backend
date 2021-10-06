@@ -18,29 +18,31 @@ public class CommercialPartner extends BaseUser {
 
     @JsonView({
             SystemViews.CommercialPartnerBasicView.class, SystemViews.RequestBasicView.class,
-            SystemViews.RequestOfferDetailView.class
+            SystemViews.RequestOfferDetailView.class, SystemViews.RequestDetailView.class,
+            SystemViews.CommercialPartnerDetailView.class
     })
     private String rut;
 
     @JsonView({
             SystemViews.CommercialPartnerBasicView.class, SystemViews.RequestBasicView.class,
-            SystemViews.RequestOfferDetailView.class
+            SystemViews.RequestOfferDetailView.class, SystemViews.RequestDetailView.class,
+            SystemViews.CommercialPartnerDetailView.class
     })
     private String companyName;
 
-    @JsonView({SystemViews.CommercialPartnerBasicView.class})
+    @JsonView({SystemViews.CommercialPartnerDetailView.class})
     private String camaraYComercio;
 
-    @JsonView({SystemViews.CommercialPartnerBasicView.class})
+    @JsonView({SystemViews.CommercialPartnerDetailView.class})
     private String bank;
 
-    @JsonView({SystemViews.CommercialPartnerBasicView.class})
+    @JsonView({SystemViews.CommercialPartnerDetailView.class})
     private String accountType;
 
-    @JsonView({SystemViews.CommercialPartnerBasicView.class})
+    @JsonView({SystemViews.CommercialPartnerDetailView.class})
     private String accountNumber;
 
-    @JsonView({SystemViews.CommercialPartnerBasicView.class})
+    @JsonView({SystemViews.CommercialPartnerDetailView.class})
     private String personType;
 
 }

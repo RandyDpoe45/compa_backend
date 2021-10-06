@@ -24,21 +24,23 @@ public class Product {
     @JsonView({
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
-            SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class
+            SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class,
+            SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class
     })
     private Long id;
 
     @JsonView({
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
-            SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class
+            SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class,
+            SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class
     })
     private String code;
 
     @JsonView({
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
-            SystemViews.AdvertisingBasicView.class
+            SystemViews.AdvertisingDetailView.class
     })
     @ManyToOne(targetEntity = ProductType.class, fetch = FetchType.LAZY)
     @NotFound(action = NotFoundAction.IGNORE)
@@ -47,7 +49,8 @@ public class Product {
     @JsonView({
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
-            SystemViews.RequestBasicView.class,SystemViews.AdvertisingBasicView.class
+            SystemViews.RequestBasicView.class,SystemViews.AdvertisingBasicView.class,
+            SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class
     })
     private String name;
 
@@ -68,21 +71,21 @@ public class Product {
     @JsonView({
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
             SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class,
-            SystemViews.AdvertisingBasicView.class
+            SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class
     })
     private String species;
 
     @JsonView({
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
-            SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class,
-            SystemViews.AdvertisingBasicView.class
+            SystemViews.ProductBasicView.class, SystemViews.AdvertisingDetailView.class,
+            SystemViews.RequestDetailView.class
     })
     private String seasonType;
 
     @JsonView({
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
-            SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class,
-            SystemViews.AdvertisingBasicView.class
+            SystemViews.ProductBasicView.class, SystemViews.AdvertisingDetailView.class,
+            SystemViews.RequestDetailView.class
     })
     private String harvestMonths;
 

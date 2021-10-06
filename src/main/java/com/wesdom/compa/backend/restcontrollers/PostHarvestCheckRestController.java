@@ -24,7 +24,7 @@ public class PostHarvestCheckRestController {
 
 
     @PostMapping
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     @JsonView(SystemViews.PostHarvestCheckBasicView.class)
     public PostHarvestCheck createUser(@RequestBody PostHarvestCheck postHarvestCheck){
         return postHarvestCheckRepository.save(postHarvestCheck);
@@ -43,14 +43,14 @@ public class PostHarvestCheckRestController {
     }
 
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     @JsonView(SystemViews.PostHarvestCheckBasicView.class)
     public PostHarvestCheck update(@PathVariable Long id, @RequestBody PostHarvestCheck postHarvestCheck) throws JsonProcessingException {
         return postHarvestCheckRepository.update(id,postHarvestCheck);
     }
 
     @DeleteMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
         postHarvestCheckRepository.delete(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Validacion eliminada con exito");

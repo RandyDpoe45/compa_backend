@@ -42,7 +42,7 @@ public class AuthUserRestController {
 
     @PostMapping
     @JsonView(SystemViews.AuthUserBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public AuthUser createUser(@RequestBody AuthUser authUser){
         return userService.save(authUser);
     }
@@ -61,13 +61,13 @@ public class AuthUserRestController {
 
     @JsonView(SystemViews.AuthUserBasicView.class)
     @PutMapping(value = "/{idAutolineaUser}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public AuthUser update(@PathVariable Long idAutolineaUser, @RequestBody AuthUser authUser) throws JsonProcessingException{
         return userService.update(idAutolineaUser,authUser);
     }
 
     @PutMapping(value = "/password/{idAutolineaUser}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse updatePassword(@PathVariable Long idAutolineaUser, @RequestBody String newPassword) throws JsonProcessingException{
         userService.updateUserPassword(idAutolineaUser,newPassword);
         return new GeneralResponse().setResponse("Contrasena cambiada con exito").setErrorCode("000");
@@ -77,6 +77,10 @@ public class AuthUserRestController {
     @PostMapping(value = "/login")
     public AuthUser authenticate(@RequestBody UserLoginDto userLoginDto, HttpServletResponse response) throws IOException, ServletException {
         AuthUser au = userRepository.getUserByUserNameOrEmail(userLoginDto.getUsername());
+        if(au == null){
+            throw new GeneralException(ExceptionCodesEnum.BAD_CREDENTIALS,
+                    "Credenciales erroneas");
+        }
         if(!au.getIsActive()){
             throw new GeneralException(ExceptionCodesEnum.USER_DEACTIVATED,
                     "El usuario esta desactivado, por favor pongase en con el administrador");

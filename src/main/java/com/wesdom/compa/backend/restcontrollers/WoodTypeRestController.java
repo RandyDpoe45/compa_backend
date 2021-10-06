@@ -22,7 +22,7 @@ public class WoodTypeRestController {
 
 
     @PostMapping
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ApiaryWoodType createUser(@RequestBody ApiaryWoodType flora){
         return apiaryWoodTypeRepository.save(flora);
     }
@@ -38,13 +38,13 @@ public class WoodTypeRestController {
     }
 
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ApiaryWoodType update(@PathVariable Long id, @RequestBody ApiaryWoodType flora) throws JsonProcessingException {
         return apiaryWoodTypeRepository.update(id,flora);
     }
 
     @DeleteMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
         apiaryWoodTypeRepository.delete(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Tipo de madera eliminado con exito");

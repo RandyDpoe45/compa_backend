@@ -28,7 +28,7 @@ public class ProductInStateSegmentRestController {
 
     @PostMapping
     @JsonView(SystemViews.ProductInStateBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ProductInStateSegment save(@RequestBody ProductInStateSegment productInStateSegment){
         return productInSegmentService.createProductInSegment(productInStateSegment);
     }
@@ -47,13 +47,13 @@ public class ProductInStateSegmentRestController {
 
     @PutMapping(value = "/{id}")
     @JsonView(SystemViews.ProductInStateBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ProductInStateSegment update(@PathVariable Long id, @RequestBody ProductInStateSegment productInStateSegment) throws JsonProcessingException {
         return productInStateSegmentRepository.update(id,productInStateSegment);
     }
 
     @DeleteMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
         productInSegmentService.deleteProductInStateSegment(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Producto en predio eliminado con exito");

@@ -22,6 +22,13 @@ public class AdvertisingRestController {
     @Autowired
     private IAdvertisingRepository advertisingRepository;
 
+    @PostMapping
+    @JsonView(SystemViews.AdvertisingDetailView.class)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
+    public Advertising save(@RequestBody Advertising advertising){
+        return advertisingRepository.save(advertising);
+    }
+
     @GetMapping
     @JsonView(SystemViews.AdvertisingBasicView.class)
     public Page<Advertising> getAll(@RequestParam Map<String,String> params){
@@ -29,21 +36,14 @@ public class AdvertisingRestController {
     }
 
     @GetMapping("/{id}")
-    @JsonView(SystemViews.AdvertisingBasicView.class)
+    @JsonView(SystemViews.AdvertisingDetailView.class)
     public Advertising get(@PathVariable Long id){
         return advertisingRepository.get(id);
     }
 
-    @PostMapping
-    @JsonView(SystemViews.AdvertisingBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public Advertising save(@RequestBody Advertising advertising){
-        return advertisingRepository.save(advertising);
-    }
-
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
-    @JsonView(SystemViews.AdvertisingBasicView.class)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
+    @JsonView(SystemViews.AdvertisingDetailView.class)
     public Advertising update(@PathVariable Long id, @RequestBody Advertising advertising) throws JsonProcessingException {
         return advertisingRepository.update(id,advertising);
     }

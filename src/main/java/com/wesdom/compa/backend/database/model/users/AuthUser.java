@@ -28,7 +28,7 @@ public class AuthUser {
             SystemViews.AuthUserBasicView.class,SystemViews.ManufacturerBasicView.class,
             SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.PromoterDetailedView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.CommercialPartnerDetailView.class
     })
     private Long id;
 
@@ -36,7 +36,7 @@ public class AuthUser {
             SystemViews.AuthUserBasicView.class,SystemViews.ManufacturerBasicView.class,
             SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.PromoterDetailedView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.CommercialPartnerDetailView.class
     })
     private String username;
 
@@ -44,7 +44,7 @@ public class AuthUser {
             SystemViews.AuthUserBasicView.class,SystemViews.ManufacturerBasicView.class,
             SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.PromoterDetailedView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.CommercialPartnerDetailView.class
     })
     private String email;
 
@@ -52,7 +52,7 @@ public class AuthUser {
             SystemViews.AuthUserBasicView.class,SystemViews.ManufacturerBasicView.class,
             SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.PromoterDetailedView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.CommercialPartnerDetailView.class
     })
     private String type;
 
@@ -60,7 +60,7 @@ public class AuthUser {
             SystemViews.AuthUserBasicView.class,SystemViews.ManufacturerBasicView.class,
             SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.PromoterDetailedView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.CommercialPartnerDetailView.class
     })
     private Boolean isActive = true;
 
@@ -71,7 +71,7 @@ public class AuthUser {
             SystemViews.AuthUserBasicView.class,SystemViews.ManufacturerBasicView.class,
             SystemViews.PromoterBasicView.class,SystemViews.CommercialPartnerBasicView.class,
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.PromoterDetailedView.class
+            SystemViews.PromoterDetailedView.class, SystemViews.CommercialPartnerDetailView.class
     })
     @JsonFormat(pattern = "yyyy-MM-dd")
     @JsonDeserialize(using = LocalDateDeserializer.class)

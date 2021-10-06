@@ -29,73 +29,115 @@ public class Request {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class})
+    @JsonView({
+            SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class,
+            SystemViews.RequestDetailView.class
+    })
     private Long id;
 
-    @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class})
+    @JsonView({
+            SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class,
+            SystemViews.RequestDetailView.class
+    })
     private String type;
 
-    @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class})
+    @JsonView({
+            SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class,
+            SystemViews.RequestDetailView.class
+    })
     private String status;
 
     @ManyToOne(targetEntity = CommercialPartner.class, fetch = FetchType.LAZY)
-    @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class})
+    @JsonView({
+            SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class,
+            SystemViews.RequestDetailView.class
+    })
     @NotFound(action = NotFoundAction.IGNORE)
     private CommercialPartner commercialPartner;
 
     @ManyToOne(targetEntity = Association.class, fetch = FetchType.LAZY)
-    @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class})
+    @JsonView({
+            SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class,
+            SystemViews.RequestDetailView.class
+    })
     @NotFound(action = NotFoundAction.IGNORE)
     private Association association;
 
     @ManyToOne(targetEntity = Product.class, fetch = FetchType.LAZY)
-    @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class})
+    @JsonView({
+            SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class,
+            SystemViews.RequestDetailView.class
+    })
     @NotFound(action = NotFoundAction.IGNORE)
     private Product product;
 
-    @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class})
+    @JsonView({
+            SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class,
+            SystemViews.RequestDetailView.class
+    })
     private BigDecimal pricePerUnit;
 
-    @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class})
+    @JsonView({
+            SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class,
+            SystemViews.RequestDetailView.class
+    })
     private BigDecimal deductedPricePerUnit;
 
-    @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class})
+    @JsonView({
+            SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class,
+            SystemViews.RequestDetailView.class
+    })
     private BigDecimal amount;
 
-    @ManyToOne(targetEntity = MeasureUnit.class, fetch = FetchType.LAZY)
-    @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class})
-    @NotFound(action = NotFoundAction.IGNORE)
-    private MeasureUnit measureUnit;
+    @Column(length = 1000)
+    @JsonView({SystemViews.RequestDetailView.class})
+    private String statusHistory;
 
     @Column(length = 1000)
-    @JsonView({SystemViews.RequestBasicView.class})
-    private  String productionConditions;
+    @JsonView({SystemViews.RequestDetailView.class})
+    private String statusDateHistory;
 
     @Column(length = 1000)
-    @JsonView({SystemViews.RequestBasicView.class})
+    @JsonView({SystemViews.RequestDetailView.class})
+    private String productionConditions;
+
+    @Column(length = 1000)
+    @JsonView({SystemViews.RequestDetailView.class})
     private String transportConditions;
 
     @Column(length = 1000)
-    @JsonView({SystemViews.RequestBasicView.class})
+    @JsonView({SystemViews.RequestDetailView.class})
     private String packingConditions;
 
-    @JsonView({SystemViews.RequestBasicView.class})
+    @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestDetailView.class})
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    private LocalDate requestDate;
+
+    @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestDetailView.class})
     @JsonFormat(pattern = "yyyy-MM-dd")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate deliveryDate;
 
-    @JsonView({SystemViews.RequestBasicView.class})
+    @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestDetailView.class})
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    private LocalDate maxDeliveryDate;
+
+    @JsonView({SystemViews.RequestDetailView.class})
     private String deliveryHour;
 
-    @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class})
+    @JsonView({SystemViews.RequestDetailView.class})
     private String deliveryPlace;
 
-    @JsonView({SystemViews.RequestBasicView.class})
+    @JsonView({SystemViews.RequestDetailView.class})
     @Column(length = 600)
     private String comments;
 
-    @JsonView({SystemViews.RequestBasicView.class})
+    @JsonView({SystemViews.RequestDetailView.class})
     private BigDecimal maxAmountOffer;
 
 }

@@ -25,7 +25,7 @@ public class ManufacturerRestController {
 
     @PostMapping
     @JsonView(SystemViews.ManufacturerBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public Manufacturer createUser(@RequestBody Manufacturer manufacturer){
         return manufacturerRepository.save(manufacturer);
     }
@@ -49,7 +49,7 @@ public class ManufacturerRestController {
 
     @JsonView(SystemViews.ManufacturerBasicView.class)
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public Manufacturer update(@PathVariable Long id, @RequestBody Manufacturer manufacturer) throws JsonProcessingException {
         return manufacturerRepository.update(id,manufacturer);
     }

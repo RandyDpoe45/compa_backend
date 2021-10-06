@@ -28,7 +28,7 @@ public class ProductionStageRestController {
     private IProductionStageService productionStageService;
 
     @PostMapping
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     @JsonView(SystemViews.ProductionStageBasicView.class)
     public ProductionStage createUser(@RequestBody ProductionStage productionStage){
         return productionStageService.save(productionStage);
@@ -47,7 +47,7 @@ public class ProductionStageRestController {
     }
 
     @PutMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     @JsonView(SystemViews.ProductionStageBasicView.class)
     public ProductionStage update(@PathVariable Long id, @RequestBody ProductionStage productionStage) throws JsonProcessingException {
         return productionStageRepository.update(id,productionStage);
@@ -71,7 +71,7 @@ public class ProductionStageRestController {
     }
 
     @DeleteMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
         productionStageService.deleteProductionStage(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Fase de produccion eliminada con exito");

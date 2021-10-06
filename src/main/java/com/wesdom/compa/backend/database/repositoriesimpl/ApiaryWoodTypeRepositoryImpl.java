@@ -39,7 +39,7 @@ public class ApiaryWoodTypeRepositoryImpl implements IApiaryWoodTypeRepository {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ApiaryWoodType save(ApiaryWoodType apiaryWoodType) {
         apiaryWoodType = apiaryWoodTypeJpaRepository.saveAndFlush(apiaryWoodType);
         em.refresh(apiaryWoodType);
@@ -47,7 +47,7 @@ public class ApiaryWoodTypeRepositoryImpl implements IApiaryWoodTypeRepository {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ApiaryWoodType update(Long estateSegmentId, ApiaryWoodType apiaryWoodType) {
         apiaryWoodType = apiaryWoodTypeJpaRepository.saveAndFlush(apiaryWoodType);
         em.refresh(apiaryWoodType);

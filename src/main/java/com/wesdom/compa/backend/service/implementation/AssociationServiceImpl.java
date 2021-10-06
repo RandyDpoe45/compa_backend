@@ -7,6 +7,7 @@ import com.wesdom.compa.backend.database.repositories.IAssociationPromoterReposi
 import com.wesdom.compa.backend.exceptionhandling.exceptions.ExceptionCodesEnum;
 import com.wesdom.compa.backend.exceptionhandling.exceptions.GeneralException;
 import com.wesdom.compa.backend.service.interfaces.IAssociationService;
+import com.wesdom.compa.backend.service.interfaces.INotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,9 @@ public class AssociationServiceImpl implements IAssociationService {
     @Autowired
     private IAssociationPromoterRepository associationPromoterRepository;
 
+    @Autowired
+    private INotificationService notificationService;
+
     @Override
     public AssociationMember addMember(AssociationMember associationMember) {
         AssociationMember aux = associationMemberRepository.
@@ -30,7 +34,9 @@ public class AssociationServiceImpl implements IAssociationService {
                     ExceptionCodesEnum.GROUP_ALREADY_BINDED,
                     "El grupo  ya esta asociado a la asociacion");
         }
-        return associationMemberRepository.save(associationMember);
+        aux = associationMemberRepository.save(associationMember);
+        notificationService.createManufacturerGroupNotification(aux);
+        return aux;
     }
 
     @Override

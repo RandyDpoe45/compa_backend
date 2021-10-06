@@ -26,7 +26,7 @@ public class ProductWorkRestController {
 
     @PostMapping
     @JsonView(SystemViews.ProductWorkBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ProductWork save(@RequestBody ProductWork productWork){
         return productWorkRepository.save(productWork);
     }
@@ -45,13 +45,13 @@ public class ProductWorkRestController {
 
     @PutMapping(value = "/{id}")
     @JsonView(SystemViews.ProductWorkBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ProductWork update(@PathVariable Long id, @RequestBody ProductWork productWork) throws JsonProcessingException {
         return productWorkRepository.update(id,productWork);
     }
 
     @DeleteMapping(value = "/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
         productWorkRepository.delete(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Jornal eliminado con exito");
