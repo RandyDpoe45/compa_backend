@@ -50,6 +50,7 @@ public class ProductInStateSegment {
     @NotFound(action = NotFoundAction.IGNORE)
     @ManyToOne(targetEntity = EstateSegment.class, fetch = FetchType.LAZY)
     @JsonView({SystemViews.ProductInStateBasicView.class, SystemViews.ExpertVisitBasicView.class,})
+    @JoinColumn(nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private EstateSegment estateSegment;
 
@@ -90,7 +91,7 @@ public class ProductInStateSegment {
     })
     private BigDecimal totalHarvest;
 
-    @OneToMany(targetEntity = ProductionActivity.class, fetch = FetchType.LAZY, mappedBy = "productInStateSegment")
+    @OneToMany(targetEntity = ProductionActivity.class, fetch = FetchType.LAZY, mappedBy = "productInStateSegment", cascade = CascadeType.REMOVE)
     private List<ProductionActivity> productionActivityList;
 
     @JsonView({

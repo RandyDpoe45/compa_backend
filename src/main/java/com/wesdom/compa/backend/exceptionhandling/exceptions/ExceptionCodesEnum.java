@@ -36,7 +36,8 @@ public enum ExceptionCodesEnum {
     FLORA_IN_USE("020"),
     PRODUCTION_STAGE_IN_USE("021"),
     PRODUCT_IN_USE("022"),
-    WOOD_TYPE_IN_USE("023")
+    WOOD_TYPE_IN_USE("023"),
+    ACTIVITY_IN_USE("024")
     ;
 
     private String code;

@@ -3,10 +3,7 @@ package com.wesdom.compa.backend.service.implementation;
 import com.wesdom.compa.backend.database.model.*;
 import com.wesdom.compa.backend.database.model.estatesegment.EstateSegment;
 import com.wesdom.compa.backend.database.model.estatesegment.ProductInStateSegment;
-import com.wesdom.compa.backend.database.model.users.Association;
-import com.wesdom.compa.backend.database.model.users.Manufacturer;
-import com.wesdom.compa.backend.database.model.users.Notification;
-import com.wesdom.compa.backend.database.model.users.Promoter;
+import com.wesdom.compa.backend.database.model.users.*;
 import com.wesdom.compa.backend.database.repositories.*;
 import com.wesdom.compa.backend.service.interfaces.INotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,24 +35,46 @@ public class NotificationServiceImpl implements INotificationService {
     @Autowired
     private IProductInStateSegmentRepository productInStateSegmentRepository;
 
-    private String MESSAGE_1 = "Hola la familia %s se acaba de registrar";
-    private String MESSAGE_2 = "El aliado comercial %s solicito un pedido";
-    private String MESSAGE_3 = "Compa, la asociación actualizo el estado de tu oferta al pedido %d, ve a tu dashboad a hechar un vistazo ";
+    private String MESSAGE_1 = "¡Hola %s! La familia %s se acaba de registrar en COMPA.";
+    private String MESSAGE_2 = "¡Epa! El aliado comercial %s acaba de solicitar un pedido a tu organización. Revísalo en la sección \"Pedidos\".";
+    private String MESSAGE_3 = "Compa, %s actualizó el pedido %d. Ve a la sección \"Mi asociación\" para revisar si hay novedades.";
     private String MESSAGE_4 = "Hola tu promotor ya actualizo tu oferta de producción y este es tu código de trazabilidad %s";
-    private String MESSAGE_5 = "Hola promtor, la familia %s te ha enviado una alerta.";
+    private String MESSAGE_5 = "¡Hola %s! La familia %s, ha generado una alerta. Visítalos a ver qué fue lo que pasó.";
     private String MESSAGE_6 = "El compa %s se agregado a tu espacio de uso %s";
     private String MESSAGE_7 = "Hola, el compa %s se agregado a tu familia";
     private String MESSAGE_8 = "Hola, tus tareas de la visita del producto %s son: \n%s";
-    private String MESSAGE_9 = "Hola la familia %s acabo de cosechar / acabo de terminar su ciclo productivo del producto %s";
+    private String MESSAGE_9 = "¡Hola %s! La familia %s de la vereda %s ya terminó de cosechar %s. Visítalos a ver cómo les fue.";
+    private String MESSAGE_10 = "¡Hola %s! La familia %s de la vereda %s ya terminó de cosechar %s.";
 
     @Override
     public void createManufacturerGroupNotification(AssociationMember associationMember) {
         Notification notification = new Notification();
-        notification.setEntity("Association")
-                .setEntityTarget("Association-Promoter")
-                .setMessage(String.format(MESSAGE_1, associationMember.getManufacturerGroup().getName()))
+        notification.setEntity("ManufacturerGroup")
+                .setEntityTarget("Association")
+                .setMessage(
+                        String.format(MESSAGE_1,
+                                associationMember.getAssociation().getName(),
+                                associationMember.getManufacturerGroup().getName()
+                        )
+                )
                 .setIds(String.format("%d-", associationMember.getAssociation().getId()));
         notificationRepository.save(notification);
+        associationMember
+                .getAssociation()
+                .getAssociationPromoterList()
+                .forEach(x -> {
+                    Notification notification1 = new Notification();
+                    notification1.setEntity("ManufacturerGroup")
+                            .setEntityTarget("Promoter")
+                            .setMessage(
+                                    String.format(MESSAGE_1,
+                                            getUserName(x.getPromoter()),
+                                            associationMember.getManufacturerGroup().getName()
+                                    )
+                            )
+                            .setIds(String.format("%d-", x.getId()));
+                    notificationRepository.save(notification1);
+                });
     }
 
     @Override
@@ -73,7 +92,13 @@ public class NotificationServiceImpl implements INotificationService {
         Notification notification = new Notification();
         notification.setEntity("RequestOffer")
                 .setEntityTarget("ManufacturerGroup")
-                .setMessage(String.format(MESSAGE_3, requestOffer.getRequest().getId()))
+                .setMessage(
+                        String.format(
+                                MESSAGE_3,
+                                requestOffer.getRequest().getAssociation().getName(),
+                                requestOffer.getRequest().getId()
+                        )
+                )
                 .setIds(String.format("%d-", requestOffer.getManufacturerGroup().getId()));
         notificationRepository.save(notification);
     }
@@ -97,7 +122,13 @@ public class NotificationServiceImpl implements INotificationService {
                 .getManufacturerGroup().getName();
         notification.setEntity("ExpertAlert")
                 .setEntityTarget("Promoter")
-                .setMessage(String.format(MESSAGE_5, groupName))
+                .setMessage(
+                        String.format(
+                                MESSAGE_5,
+                                getUserName(expertAlert.getPromoter()),
+                                groupName
+                        )
+                )
                 .setIds(String.format("%d-", expertAlert.getPromoter().getId()));
         notificationRepository.save(notification);
     }
@@ -127,7 +158,8 @@ public class NotificationServiceImpl implements INotificationService {
                 + Objects.toString(manufacturer.getFirstLastname(), "");
         notification.setEntity("EstateSegment")
                 .setEntityTarget("ManufacturerGroup")
-                .setMessage(String.format(MESSAGE_6, manufacturerName, estateSegment.getName()))
+                .setMessage(
+                        String.format(MESSAGE_6, manufacturerName, estateSegment.getName()))
                 .setIds(String.format("%d-", estateSegment.getEstate().getManufacturerGroup().getId()));
         notificationRepository.save(notification);
     }
@@ -160,15 +192,34 @@ public class NotificationServiceImpl implements INotificationService {
                 .getName();
         notification.setEntity("ProductInStateSegment")
                 .setEntityTarget("Association")
-                .setMessage(String.format(MESSAGE_9, groupName, productInStateSegment.getProduct().getName()))
+                .setMessage(
+                        String.format(
+                                MESSAGE_10,
+                                association.getName(),
+                                groupName,
+                                Objects.toString(productInStateSegment.getEstateSegment().getEstate().getPlantation(), ""),
+                                productInStateSegment.getProduct().getName()))
                 .setIds(String.format("%d-", association.getId()));
         notificationRepository.save(notification);
 
         notification = new Notification();
         notification.setEntity("ProductInStateSegment")
                 .setEntityTarget("Promoter")
-                .setMessage(String.format(MESSAGE_9, groupName, productInStateSegment.getProduct().getName()))
+                .setMessage(
+                        String.format(
+                                MESSAGE_9,
+                                getUserName(promoter),
+                                groupName,
+                                Objects.toString(productInStateSegment.getEstateSegment().getEstate().getPlantation(), ""),
+                                productInStateSegment.getProduct().getName()
+                        )
+                )
                 .setIds(String.format("%d-", promoter.getId()));
         notificationRepository.save(notification);
+    }
+
+    private String getUserName(BaseUser baseUser){
+        return Objects.toString(baseUser.getFirstName(), " ")
+                + " " + Objects.toString(baseUser.getFirstLastname(), " ");
     }
 }

@@ -10,6 +10,7 @@ import com.wesdom.compa.backend.database.repositories.IActivityOptionRepository;
 import com.wesdom.compa.backend.database.repositories.IOptionAnswerRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
+import com.wesdom.compa.backend.service.interfaces.IActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Propagation;
@@ -31,6 +32,9 @@ public class ActivityRestController {
 
     @Autowired
     private IOptionAnswerRepository optionAnswerRepository;
+
+    @Autowired
+    private IActivityService activityService;
 
     @GetMapping
     @JsonView(SystemViews.ActivityBasicView.class)
@@ -58,7 +62,7 @@ public class ActivityRestController {
 
     @DeleteMapping("/{id}")
     public GeneralResponse delete(@PathVariable Long id){
-        activityRepository.delete(id);
+        activityService.deleteActivity(id);
         return new GeneralResponse("Actividad borrada con exito","000");
     }
 

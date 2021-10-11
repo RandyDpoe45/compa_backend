@@ -77,8 +77,14 @@ public class EstateSegment {
     @NotFound(action = NotFoundAction.IGNORE)
     private List<Manufacturer> manufacturerList;
 
-    @OneToMany(targetEntity = ProductInStateSegment.class, fetch = FetchType.LAZY, mappedBy = "estateSegment")
+    @OneToMany(targetEntity = ProductInStateSegment.class, cascade = CascadeType.REMOVE,fetch = FetchType.LAZY, mappedBy = "estateSegment")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @NotFound(action = NotFoundAction.IGNORE)
     private List<ProductInStateSegment> productInStateSegmentList;
+
+    @OneToMany(targetEntity = NearbyFlora.class, cascade = CascadeType.REMOVE,fetch = FetchType.LAZY, mappedBy = "estateSegment")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotFound(action = NotFoundAction.IGNORE)
+    private List<NearbyFlora> nearbyFloraList;
 
 }

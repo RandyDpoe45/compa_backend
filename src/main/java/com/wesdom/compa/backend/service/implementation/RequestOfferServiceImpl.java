@@ -21,6 +21,7 @@ public class RequestOfferServiceImpl implements IRequestOfferService {
     @Override
     public RequestOffer update(Long id, RequestOffer requestOffer) {
         RequestOffer r = requestOfferRepository.get(id);
+        //agregar manejo de deliverycode
         RequestOfferStatus s = r.getRequestOfferStatus();
         String deliveryCode = r.getDeliveryCode();
         requestOffer = requestOfferRepository.update(id,requestOffer);

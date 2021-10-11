@@ -29,7 +29,7 @@ import java.util.List;
 @NoArgsConstructor
 @Accessors(chain = true)
 @JsonTypeName("BeekeepingSegment")
-public class BeekeepingSegment extends EstateSegment{
+public class BeekeepingSegment extends EstateSegment {
 
     @JsonView({SystemViews.EstateSegmentDetailView.class})
     private Long numberOfChambers;

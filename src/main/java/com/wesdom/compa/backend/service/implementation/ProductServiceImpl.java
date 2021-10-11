@@ -7,9 +7,12 @@ import com.wesdom.compa.backend.database.repositories.IProductRepository;
 import com.wesdom.compa.backend.database.repositories.IRequestRepository;
 import com.wesdom.compa.backend.exceptionhandling.exceptions.ExceptionCodesEnum;
 import com.wesdom.compa.backend.exceptionhandling.exceptions.GeneralException;
+import com.wesdom.compa.backend.service.interfaces.IMultimediaDataService;
 import com.wesdom.compa.backend.service.interfaces.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 @Service
 public class ProductServiceImpl implements IProductService {
@@ -22,6 +25,9 @@ public class ProductServiceImpl implements IProductService {
 
     @Autowired
     private IRequestRepository requestRepository;
+
+    @Autowired
+    private IMultimediaDataService multimediaDataService;
 
     @Override
     public void deleteProduct(Long id) {
@@ -40,6 +46,7 @@ public class ProductServiceImpl implements IProductService {
                         "Este producto no puede ser eliminado porque esta en uso."
                 );
             }
+            multimediaDataService.delete("Product", Objects.toString(id));
             productRepository.delete(id);
         }
     }

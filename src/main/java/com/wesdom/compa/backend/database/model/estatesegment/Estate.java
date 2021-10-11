@@ -76,7 +76,7 @@ public class Estate {
     @NotFound(action = NotFoundAction.IGNORE)
     private ManufacturerGroup manufacturerGroup;
 
-    @OneToMany(targetEntity = EstateSegment.class, fetch = FetchType.LAZY, mappedBy = "estate")
+    @OneToMany(targetEntity = EstateSegment.class, fetch = FetchType.LAZY, mappedBy = "estate",orphanRemoval = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @NotFound(action = NotFoundAction.IGNORE)
     private List<EstateSegment> estateSegmentList;

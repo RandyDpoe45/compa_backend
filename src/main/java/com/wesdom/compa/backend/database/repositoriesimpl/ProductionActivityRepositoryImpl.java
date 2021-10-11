@@ -54,9 +54,9 @@ public class ProductionActivityRepositoryImpl implements IProductionActivityRepo
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public ProductionActivity update(Long productionActivityId, ProductionActivity productionActivity) {
         ProductionActivity e = productionActivityJpaRepository.getOne(productionActivityId);
-        e.setActivity(productionActivity.getActivity())
+        e.setPromoterComments(productionActivity.getPromoterComments())
                 .setApproved(productionActivity.getApproved())
-                .setProductInStateSegment(productionActivity.getProductInStateSegment());
+                .setComments(productionActivity.getComments());
         e = productionActivityJpaRepository.saveAndFlush(e);
         em.refresh(e);
         return e;
@@ -70,5 +70,10 @@ public class ProductionActivityRepositoryImpl implements IProductionActivityRepo
     @Override
     public ProductionActivity findTop1ByProductInStateSegmentId(Long id) {
         return productionActivityJpaRepository.findTop1ByProductInStateSegmentId(id);
+    }
+
+    @Override
+    public ProductionActivity findTop1ByActivityId(Long id) {
+        return productionActivityJpaRepository.findTop1ByActivityId(id);
     }
 }

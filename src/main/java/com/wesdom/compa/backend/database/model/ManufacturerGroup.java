@@ -69,7 +69,7 @@ public class ManufacturerGroup {
     @ManyToOne(targetEntity = GroupType.class, fetch = FetchType.LAZY)
     private GroupType groupType;
 
-    @OneToMany(targetEntity = Estate.class, mappedBy = "manufacturerGroup",fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = Estate.class, mappedBy = "manufacturerGroup",fetch = FetchType.LAZY, orphanRemoval = true)
     @NotFound(action = NotFoundAction.IGNORE)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Estate> estateList;

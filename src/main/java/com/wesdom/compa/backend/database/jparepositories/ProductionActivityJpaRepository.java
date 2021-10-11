@@ -10,4 +10,5 @@ public interface ProductionActivityJpaRepository extends JpaRepository<Productio
         JpaSpecificationExecutor<ProductionActivity> {
 
     ProductionActivity findTop1ByProductInStateSegmentId(Long id);
+    ProductionActivity findTop1ByActivityId(Long id);
 }

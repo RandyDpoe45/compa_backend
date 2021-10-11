@@ -55,6 +55,13 @@ public class Request {
     @NotFound(action = NotFoundAction.IGNORE)
     private CommercialPartner commercialPartner;
 
+    @ManyToOne(targetEntity = MeasureUnit.class, fetch = FetchType.LAZY)
+    @JsonView({
+            SystemViews.RequestBasicView.class,SystemViews.RequestDetailView.class
+    })
+    @NotFound(action = NotFoundAction.IGNORE)
+    private MeasureUnit measureUnit;
+
     @ManyToOne(targetEntity = Association.class, fetch = FetchType.LAZY)
     @JsonView({
             SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class,

@@ -12,4 +12,5 @@ public interface IProductionActivityRepository {
     public ProductionActivity update(Long activityId, ProductionActivity activity);
     public void delete(Long activityId);
     public ProductionActivity findTop1ByProductInStateSegmentId(Long id);
+    public ProductionActivity findTop1ByActivityId(Long id);
 }

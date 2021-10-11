@@ -34,6 +34,10 @@ public class ProductionActivity {
     @Column(length = 600)
     private String comments;
 
+    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @Column(length = 600)
+    private String promoterComments;
+
     @ManyToOne(targetEntity = ProductInStateSegment.class, fetch = FetchType.LAZY)
     @JsonView({SystemViews.ProductionActivityBasicView.class})
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -46,7 +50,7 @@ public class ProductionActivity {
     @NotFound(action = NotFoundAction.IGNORE)
     private Activity activity;
 
-    @OneToMany(targetEntity = ProductionActivityAnswer.class,fetch = FetchType.LAZY,mappedBy = "productionActivity")
+    @OneToMany(targetEntity = ProductionActivityAnswer.class,fetch = FetchType.LAZY,mappedBy = "productionActivity", cascade = CascadeType.REMOVE)
 //    @JsonView({SystemViews.ProductionActivityBasicView.class})
     @NotFound(action = NotFoundAction.IGNORE)
     @OnDelete(action = OnDeleteAction.CASCADE)
