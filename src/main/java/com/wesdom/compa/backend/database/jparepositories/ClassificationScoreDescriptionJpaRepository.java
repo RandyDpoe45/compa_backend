@@ -20,4 +20,6 @@ public interface ClassificationScoreDescriptionJpaRepository
             "WHERE ?1 BETWEEN cs.classificationScore.lowerLimit AND cs.classificationScore.upperLimit " +
             "AND cs.entityName = ?2")
     List<ClassificationScoreDescription> findByScoreInRangeAndEntityName(Float score, String entityName, Pageable pageable);
+
+    ClassificationScoreDescription findTop1ByClassificationScoreId(Long id);
 }

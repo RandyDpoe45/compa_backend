@@ -6,6 +6,7 @@ import com.wesdom.compa.backend.database.model.ClassificationScore;
 import com.wesdom.compa.backend.database.repositories.IClassificationScoreRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
+import com.wesdom.compa.backend.service.interfaces.IClassificationScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Propagation;
@@ -21,6 +22,9 @@ public class ClassificationScoreRestController {
     
     @Autowired
     private IClassificationScoreRepository classificationScoreRepository;
+
+    @Autowired
+    private IClassificationScoreService classificationScoreService;
 
     @PostMapping
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
@@ -52,7 +56,7 @@ public class ClassificationScoreRestController {
     @DeleteMapping(value = "/{id}")
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
-        classificationScoreRepository.delete(id);
+        classificationScoreService.delete(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Clasificacion eliminada con exito");
     }
 }

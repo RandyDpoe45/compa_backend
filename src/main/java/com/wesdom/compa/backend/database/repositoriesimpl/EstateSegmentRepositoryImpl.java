@@ -1,5 +1,6 @@
 package com.wesdom.compa.backend.database.repositoriesimpl;
 
+import com.wesdom.compa.backend.database.enums.PaginationParamsEnum;
 import com.wesdom.compa.backend.database.jparepositories.*;
 import com.wesdom.compa.backend.database.model.estatesegment.*;
 import com.wesdom.compa.backend.database.repositories.IEstateSegmentRepository;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -70,6 +72,17 @@ public class EstateSegmentRepositoryImpl implements IEstateSegmentRepository {
         IPredicateBuilder<ConservationSegment> predicate = new PredicateBuilderServiceImpl<>();
         IPaginationBuilder paginaton = new PaginationBuilderImpl();
         return conservationJpaRepository.findAll(predicate.createPredicate(params),paginaton.createPagination(params));
+    }
+
+    @Override
+    public Page<BeekeepingSegment> getByWoodTypeId(Long woodTypeId, Long size) {
+        Map<String, String> params = new HashMap<>();
+        params.put(PaginationParamsEnum.PAGE_SIZE.getTag(),size.toString());
+        params.put(PaginationParamsEnum.PAGE_NUMBER.getTag(),PaginationParamsEnum.PAGE_NUMBER.getDefaultValue());
+        params.put("woodTypeList.id",woodTypeId.toString());
+        IPaginationBuilder pagination = new PaginationBuilderImpl();
+        IPredicateBuilder<BeekeepingSegment> predicate = new PredicateBuilderServiceImpl<>();
+        return beekeepingJpaRepository.findAll(predicate.createPredicate(params),pagination.createPagination(params));
     }
 
     @Override

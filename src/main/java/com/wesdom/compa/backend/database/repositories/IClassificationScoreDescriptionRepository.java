@@ -11,5 +11,6 @@ public interface IClassificationScoreDescriptionRepository {
     public ClassificationScoreDescription getClassificationScoreBetweenRangeAndEntityName(Float score, String entityName);
     public ClassificationScoreDescription save(ClassificationScoreDescription classificationScore);
     public ClassificationScoreDescription update(Long classificationScoreId, ClassificationScoreDescription classificationScore);
+    public ClassificationScoreDescription findTop1ByClassificationScoreId(Long id);
     public void delete(Long classificationScoreId);
 }

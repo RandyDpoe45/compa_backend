@@ -69,6 +69,11 @@ public class ClassificationScoreDescriptionRepositoryImpl implements IClassifica
     }
 
     @Override
+    public ClassificationScoreDescription findTop1ByClassificationScoreId(Long id) {
+        return classificationScoreDescriptionJpaRepository.findTop1ByClassificationScoreId(id);
+    }
+
+    @Override
     public void delete(Long classificationScoreId) {
         classificationScoreDescriptionJpaRepository.deleteById(classificationScoreId);
     }

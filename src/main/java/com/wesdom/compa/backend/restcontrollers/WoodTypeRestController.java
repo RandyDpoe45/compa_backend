@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.wesdom.compa.backend.database.model.estatesegment.ApiaryWoodType;
 import com.wesdom.compa.backend.database.repositories.IApiaryWoodTypeRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
+import com.wesdom.compa.backend.service.interfaces.IWoodTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Propagation;
@@ -20,6 +21,8 @@ public class WoodTypeRestController {
     @Autowired
     private IApiaryWoodTypeRepository apiaryWoodTypeRepository;
 
+    @Autowired
+    private IWoodTypeService woodTypeService;
 
     @PostMapping
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
@@ -46,7 +49,7 @@ public class WoodTypeRestController {
     @DeleteMapping(value = "/{id}")
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public GeneralResponse delete(@PathVariable Long id) throws JsonProcessingException {
-        apiaryWoodTypeRepository.delete(id);
+        woodTypeService.deleteWoodType(id);
         return new GeneralResponse().setErrorCode("000").setResponse("Tipo de madera eliminado con exito");
     }
 }

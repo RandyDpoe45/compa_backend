@@ -12,6 +12,7 @@ public interface IEstateSegmentRepository {
     public Page<BeekeepingSegment> getAllBe(Map<String,String> params);
     public Page<AgriculturalSegment> getAllAg(Map<String,String> params);
     public Page<ConservationSegment> getAllCo(Map<String,String> params);
+    public Page<BeekeepingSegment> getByWoodTypeId(Long woodTypeId, Long size);
     public EstateSegment save(EstateSegment estateSegment);
     public EstateSegment update(Long estateSegmentId, EstateSegment estateSegment);
     public void delete(Long estateSegmentId);
