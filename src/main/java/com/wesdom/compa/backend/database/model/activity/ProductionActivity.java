@@ -58,8 +58,12 @@ public class ProductionActivity {
 
     @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
     public Float getActivityScore(){
+        if (activityAnswers.isEmpty()){
+            return 0f;
+        }
         Float activityScore = this.activityAnswers.stream()
-                .map(x -> x.getActivityOption().getScore())
+                .map(x -> (x != null && x.getActivityOption() != null) ?
+                        x.getActivityOption().getScore() : 0)
                 .reduce(0f,Float::sum);
         return activityScore / this.activityAnswers.size();
     }

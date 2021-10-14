@@ -102,7 +102,7 @@ public class ProductInStateSegment {
         if (this.productionActivityList.isEmpty())
             return 0f;
         Float productionScore = this.productionActivityList.stream()
-                .map(x -> x.getActivityScore())
+                .map(x -> x!= null ? x.getActivityScore() : 0)
                 .reduce(0f, Float::sum);
         return productionScore / this.productionActivityList.size();
     }
