@@ -75,7 +75,7 @@ public class ExpertVisit {
 
     @JsonView({SystemViews.ExpertVisitBasicView.class})
     @NotFound(action = NotFoundAction.IGNORE)
-    @ManyToOne(targetEntity = ExpertVisit.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = ExpertVisitType.class, fetch = FetchType.LAZY)
     private ExpertVisitType expertVisitType;
 
     @JsonView({SystemViews.ExpertVisitBasicView.class})
