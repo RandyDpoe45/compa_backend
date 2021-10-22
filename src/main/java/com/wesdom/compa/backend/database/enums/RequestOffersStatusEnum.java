@@ -5,11 +5,11 @@ import lombok.Getter;
 @Getter
 public enum RequestOffersStatusEnum {
 
-    ACCEPTED("ACCEPTED"),
-    VERIFYING("VERIFYING"),
-    DECLINED("DECLINED"),
-    DELIVERED("DELIVERED"),
-    PAID("PAID");
+    ACCEPTED("1"),
+    VERIFYING("2"),
+    DECLINED("3"),
+    DELIVERED("4"),
+    PAID("5");
 
     private String code;
 

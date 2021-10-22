@@ -55,6 +55,11 @@ public class RequestOfferRepositoryImpl implements IRequestOfferRepository {
     }
 
     @Override
+    public RequestOfferStatus getStatusByCode(String id) {
+        return requestOfferStatusJpaRepository.findTop1ByCode(id);
+    }
+
+    @Override
     public RequestOffer update(Long requestOfferId, RequestOffer requestOffer) {
         requestOffer = requestOfferJpaRepository.saveAndFlush(requestOffer);
         em.refresh(requestOffer);

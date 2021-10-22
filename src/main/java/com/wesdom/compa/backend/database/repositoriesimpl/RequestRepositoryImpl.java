@@ -46,7 +46,7 @@ public class RequestRepositoryImpl implements IRequestRepository {
     public Page<Request> getAll(Map<String, String> params) {
         IPredicateBuilder<Request> predicate = new PredicateBuilderServiceImpl<>();
         IPaginationBuilder paginaton = new PaginationBuilderImpl();
-        return requestJpaRepository.findAll(predicate.createPredicate(params),paginaton.createPagination(params));
+        return requestJpaRepository.findAll(predicate.createPredicate(params), paginaton.createPagination(params));
     }
 
     @Override
@@ -66,10 +66,15 @@ public class RequestRepositoryImpl implements IRequestRepository {
                 .setStatusHistory(request.getStatusHistory())
                 .setStatusDateHistory(request.getStatusDateHistory())
                 .setComments(request.getComments())
-                .setMaxAmountOffer(request.getMaxAmountOffer());
+                .setMaxAmountOffer(request.getMaxAmountOffer())
+                .setShippingDate(request.getShippingDate())
+                .setOriginPlace(request.getOriginPlace())
+                .setAmountShipped(request.getAmountShipped())
+                .setTotalPayment(request.getTotalPayment());
+
         request = requestJpaRepository.saveAndFlush(request);
         em.refresh(request);
-        return  request;
+        return request;
     }
 
     @Override

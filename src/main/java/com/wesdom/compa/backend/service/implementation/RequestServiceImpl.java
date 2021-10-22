@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 @Service
 public class RequestServiceImpl implements IRequestService {
@@ -39,8 +40,16 @@ public class RequestServiceImpl implements IRequestService {
         Request request1 = requestRepository.get(id);
         if (request.getStatus() != null && !request1.getStatus().equals(request.getStatus())) {
             String dateString = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            request.setStatusDateHistory(request1.getStatusDateHistory() + "," + dateString);
-            request.setStatusHistory(request1.getStatusHistory() + "," + request.getStatus());
+            String h1 = Objects.toString(request1.getStatusDateHistory(), dateString);
+            String h2 = Objects.toString(request1.getStatusHistory(), request.getStatus());
+            if (request1.getStatusHistory() == null || request1.getStatusHistory().isEmpty()) {
+                request.setStatusDateHistory(h1);
+                request.setStatusHistory(h2);
+            } else {
+                request.setStatusDateHistory(h1 + "," + dateString);
+                request.setStatusHistory(h2 + "," + request.getStatus());
+            }
+
         }
         request = requestRepository.update(id, request);
         return request;

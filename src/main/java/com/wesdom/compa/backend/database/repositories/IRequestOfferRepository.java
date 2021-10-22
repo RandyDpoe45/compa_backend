@@ -12,6 +12,7 @@ public interface IRequestOfferRepository {
     public Page<RequestOffer> getAll(Map<String,String> params);
     public RequestOffer save(RequestOffer requestOffer);
     public List<RequestOfferStatus> getStatusList();
+    public RequestOfferStatus getStatusByCode(String id);
     public RequestOffer update(Long requestOfferId, RequestOffer requestOffer);
     public void delete(Long requestOfferId);
 }

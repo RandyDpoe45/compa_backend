@@ -33,7 +33,7 @@ public class RequestOfferRestController {
     @JsonView({SystemViews.RequestOfferBasicView.class})
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public RequestOffer createUser(@RequestBody RequestOffer requestOffer){
-        return requestOfferRepository.save(requestOffer);
+        return requestOfferService.save(requestOffer);
     }
 
     @GetMapping("/status")

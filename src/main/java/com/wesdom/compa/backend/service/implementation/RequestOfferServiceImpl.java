@@ -19,19 +19,41 @@ public class RequestOfferServiceImpl implements IRequestOfferService {
     private INotificationService notificationService;
 
     @Override
+    public RequestOffer save(RequestOffer requestOffer) {
+        RequestOfferStatus requestOfferStatus = requestOfferRepository.getStatusByCode(
+                RequestOffersStatusEnum.VERIFYING.getCode()
+        );
+        requestOffer.setRequestOfferStatus(requestOfferStatus);
+        return requestOfferRepository.save(requestOffer);
+    }
+
+    @Override
     public RequestOffer update(Long id, RequestOffer requestOffer) {
         RequestOffer r = requestOfferRepository.get(id);
         //agregar manejo de deliverycode
         RequestOfferStatus s = r.getRequestOfferStatus();
-        String deliveryCode = r.getDeliveryCode();
-        requestOffer = requestOfferRepository.update(id,requestOffer);
-        if(!s.getCode().equals(requestOffer.getRequestOfferStatus().getCode()) ){
+
+        requestOffer = requestOfferRepository.update(id, requestOffer);
+        if (s != null && !s.getCode().equals(requestOffer.getRequestOfferStatus().getCode())) {
             notificationService.createRequestOfferNotification(requestOffer);
-        }
-        if(requestOffer.getRequestOfferStatus().getCode().equals(RequestOffersStatusEnum.ACCEPTED.getCode())){
-            notificationService.createRequestOfferCodeNotification(requestOffer);
+            if (requestOffer.getRequestOfferStatus().getCode().equals(RequestOffersStatusEnum.ACCEPTED.getCode())) {
+                String deliveryCode = generateCode(requestOffer);
+                notificationService.createRequestOfferCodeNotification(requestOffer);
+            }
         }
 
         return requestOffer;
+    }
+
+    private String generateCode(RequestOffer requestOffer) {
+        String code = String.format(
+                "%s-%d-%d-%d-%d",
+                requestOffer.getRequest().getAssociation().getCode(),
+                requestOffer.getManufacturerGroup().getId(),
+                requestOffer.getProductInStateSegmentList().get(0).getEstateSegment().getId(),
+                requestOffer.getRequest().getProduct().getId(),
+                requestOffer.getId()
+        );
+        return code;
     }
 }

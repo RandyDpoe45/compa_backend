@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RequestOfferStatusJpaRepository extends JpaRepository<RequestOfferStatus,Long>
         , JpaSpecificationExecutor<RequestOfferStatus> {
+
+    RequestOfferStatus findTop1ByCode(String code);
 }

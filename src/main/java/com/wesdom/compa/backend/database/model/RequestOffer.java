@@ -35,7 +35,7 @@ public class RequestOffer {
     @JsonView({SystemViews.RequestOfferBasicView.class, SystemViews.RequestOfferDetailView.class})
     @NotFound(action = NotFoundAction.IGNORE)
     @ManyToOne(targetEntity = RequestOfferStatus.class)
-    private RequestOfferStatus requestOfferStatus;//
+    private RequestOfferStatus requestOfferStatus;//ACCEPTED | VERIFYING | DECLINED | DELIVERED | PAID
 
     @ManyToOne(targetEntity = Request.class,fetch = FetchType.LAZY)
     @JsonView({SystemViews.RequestOfferDetailView.class})

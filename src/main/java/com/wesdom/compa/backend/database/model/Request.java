@@ -57,7 +57,7 @@ public class Request {
 
     @ManyToOne(targetEntity = MeasureUnit.class, fetch = FetchType.LAZY)
     @JsonView({
-            SystemViews.RequestBasicView.class,SystemViews.RequestDetailView.class
+            SystemViews.RequestBasicView.class, SystemViews.RequestDetailView.class
     })
     @NotFound(action = NotFoundAction.IGNORE)
     private MeasureUnit measureUnit;
@@ -98,11 +98,11 @@ public class Request {
 
     @Column(length = 1000)
     @JsonView({SystemViews.RequestDetailView.class})
-    private String statusHistory;
+    private String statusHistory = "";
 
     @Column(length = 1000)
     @JsonView({SystemViews.RequestDetailView.class})
-    private String statusDateHistory;
+    private String statusDateHistory = "";
 
     @Column(length = 1000)
     @JsonView({SystemViews.RequestDetailView.class})
@@ -143,6 +143,22 @@ public class Request {
     @JsonView({SystemViews.RequestDetailView.class})
     @Column(length = 600)
     private String comments;
+
+    @JsonView({SystemViews.RequestDetailView.class})
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    private LocalDate shippingDate;
+
+    @JsonView({SystemViews.RequestDetailView.class})
+    @Column(length = 600)
+    private String originPlace;
+
+    @JsonView({SystemViews.RequestDetailView.class})
+    private BigDecimal amountShipped;
+
+    @JsonView({SystemViews.RequestDetailView.class})
+    private BigDecimal totalPayment;
 
     @JsonView({SystemViews.RequestDetailView.class})
     private BigDecimal maxAmountOffer;
