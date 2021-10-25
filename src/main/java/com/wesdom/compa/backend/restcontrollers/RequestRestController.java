@@ -28,7 +28,7 @@ public class RequestRestController {
 
 
     @PostMapping
-    @JsonView({SystemViews.RequestBasicView.class})
+    @JsonView({SystemViews.RequestDetailView.class})
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public Request create(@RequestBody Request request){
         return requestService.createRequest(request);
@@ -47,7 +47,7 @@ public class RequestRestController {
     }
 
     @PutMapping(value = "/{id}")
-    @JsonView({SystemViews.RequestBasicView.class})
+    @JsonView({SystemViews.RequestDetailView.class})
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public Request update(@PathVariable Long id, @RequestBody Request request) throws JsonProcessingException {
         return requestService.updateRequest(id,request);

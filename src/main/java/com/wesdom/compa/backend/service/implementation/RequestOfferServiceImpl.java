@@ -39,6 +39,8 @@ public class RequestOfferServiceImpl implements IRequestOfferService {
             if (requestOffer.getRequestOfferStatus().getCode().equals(RequestOffersStatusEnum.ACCEPTED.getCode())) {
                 String deliveryCode = generateCode(requestOffer);
                 notificationService.createRequestOfferCodeNotification(requestOffer);
+                requestOffer.setDeliveryCode(deliveryCode);
+                requestOffer = requestOfferRepository.update(id, requestOffer);
             }
         }
 

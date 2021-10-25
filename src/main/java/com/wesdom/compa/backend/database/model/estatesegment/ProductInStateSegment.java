@@ -35,7 +35,8 @@ public class ProductInStateSegment {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonView({
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
-            SystemViews.ExpertVisitBasicView.class, SystemViews.AdvertisingDetailView.class
+            SystemViews.ExpertVisitBasicView.class, SystemViews.AdvertisingDetailView.class,
+            SystemViews.RequestOfferDetailView.class
     })
     private Long id;
 

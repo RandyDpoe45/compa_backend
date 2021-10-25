@@ -30,7 +30,7 @@ public class RequestOfferRestController {
 
 
     @PostMapping
-    @JsonView({SystemViews.RequestOfferBasicView.class})
+    @JsonView({SystemViews.RequestOfferDetailView.class})
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public RequestOffer createUser(@RequestBody RequestOffer requestOffer){
         return requestOfferService.save(requestOffer);
@@ -48,13 +48,13 @@ public class RequestOfferRestController {
     }
 
     @GetMapping("/{id}")
-    @JsonView({SystemViews.RequestOfferBasicView.class})
+    @JsonView({SystemViews.RequestOfferDetailView.class})
     public RequestOffer get(@PathVariable Long id){
         return requestOfferRepository.get(id);
     }
 
     @PutMapping(value = "/{id}")
-    @JsonView({SystemViews.RequestOfferBasicView.class})
+    @JsonView({SystemViews.RequestOfferDetailView.class})
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public RequestOffer update(@PathVariable Long id, @RequestBody RequestOffer requestOffer) throws JsonProcessingException {
         return requestOfferService.update(id,requestOffer);

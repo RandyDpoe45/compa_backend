@@ -24,31 +24,31 @@ public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonView({
-            SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
+            SystemViews.ProductionActivityBasicView.class,
             SystemViews.ActivityBasicView.class
     })
     private Long id;
 
     @JsonView({
-            SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
+            SystemViews.ProductionActivityBasicView.class,
             SystemViews.ActivityBasicView.class
     })
     private String name;
 
     @JsonView({
-            SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
+            SystemViews.ProductionActivityBasicView.class,
             SystemViews.ActivityBasicView.class
     })
     private String description;
 
     @JsonView({
-            SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
+            SystemViews.ProductionActivityBasicView.class,
             SystemViews.ActivityBasicView.class
     })
     private String answerType;
 
     @JsonView({
-            SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
+            SystemViews.ProductionActivityBasicView.class,
             SystemViews.ActivityBasicView.class
     })
     @ManyToOne(targetEntity = EstateSegmentType.class, fetch = FetchType.LAZY)
@@ -56,7 +56,7 @@ public class Activity {
     private EstateSegmentType estateSegmentType;
 
     @JsonView({
-            SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class,
+            SystemViews.ProductionActivityBasicView.class,
             SystemViews.ActivityBasicView.class
     })
     @ManyToOne(targetEntity = ProductionStage.class, fetch = FetchType.LAZY)

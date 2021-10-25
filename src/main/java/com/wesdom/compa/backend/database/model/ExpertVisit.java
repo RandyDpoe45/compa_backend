@@ -30,14 +30,14 @@ public class ExpertVisit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @JsonView({SystemViews.ExpertVisitBasicView.class})
     private Long id;
 
     //
-    @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @JsonView({SystemViews.ExpertVisitBasicView.class})
     private String status;
 
-    @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @JsonView({SystemViews.ExpertVisitBasicView.class})
     @JsonFormat(pattern = "dd/MM/yyyy")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
@@ -54,22 +54,22 @@ public class ExpertVisit {
     @ManyToOne(targetEntity = Promoter.class, fetch = FetchType.LAZY)
     private Promoter promoter;
 
-    @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @JsonView({SystemViews.ExpertVisitBasicView.class})
     @Column(length = 800)
     private String comment;
 
-    @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @JsonView({SystemViews.ExpertVisitBasicView.class})
     @Column(length = 800)
     private String futureTask;
 
-    @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @JsonView({SystemViews.ExpertVisitBasicView.class})
     @Column(length = 500)
     private String floraQuality;
 
-    @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @JsonView({SystemViews.ExpertVisitBasicView.class})
     private Boolean hasWater;
 
-    @JsonView({SystemViews.ExpertVisitBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @JsonView({SystemViews.ExpertVisitBasicView.class})
     @Column(length = 800)
     private String isClean;
 

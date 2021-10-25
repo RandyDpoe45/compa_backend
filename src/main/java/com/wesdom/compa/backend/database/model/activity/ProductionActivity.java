@@ -24,17 +24,17 @@ public class ProductionActivity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @JsonView({SystemViews.ProductionActivityBasicView.class})
     private Long id;
 
-    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @JsonView({SystemViews.ProductionActivityBasicView.class})
     private Boolean approved = false;
 
-    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @JsonView({SystemViews.ProductionActivityBasicView.class})
     @Column(length = 600)
     private String comments;
 
-    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @JsonView({SystemViews.ProductionActivityBasicView.class})
     @Column(length = 600)
     private String promoterComments;
 
@@ -45,7 +45,7 @@ public class ProductionActivity {
     private ProductInStateSegment productInStateSegment;
 
     @ManyToOne(targetEntity = Activity.class,fetch = FetchType.LAZY)
-    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @JsonView({SystemViews.ProductionActivityBasicView.class})
     @OnDelete(action = OnDeleteAction.CASCADE)
     @NotFound(action = NotFoundAction.IGNORE)
     private Activity activity;
@@ -56,7 +56,7 @@ public class ProductionActivity {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<ProductionActivityAnswer> activityAnswers;
 
-    @JsonView({SystemViews.ProductionActivityBasicView.class,SystemViews.ExpertVisitNoteBasicView.class})
+    @JsonView({SystemViews.ProductionActivityBasicView.class})
     public Float getActivityScore(){
         if (activityAnswers.isEmpty()){
             return 0f;

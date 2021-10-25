@@ -68,26 +68,22 @@ public class Association{
     private String rut;
 
     @JsonView({
-            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.RequestDetailView.class
+            SystemViews.AssociationDetailedView.class,SystemViews.RequestDetailView.class
     })
     private String camaraYComercio;
 
     @JsonView({
-            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.RequestDetailView.class
+            SystemViews.AssociationDetailedView.class,SystemViews.RequestDetailView.class
     })
     private String bank;
 
     @JsonView({
-            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.RequestDetailView.class
+            SystemViews.AssociationDetailedView.class,SystemViews.RequestDetailView.class
     })
     private String accountType;
 
     @JsonView({
-            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.RequestDetailView.class
+            SystemViews.AssociationDetailedView.class,SystemViews.RequestDetailView.class
     })
     private String accountNumber;
 
@@ -113,10 +109,15 @@ public class Association{
     private String contactCharge;
 
     @JsonView({
-            SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
-            SystemViews.RequestDetailView.class
+            SystemViews.AssociationDetailedView.class,SystemViews.RequestDetailView.class
     })
     private String docLegalRep;
+
+    @JsonView({
+            SystemViews.AssociationDetailedView.class,SystemViews.RequestDetailView.class
+    })
+    @Column(length = 500)
+    private String legalRepName;
 
     @JsonView({
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,

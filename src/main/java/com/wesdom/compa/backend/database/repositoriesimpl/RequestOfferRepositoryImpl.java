@@ -2,6 +2,7 @@ package com.wesdom.compa.backend.database.repositoriesimpl;
 
 import com.wesdom.compa.backend.database.jparepositories.RequestOfferJpaRepository;
 import com.wesdom.compa.backend.database.jparepositories.RequestOfferStatusJpaRepository;
+import com.wesdom.compa.backend.database.model.Request;
 import com.wesdom.compa.backend.database.model.RequestOffer;
 import com.wesdom.compa.backend.database.model.RequestOfferStatus;
 import com.wesdom.compa.backend.database.repositories.IRequestOfferRepository;
@@ -61,7 +62,13 @@ public class RequestOfferRepositoryImpl implements IRequestOfferRepository {
 
     @Override
     public RequestOffer update(Long requestOfferId, RequestOffer requestOffer) {
-        requestOffer = requestOfferJpaRepository.saveAndFlush(requestOffer);
+        RequestOffer requestOffer1 = requestOfferJpaRepository.getOne(requestOfferId);
+        requestOffer1.setRequestOfferStatus(requestOffer.getRequestOfferStatus())
+                .setAmount(requestOffer.getAmount())
+                .setComments(requestOffer.getComments())
+                .setMeasureUnit(requestOffer.getMeasureUnit())
+                .setProductInStateSegmentList(requestOffer.getProductInStateSegmentList());
+        requestOffer = requestOfferJpaRepository.saveAndFlush(requestOffer1);
         em.refresh(requestOffer);
         return  requestOffer;
     }

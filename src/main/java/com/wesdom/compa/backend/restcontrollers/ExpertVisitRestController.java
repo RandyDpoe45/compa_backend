@@ -3,9 +3,7 @@ package com.wesdom.compa.backend.restcontrollers;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.wesdom.compa.backend.database.model.ExpertVisit;
-import com.wesdom.compa.backend.database.model.ExpertVisitNote;
 import com.wesdom.compa.backend.database.model.ExpertVisitType;
-import com.wesdom.compa.backend.database.repositories.IExpertVisitNoteRepository;
 import com.wesdom.compa.backend.database.repositories.IExpertVisitRepository;
 import com.wesdom.compa.backend.dtos.GeneralResponse;
 import com.wesdom.compa.backend.dtos.views.SystemViews;
@@ -29,9 +27,6 @@ public class ExpertVisitRestController {
 
     @Autowired
     private IExpertVisitService expertVisitService;
-
-    @Autowired
-    private IExpertVisitNoteRepository expertVisitNoteRepository;
 
 
     @PostMapping
@@ -72,36 +67,4 @@ public class ExpertVisitRestController {
         return new GeneralResponse().setErrorCode("000").setResponse("Predio eliminado con exito");
     }
 
-    @PostMapping("/note")
-    @JsonView(SystemViews.ExpertVisitNoteBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
-    public ExpertVisitNote createNote(@RequestBody ExpertVisitNote expertVisitNote){
-        return expertVisitNoteRepository.save(expertVisitNote);
-    }
-
-    @GetMapping("/note")
-    @JsonView(SystemViews.ExpertVisitNoteBasicView.class)
-    public Page<ExpertVisitNote> getAllNotes(@RequestParam Map<String,String> allParams){
-        return expertVisitNoteRepository.getAll(allParams);
-    }
-
-    @GetMapping("/note/{id}")
-    @JsonView(SystemViews.ExpertVisitNoteBasicView.class)
-    public ExpertVisitNote getNote(@PathVariable Long id){
-        return expertVisitNoteRepository.get(id);
-    }
-
-    @PutMapping(value = "/note/{id}")
-    @JsonView(SystemViews.ExpertVisitNoteBasicView.class)
-    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
-    public ExpertVisitNote updateNote(@PathVariable Long id, @RequestBody ExpertVisitNote expertVisitNote) throws JsonProcessingException {
-        return expertVisitNoteRepository.update(id,expertVisitNote);
-    }
-
-    @DeleteMapping(value = "/note/{id}")
-    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
-    public GeneralResponse deleteNote(@PathVariable Long id) throws JsonProcessingException {
-        expertVisitNoteRepository.delete(id);
-        return new GeneralResponse().setErrorCode("000").setResponse("Observacion eliminada con exito");
-    }
 }

@@ -72,7 +72,7 @@ public class RequestRepositoryImpl implements IRequestRepository {
                 .setAmountShipped(request.getAmountShipped())
                 .setTotalPayment(request.getTotalPayment());
 
-        request = requestJpaRepository.saveAndFlush(request);
+        request = requestJpaRepository.saveAndFlush(request1);
         em.refresh(request);
         return request;
     }
