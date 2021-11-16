@@ -28,7 +28,8 @@ public class Association{
     @JsonView({
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
             SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class,
-            SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class
+            SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class,
+            SystemViews.AssociationMemberBasicView.class
     })
     private Long id;
 
@@ -43,14 +44,16 @@ public class Association{
     @JsonView({
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
             SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class,
-            SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class
+            SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class,
+            SystemViews.AssociationMemberBasicView.class
     })
     private String code;
 
     @JsonView({
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
             SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class,
-            SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class
+            SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class,
+            SystemViews.AssociationMemberBasicView.class
     })
     private String name;
 
