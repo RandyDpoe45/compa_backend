@@ -25,6 +25,7 @@ public class AssociationMember {
     private Long id;
 
     @ManyToOne(targetEntity = Association.class,fetch = FetchType.LAZY)
+    @JsonView({SystemViews.AssociationMemberBasicView.class})
     @NotFound(action = NotFoundAction.IGNORE)
     private Association association;
 
