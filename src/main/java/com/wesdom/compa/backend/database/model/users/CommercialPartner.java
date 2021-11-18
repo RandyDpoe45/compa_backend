@@ -26,7 +26,7 @@ public class CommercialPartner extends BaseUser {
     @JsonView({
             SystemViews.CommercialPartnerBasicView.class, SystemViews.RequestBasicView.class,
             SystemViews.RequestOfferDetailView.class, SystemViews.RequestDetailView.class,
-            SystemViews.CommercialPartnerDetailView.class
+            SystemViews.CommercialPartnerDetailView.class,SystemViews.RequestOfferBasicView.class
     })
     private String companyName;
 

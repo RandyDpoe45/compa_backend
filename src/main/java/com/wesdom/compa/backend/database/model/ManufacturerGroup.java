@@ -28,7 +28,7 @@ public class ManufacturerGroup {
     @JsonView({
             SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class,
             SystemViews.EstateBasicView.class ,SystemViews.EstateSegmentDetailView.class,
-            SystemViews.RequestOfferBasicView.class, SystemViews.AssociationMemberBasicView.class,
+            SystemViews.AssociationMemberBasicView.class,
             SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingDetailView.class,
             SystemViews.RequestOfferDetailView.class
     })
@@ -36,8 +36,7 @@ public class ManufacturerGroup {
 
     @JsonView({
             SystemViews.GroupBasicView.class, SystemViews.GroupDetailedView.class,
-            SystemViews.EstateBasicView.class, SystemViews.EstateSegmentDetailView.class,
-            SystemViews.RequestOfferBasicView.class, SystemViews.AssociationMemberBasicView.class,
+            SystemViews.EstateBasicView.class, SystemViews.EstateSegmentDetailView.class, SystemViews.AssociationMemberBasicView.class,
             SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingDetailView.class,
             SystemViews.RequestOfferDetailView.class
     })
@@ -45,8 +44,7 @@ public class ManufacturerGroup {
 
     @JsonView({
             SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class,
-            SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class,
-            SystemViews.RequestOfferBasicView.class,SystemViews.AssociationMemberBasicView.class,
+            SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class,SystemViews.AssociationMemberBasicView.class,
             SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingDetailView.class
     })
     @Column(length = 500)
@@ -54,16 +52,14 @@ public class ManufacturerGroup {
 
     @JsonView({
             SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class,
-            SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class,
-            SystemViews.RequestOfferBasicView.class,SystemViews.AssociationMemberBasicView.class,
+            SystemViews.EstateBasicView.class,SystemViews.EstateSegmentDetailView.class,SystemViews.AssociationMemberBasicView.class,
             SystemViews.PromoterDetailedView.class, SystemViews.AdvertisingDetailView.class
     })
     @Column(length = 500)
     private String history;
 
     @JsonView({
-            SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class,
-            SystemViews.RequestOfferBasicView.class,SystemViews.AssociationMemberBasicView.class,
+            SystemViews.GroupBasicView.class,SystemViews.GroupDetailedView.class,SystemViews.AssociationMemberBasicView.class,
             SystemViews.PromoterDetailedView.class
     })
     @ManyToOne(targetEntity = GroupType.class, fetch = FetchType.LAZY)

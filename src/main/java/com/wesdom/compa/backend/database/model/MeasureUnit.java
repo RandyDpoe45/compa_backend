@@ -25,7 +25,7 @@ public class MeasureUnit {
     @JsonView({
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
             SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class,
-            SystemViews.RequestOfferBasicView.class, SystemViews.RequestOfferDetailView.class,
+            SystemViews.RequestOfferDetailView.class,
             SystemViews.RequestDetailView.class
     })
     private Long id;
@@ -33,7 +33,7 @@ public class MeasureUnit {
     @JsonView({
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
             SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class,
-            SystemViews.RequestOfferBasicView.class, SystemViews.RequestOfferDetailView.class,
+            SystemViews.RequestOfferDetailView.class,
             SystemViews.RequestDetailView.class
     })
     private String name;
@@ -41,7 +41,7 @@ public class MeasureUnit {
     @JsonView({
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
             SystemViews.ProductBasicView.class, SystemViews.RequestBasicView.class,
-            SystemViews.RequestOfferBasicView.class, SystemViews.RequestOfferDetailView.class,
+            SystemViews.RequestOfferDetailView.class,
             SystemViews.RequestDetailView.class
     })
     private String unit;

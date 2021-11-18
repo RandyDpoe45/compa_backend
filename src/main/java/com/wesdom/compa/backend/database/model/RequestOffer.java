@@ -38,7 +38,7 @@ public class RequestOffer {
     private RequestOfferStatus requestOfferStatus;//ACCEPTED | VERIFYING | DECLINED | DELIVERED | PAID
 
     @ManyToOne(targetEntity = Request.class,fetch = FetchType.LAZY)
-    @JsonView({SystemViews.RequestOfferDetailView.class})
+    @JsonView({SystemViews.RequestOfferBasicView.class,SystemViews.RequestOfferDetailView.class})
     @NotFound(action = NotFoundAction.IGNORE)
     private Request request;
 
@@ -52,12 +52,12 @@ public class RequestOffer {
     @JsonView({SystemViews.RequestOfferBasicView.class, SystemViews.RequestOfferDetailView.class})
     private BigDecimal amount;
 
-    @JsonView({SystemViews.RequestOfferBasicView.class, SystemViews.RequestOfferDetailView.class})
+    @JsonView({SystemViews.RequestOfferDetailView.class})
     @ManyToOne(targetEntity = MeasureUnit.class, fetch = FetchType.LAZY)
     @NotFound(action = NotFoundAction.IGNORE)
     private MeasureUnit measureUnit;
 
-    @JsonView({SystemViews.RequestOfferBasicView.class, SystemViews.RequestOfferDetailView.class})
+    @JsonView({SystemViews.RequestOfferDetailView.class})
     @ManyToOne(targetEntity = ManufacturerGroup.class, fetch = FetchType.LAZY)
     @NotFound(action = NotFoundAction.IGNORE)
     private ManufacturerGroup manufacturerGroup;

@@ -31,7 +31,7 @@ public class Request {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonView({
             SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class,
-            SystemViews.RequestDetailView.class
+            SystemViews.RequestDetailView.class,SystemViews.RequestOfferBasicView.class
     })
     private Long id;
 
@@ -43,14 +43,14 @@ public class Request {
 
     @JsonView({
             SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class,
-            SystemViews.RequestDetailView.class
+            SystemViews.RequestDetailView.class, SystemViews.RequestOfferBasicView.class
     })
     private String status;
 
     @ManyToOne(targetEntity = CommercialPartner.class, fetch = FetchType.LAZY)
     @JsonView({
             SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class,
-            SystemViews.RequestDetailView.class
+            SystemViews.RequestDetailView.class,SystemViews.RequestOfferBasicView.class,
     })
     @NotFound(action = NotFoundAction.IGNORE)
     private CommercialPartner commercialPartner;
@@ -65,7 +65,7 @@ public class Request {
     @ManyToOne(targetEntity = Association.class, fetch = FetchType.LAZY)
     @JsonView({
             SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class,
-            SystemViews.RequestDetailView.class
+            SystemViews.RequestDetailView.class,SystemViews.RequestOfferBasicView.class
     })
     @NotFound(action = NotFoundAction.IGNORE)
     private Association association;
@@ -73,7 +73,7 @@ public class Request {
     @ManyToOne(targetEntity = Product.class, fetch = FetchType.LAZY)
     @JsonView({
             SystemViews.RequestBasicView.class, SystemViews.RequestOfferDetailView.class,
-            SystemViews.RequestDetailView.class
+            SystemViews.RequestDetailView.class,SystemViews.RequestOfferBasicView.class
     })
     @NotFound(action = NotFoundAction.IGNORE)
     private Product product;

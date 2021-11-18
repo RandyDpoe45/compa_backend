@@ -25,7 +25,8 @@ public class Product {
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
             SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class,
-            SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class
+            SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class,
+            SystemViews.RequestOfferBasicView.class
     })
     private Long id;
 
@@ -33,14 +34,15 @@ public class Product {
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
             SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class,
-            SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class
+            SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class,
+            SystemViews.RequestOfferBasicView.class
     })
     private String code;
 
     @JsonView({
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
-            SystemViews.AdvertisingDetailView.class
+            SystemViews.AdvertisingDetailView.class,SystemViews.RequestOfferBasicView.class
     })
     @ManyToOne(targetEntity = ProductType.class, fetch = FetchType.LAZY)
     @NotFound(action = NotFoundAction.IGNORE)
@@ -50,7 +52,8 @@ public class Product {
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
             SystemViews.RequestBasicView.class,SystemViews.AdvertisingBasicView.class,
-            SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class
+            SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class,
+            SystemViews.RequestOfferBasicView.class
     })
     private String name;
 

@@ -29,7 +29,7 @@ public class Association{
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
             SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class,
             SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class,
-            SystemViews.AssociationMemberBasicView.class
+            SystemViews.AssociationMemberBasicView.class,SystemViews.RequestOfferBasicView.class
     })
     private Long id;
 
@@ -45,7 +45,7 @@ public class Association{
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
             SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class,
             SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class,
-            SystemViews.AssociationMemberBasicView.class
+            SystemViews.AssociationMemberBasicView.class,SystemViews.RequestOfferBasicView.class
     })
     private String code;
 
@@ -53,7 +53,7 @@ public class Association{
             SystemViews.AssociationDetailedView.class,SystemViews.AssociationBasicView.class,
             SystemViews.RequestBasicView.class, SystemViews.AdvertisingBasicView.class,
             SystemViews.AdvertisingDetailView.class, SystemViews.RequestDetailView.class,
-            SystemViews.AssociationMemberBasicView.class
+            SystemViews.AssociationMemberBasicView.class,SystemViews.RequestOfferBasicView.class
     })
     private String name;
 
