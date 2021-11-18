@@ -105,15 +105,15 @@ public class Request {
     private String statusDateHistory = "";
 
     @Column(length = 1000)
-    @JsonView({SystemViews.RequestDetailView.class})
+    @JsonView({SystemViews.RequestBasicView.class,SystemViews.RequestDetailView.class})
     private String productionConditions;
 
     @Column(length = 1000)
-    @JsonView({SystemViews.RequestDetailView.class})
+    @JsonView({SystemViews.RequestBasicView.class,SystemViews.RequestDetailView.class})
     private String transportConditions;
 
     @Column(length = 1000)
-    @JsonView({SystemViews.RequestDetailView.class})
+    @JsonView({SystemViews.RequestBasicView.class,SystemViews.RequestDetailView.class})
     private String packingConditions;
 
     @JsonView({SystemViews.RequestBasicView.class, SystemViews.RequestDetailView.class})
