@@ -31,7 +31,8 @@ public class ProductType {
     @JsonView({
             SystemViews.ProductInStateBasicView.class, SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
-            SystemViews.AdvertisingDetailView.class, SystemViews.PackingOptionBasicView.class
+            SystemViews.AdvertisingDetailView.class, SystemViews.PackingOptionBasicView.class,
+            SystemViews.RequestBasicView.class
     })
     private String code;
 

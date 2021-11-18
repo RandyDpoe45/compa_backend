@@ -42,7 +42,8 @@ public class Product {
     @JsonView({
             SystemViews.ProductInStateBasicView.class,SystemViews.ProductionActivityBasicView.class,
             SystemViews.ExpertVisitBasicView.class, SystemViews.ProductBasicView.class,
-            SystemViews.AdvertisingDetailView.class,SystemViews.RequestOfferBasicView.class
+            SystemViews.AdvertisingDetailView.class,SystemViews.RequestOfferBasicView.class,
+            SystemViews.RequestBasicView.class
     })
     @ManyToOne(targetEntity = ProductType.class, fetch = FetchType.LAZY)
     @NotFound(action = NotFoundAction.IGNORE)
